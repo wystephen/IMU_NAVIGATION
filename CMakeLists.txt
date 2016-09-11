@@ -1,6 +1,19 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(IMU_NAVIGATION)
 
+
+#set(CMAKE_BUILD_TYPE Release)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11  -O3 -pthread")
+
+list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules )
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /usr/share/cmake-2.8/Modules/)#Add Eigen3 Find cmake file here.
+
+find_package(OpenCV REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(PCL REQUIRED)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -120,7 +133,16 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
-        ~/Cpp_Extent/Cpp_Extent
+        ${OpenCV_INCLUDE_DIRS}
+        ${PCL_INCLUDE_DIRS}
+        /usr/local/include # Location when using 'make system_install'
+        /usr/include       # More usual location (e.g. when installing using a package)
+        #${PROJECT_SOURCE_DIR}/Thirdparty/
+)
+
+link_directories(
+        /usr/local/lib # Location when using 'make system_install'
+        /usr/lib       # More usual location (e.g. when installing using a package)
 )
 
 ## Declare a C++ library
@@ -128,7 +150,8 @@ include_directories(
 #   src/${PROJECT_NAME}/IMU_NAVIGATION.cpp
 # )
 
-
+#add_library(imu_data_preprocess
+#        include/IMU_NAVIGATION/imu_data_preprocess.h)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -138,15 +161,20 @@ include_directories(
 ## Declare a C++ executable
 # add_executable(IMU_NAVIGATION_node src/IMU_NAVIGATION_node.cpp)
 
+add_executable(imu_preprocess_test src/ImuDataPreprocess.cpp)
+
+add_dependencies(imu_preprocess_test ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(IMU_NAVIGATION_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(IMU_NAVIGATION_node
 #   ${catkin_LIBRARIES}
 # )
-
+target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############

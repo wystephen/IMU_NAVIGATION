@@ -2,11 +2,12 @@
 // Created by steve on 16-9-11.
 //
 
-#include "../include/IMU_NAVIGATION/Zero_Detecter.h"
+#include "../include/IMU_NAVIGATION/imu_data_preprocess.h"
 
 #include <iostream>
 
 #include <ros/ros.h>
+#include <sensor_msgs/Imu.h>
 
 
 
@@ -20,12 +21,15 @@ int main(int argc,char** argv) {
 
     //c_TransformMatrix = Eigen::Matrix4f::Identity();
 
-    pub = n_.advertise<sensor_msgs::PointCloud2>("pc_t",1);
+//    pub = n_.advertise<sensor_msgs::PointCloud2>("pc_t",1);
+//
+//    ros::Subscriber sub= n_.subscribe("pc",1,transformCallback);
 
-    ros::Subscriber sub= n_.subscribe("pc",1,transformCallback);
+    ImuDataPreProcess<double> imupre("Data");
+    imupre.test();
+
     ros::spin();
     return 0;
 
 
 }
-
