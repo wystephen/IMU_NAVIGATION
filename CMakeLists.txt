@@ -120,12 +120,15 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+        ~/Cpp_Extent/Cpp_Extent
 )
 
 ## Declare a C++ library
 # add_library(IMU_NAVIGATION
 #   src/${PROJECT_NAME}/IMU_NAVIGATION.cpp
 # )
+
+
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
