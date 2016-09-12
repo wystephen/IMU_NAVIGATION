@@ -171,7 +171,7 @@ target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
 
 add_executable(data_sync src/DataSync.cpp)
 add_dependencies(data_sync ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} )
-target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
+target_link_libraries(data_sync ${catkin_LIBRARIES})
 
 
 ## Add cmake target dependencies of the executable

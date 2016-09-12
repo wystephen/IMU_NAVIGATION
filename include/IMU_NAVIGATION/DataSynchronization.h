@@ -33,6 +33,8 @@ public:
     {
         x_h_[1]  =1;
 
+        std::cout << x_h_ << std::endl;
+
 
     }
 
