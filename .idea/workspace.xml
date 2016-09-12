@@ -78,11 +78,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataSync.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IMU_NAVIGATION.iml" afterPath="$PROJECT_DIR$/.idea/IMU_NAVIGATION.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,8 +115,8 @@
           <file leaf-file-name="DataSynchronization.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                <state relative-caret-position="288">
+                  <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -201,8 +197,8 @@
           <file leaf-file-name="DataSync.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/DataSync.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+                <state relative-caret-position="468">
+                  <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
                   <folding>
                     <element signature="e#91#110#0" expanded="true" />
                   </folding>
@@ -927,7 +923,7 @@
       <workItem from="1473596932382" duration="2386000" />
       <workItem from="1473599335556" duration="6077000" />
       <workItem from="1473640769709" duration="11998000" />
-      <workItem from="1473660103560" duration="1948000" />
+      <workItem from="1473660103560" duration="2928000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -978,11 +974,18 @@
       <option name="project" value="LOCAL" />
       <updated>1473659147027</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Set value.">
+      <created>1473663864431</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1473663864431</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24791000" />
+    <option name="totallyTimeSpent" value="25771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1025,7 +1028,8 @@
     <MESSAGE value="A bad class,set the Matrix m_ as a public member of the class,have to modificat this class." />
     <MESSAGE value="Read Data from file,and publish it as topics named  &quot;imu1/data&quot; and &quot;imu2/data&quot;." />
     <MESSAGE value="Safe update." />
-    <option name="LAST_COMMIT_MESSAGE" value="Safe update." />
+    <MESSAGE value="Set value." />
+    <option name="LAST_COMMIT_MESSAGE" value="Set value." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1339,21 +1343,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataSync.cpp">
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="e#91#110#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="288">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
+    <entry file="file://$PROJECT_DIR$/src/DataSync.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="468">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#91#110#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
