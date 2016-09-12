@@ -8,7 +8,6 @@
 
 #include <iostream>
 
-#include <deq
 
 #ifndef IMU_NAVIGATION_DATASYNCHRONIZATION_H
 #define IMU_NAVIGATION_DATASYNCHRONIZATION_H
@@ -17,8 +16,20 @@ class DataSync
 {
 public:
 
+    DataSync(ros::NodeHandle & n_h):
+            n_ptr_(&n_h)
+
+    {
+
+    }
 
 protected:
+
+    ros::NodeHandlePtr n_ptr_;//Pointer of the node.
+
+    ros::Subscriber imu1_sub,imu2_sub;//Subscriber for imu data.
+
+
 
 private:
 

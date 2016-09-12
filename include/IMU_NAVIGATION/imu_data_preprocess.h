@@ -112,6 +112,7 @@ public:
 
             sensor_msgs::Imu imu1;
             imu1.header.stamp.fromSec(start_time + i *  t_s);
+            imu1.header.frame_id = "imu1";
 
             imu1.linear_acceleration.x = *u1(i,0);
             imu1.linear_acceleration.y = *u1(i,1);
@@ -123,6 +124,7 @@ public:
 
             sensor_msgs::Imu imu2;
             imu2.header.stamp.fromSec(start_time+i*t_s);
+            imu2.header.frame_id = "imu2";
 
             imu2.linear_acceleration.x = *u2(i,0);
             imu2.linear_acceleration.y = *u2(i,1);
