@@ -8,6 +8,10 @@
 
 #include "../Cpp_Extent/MyError.h"
 
+#include <ros/ros.h>
+
+#include "SettingPara.h"
+
 
 #ifndef IMU_NAVIGATION_IMU_DATA_PREPROCESS_H
 #define IMU_NAVIGATION_IMU_DATA_PREPROCESS_H
@@ -26,7 +30,8 @@ public:
     ImuDataPreProcess(std::string DataDir):csvReaderu1(DataDir +"/u1.csv"),
                         csvReaderu2(DataDir +"/u2.csv"),
                         csvReaderzupt1(DataDir +"/zupt1.csv"),
-                        csvReaderzupt2(DataDir +"/zupt2.csv")
+                        csvReaderzupt2(DataDir +"/zupt2.csv"),
+                                           para_(true)
     {
         u1=csvReaderu1.m_;
         u2 = csvReaderu2.m_;
@@ -52,10 +57,34 @@ public:
     }
 
 
+    bool SetNodeHandle(ros::NodeHandle &n_h)
+    {
+        node_ptr_ = &n_h;
+
+        return true;
+    }
+
+    bool StartPub(ros::NodeHandle &n_h)
+    {
+
+
+    }
+
+
 protected:
     CSVReader csvReaderu1,csvReaderu2,csvReaderzupt1,csvReaderzupt2;
 
-    Matrix<DataType> u1,u2,zupt1,zupt2;
+    Matrix<DataType> u1,u2,zupt1,zupt2;//Data Matrix (Load from File).
+
+
+    ros::NodeHandlePtr node_ptr_;//The pointer for current nodehandle.
+
+    SettingPara para_;//Save parameters
+
+    ros::Publisher pub_; // publisher for imu data.
+
+    ros::Publisher pub_; // publisher for imu data.
+
 
 
 

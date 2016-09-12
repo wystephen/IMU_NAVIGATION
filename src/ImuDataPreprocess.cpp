@@ -28,6 +28,8 @@ int main(int argc,char** argv) {
     ImuDataPreProcess<double> imupre("Data");
     imupre.test();
 
+
+
     ros::spin();
     return 0;
 
