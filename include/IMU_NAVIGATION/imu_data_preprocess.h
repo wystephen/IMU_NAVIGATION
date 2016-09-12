@@ -60,6 +60,9 @@ public:
     }
 
 
+    /*
+     * Set a nodehandle for create publisher for subscriber.
+     */
     bool SetNodeHandle(ros::NodeHandle &n_h)
     {
         *node_ptr_ = n_h;
@@ -67,6 +70,9 @@ public:
         return true;
     }
 
+    /*
+     * Use data read from csv file,publish data .Need a right value of the time step.
+     */
     bool StartPub(ros::NodeHandle &n_h)
     {
         SetNodeHandle(n_h);
