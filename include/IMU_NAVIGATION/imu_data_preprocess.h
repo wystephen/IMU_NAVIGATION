@@ -47,6 +47,8 @@ public:
     void test()
     {
         std::cout << "Out" << std::endl;
+        std::cout << u1.GetRows() << " x " << u1.GetCols() << std::endl;
+        std::cout << u2.GetRows() << " x " << u2.GetCols() << std::endl;
     }
 
 

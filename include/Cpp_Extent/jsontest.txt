@@ -1,0 +1,41 @@
+{
+    "array": [
+        1,
+        2,
+        3
+    ],
+    "array_str":[
+    "str1",
+    "str2",
+    "str3"
+    ]
+    "array_array":[
+    [1,2,3],
+    [2,3,4]
+    ]
+	  "object": {
+		"object3": {
+			"a": "bbbb",
+			"c": "d",
+			"e": "f"
+		},
+        "a": "b",
+        "c": "d",
+        "e": "f"
+		},
+	"objectarray":[
+		{"oa1":{
+			"oa11":1,
+			"oa12":2
+		}},
+		{"oa2":{
+			"oa21":21,
+			"oa22":22
+		}}
+	],
+    "boolean": true,
+    "null": null,
+    "number": 123,
+  
+    "string": "Hello World"
+}
