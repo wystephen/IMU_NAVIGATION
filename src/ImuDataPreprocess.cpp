@@ -12,6 +12,7 @@
 
 
 
+
 int main(int argc,char** argv) {
     //
 
@@ -31,8 +32,6 @@ int main(int argc,char** argv) {
     imupre.StartPub(n_handle);
 
     std::cout << " END THE PUBLISH" << std::endl;
-
-
 
     ros::spin();
     return 0;
