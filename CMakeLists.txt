@@ -162,8 +162,13 @@ link_directories(
 # add_executable(IMU_NAVIGATION_node src/IMU_NAVIGATION_node.cpp)
 
 add_executable(imu_preprocess_test src/ImuDataPreprocess.cpp)
-
 add_dependencies(imu_preprocess_test ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
+
+add_executable(data_sync src/DataSync.cpp)
+add_dependencies(data_sync ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -174,7 +179,6 @@ add_dependencies(imu_preprocess_test ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${Open
 # target_link_libraries(IMU_NAVIGATION_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
