@@ -25,8 +25,12 @@ int main(int argc,char** argv) {
 //
 //    ros::Subscriber sub= n_.subscribe("pc",1,transformCallback);
 
-    ImuDataPreProcess<double> imupre("Data");
+    ImuDataPreProcess<double> imupre("Data",n_handle);
     imupre.test();
+
+    imupre.StartPub(n_handle);
+
+    std::cout << " END THE PUBLISH" << std::endl;
 
 
 
