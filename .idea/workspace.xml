@@ -78,7 +78,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,23 +102,10 @@
           <file leaf-file-name="ImuDataPreprocess.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                <state relative-caret-position="72">
+                  <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
                   <folding>
                     <element signature="e#39#97#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="474">
-                  <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#39#75#0" expanded="true" />
-                    <element signature="e#407#423#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -187,8 +173,8 @@
           <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="73" column="85" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
+                <state relative-caret-position="1080">
+                  <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
                   <folding>
                     <element signature="e#39#75#0" expanded="true" />
                     <element signature="e#407#423#0" expanded="true" />
@@ -817,7 +803,7 @@
       <workItem from="1473594246821" duration="2357000" />
       <workItem from="1473596932382" duration="2386000" />
       <workItem from="1473599335556" duration="6077000" />
-      <workItem from="1473640769709" duration="11354000" />
+      <workItem from="1473640769709" duration="11624000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -854,11 +840,18 @@
       <option name="project" value="LOCAL" />
       <updated>1473658729609</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Read Data from file,and publish it as topics named  &quot;imu1/data&quot; and &quot;imu2/data&quot;.">
+      <created>1473658863117</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1473658863117</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22199000" />
+    <option name="totallyTimeSpent" value="22469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1130,23 +1123,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="1080">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
-            <element signature="e#39#97#0" expanded="true" />
+            <element signature="e#39#75#0" expanded="true" />
+            <element signature="e#407#423#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
+    <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="73" column="85" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
+        <state relative-caret-position="72">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
-            <element signature="e#39#75#0" expanded="true" />
-            <element signature="e#407#423#0" expanded="true" />
+            <element signature="e#39#97#0" expanded="true" />
           </folding>
         </state>
       </provider>
