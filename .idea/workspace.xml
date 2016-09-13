@@ -104,8 +104,8 @@
           <file leaf-file-name="ImuDataPreprocess.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="162">
-                  <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+                <state relative-caret-position="450">
+                  <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
                   <folding>
                     <element signature="e#39#97#0" expanded="true" />
                   </folding>
@@ -116,7 +116,7 @@
           <file leaf-file-name="CSVReader.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/Cpp_Extent/CSVReader.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1746">
+                <state relative-caret-position="892">
                   <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
                   <folding>
                     <element signature="e#39#58#0" expanded="true" />
@@ -125,11 +125,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DataSync.cpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="DataSync.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DataSync.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+                <state relative-caret-position="306">
+                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
                   <folding>
                     <element signature="e#77#135#0" expanded="true" />
                   </folding>
@@ -137,11 +137,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="false">
+          <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1278">
-                  <caret line="92" column="41" selection-start-line="92" selection-start-column="41" selection-end-line="92" selection-end-column="41" />
+                <state relative-caret-position="-184">
+                  <caret line="79" column="67" selection-start-line="79" selection-start-column="56" selection-end-line="79" selection-end-column="67" />
                   <folding>
                     <element signature="e#39#75#0" expanded="true" />
                     <element signature="e#407#423#0" expanded="true" />
@@ -157,8 +157,8 @@
           <file leaf-file-name="DataSynchronization.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="388">
-                  <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+                <state relative-caret-position="640">
+                  <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                     <element signature="e#207#224#0" expanded="true" />
@@ -250,56 +250,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMU_NAVIGATION" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -848,7 +799,7 @@
       <workItem from="1473687313890" duration="3597000" />
       <workItem from="1473753984620" duration="701000" />
       <workItem from="1473763729484" duration="170000" />
-      <workItem from="1473770991350" duration="782000" />
+      <workItem from="1473770991350" duration="2944000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -941,21 +892,28 @@
       <option name="project" value="LOCAL" />
       <updated>1473773435545</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Vector is Ok!&#10;">
+      <created>1473773474785</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1473773474785</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36186000" />
+    <option name="totallyTimeSpent" value="38348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18021005" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18021005" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1577511" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1428,26 +1386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/Cpp_Extent/CSVReader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1746">
-          <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
-          <folding>
-            <element signature="e#39#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-          <folding>
-            <element signature="e#39#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1462,10 +1400,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/Cpp_Extent/CSVReader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="892">
+          <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+          <folding>
+            <element signature="e#39#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataSync.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#77#135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+          <folding>
+            <element signature="e#39#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="92" column="41" selection-start-line="92" selection-start-column="41" selection-end-line="92" selection-end-column="41" />
+        <state relative-caret-position="-184">
+          <caret line="79" column="67" selection-start-line="79" selection-start-column="56" selection-end-line="79" selection-end-column="67" />
           <folding>
             <element signature="e#39#75#0" expanded="true" />
             <element signature="e#407#423#0" expanded="true" />
@@ -1473,20 +1441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataSync.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="e#77#135#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+        <state relative-caret-position="640">
+          <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
             <element signature="e#207#224#0" expanded="true" />
