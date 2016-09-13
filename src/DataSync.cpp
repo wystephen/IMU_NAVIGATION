@@ -19,6 +19,8 @@ int main(int argc,char ** argv)
     DataSync dataSync(n_handle);
 
 
+
+
     ros::spin();
 
     return 0;
