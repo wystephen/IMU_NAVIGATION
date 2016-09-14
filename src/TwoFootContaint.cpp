@@ -8,12 +8,15 @@
 
 #include <ros/ros.h>
 
+
+
 #include "../include/IMU_NAVIGATION/DataSynchronization.h"
 
 
-int main(int argc,char ** argv)
-{
-    ros::init(argc,argv,"TwoFoot");
+
+
+int main(int argc, char **argv) {
+    ros::init(argc, argv, "TwoFoot");
 
     ros::NodeHandle n_handle;
 

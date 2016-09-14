@@ -6,6 +6,9 @@
 
 #include <ros/ros.h>
 
+#include "Eigen/dense.h"
+
+#include "PdrEkf.h"
 
 #ifndef IMU_NAVIGATION_TWOFOOTCONTAINT_H
 #define IMU_NAVIGATION_TWOFOOTCONTAINT_H
