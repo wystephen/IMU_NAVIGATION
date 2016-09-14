@@ -6,7 +6,7 @@
 
 #include <ros/ros.h>
 
-#include "Eigen/dense.h"
+#include "Eigen/Dense"
 
 #include "PdrEkf.h"
 
