@@ -10,6 +10,22 @@
 
 #include <sensor_msgs/Imu.h>
 
+#include <thread>
+
+DataSync* data_ptr;
+
+void read_data()
+{
+    ros::Duration dura(0,10);
+
+    while(ros::ok())
+    {
+         std::cout << (data_ptr->GetImuData(ros::Time::now().toSec())).transpose() << std::endl;
+        dura.sleep();
+
+    }
+
+}
 
 int main(int argc,char ** argv)
 {
@@ -18,10 +34,13 @@ int main(int argc,char ** argv)
 
     DataSync dataSync(n_handle);
 
+    data_ptr  = &dataSync;
 
-
+    std::thread j(read_data);
+    j.detach();
 
     ros::spin();
 
     return 0;
 }
+
