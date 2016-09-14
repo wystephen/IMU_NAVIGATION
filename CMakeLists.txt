@@ -173,7 +173,9 @@ add_executable(data_sync src/DataSync.cpp)
 add_dependencies(data_sync ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} )
 target_link_libraries(data_sync ${catkin_LIBRARIES})
 
-
+add_executable(twofoot src/TwoFootContaint.cpp)
+add_dependencies(twofoot ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(twofoot ${catkin_LIBRARIES})
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(IMU_NAVIGATION_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
