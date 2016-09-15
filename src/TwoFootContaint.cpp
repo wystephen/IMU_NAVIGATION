@@ -11,6 +11,8 @@
 
 #include "../include/IMU_NAVIGATION/DataSynchronization.h"
 
+#include "../include/IMU_NAVIGATION/Zero_Detecter.h"
+
 
 
 
@@ -18,6 +20,8 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "TwoFoot");
 
     ros::NodeHandle n_handle;
+
+    SettingPara para(true);
 
     ros::spin();
     return 0;

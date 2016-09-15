@@ -2,6 +2,8 @@
 // Created by steve on 16-9-11.
 //
 
+#pragma  once
+
 #include "../include/IMU_NAVIGATION/imu_data_preprocess.h"
 
 #include <iostream>
@@ -26,7 +28,8 @@ int main(int argc,char** argv) {
 //
 //    ros::Subscriber sub= n_.subscribe("pc",1,transformCallback);
 
-    ImuDataPreProcess<double> imupre("Data",n_handle);
+    ImuDataPreProcess<double> imupre("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data",
+                                     n_handle);
     imupre.test();
 
     imupre.StartPub(n_handle);

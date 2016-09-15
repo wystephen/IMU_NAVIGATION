@@ -15,7 +15,13 @@
 
 #include <Eigen/Dense>
 
-
+enum ZeroDetectorAlogorithm
+{
+    GLRT,
+    MV,
+    MAG,
+    ARE
+};
 
 
 #ifndef IMU_NAVIGATION_SETTINGPARA_H
@@ -30,7 +36,7 @@ struct SettingPara
         return true;
     }
 
-    SettingPara(bool isDefult)
+    SettingPara(bool isDefult=true)
     {
         latitude_ = 58.0;
 
@@ -40,12 +46,12 @@ struct SettingPara
 
         Ts_ = 1/820.0;
 
-        rang_constraint = 1.0;
+        rang_constraint_ = 1.0;
 
         for(int i(0);i<3;++i)
         {
-            init_pos1(i) = 0.0;
-            init_pos2(i) = 0.0;
+            init_pos1_(i) = 0.0;
+            init_pos2_(i) = 0.0;
         }
 
 
@@ -60,21 +66,23 @@ struct SettingPara
 
     double gravity_;//The gravity based on altitude and latitude. [ m/s^2]
 
-    double rang_constraint = 1.0; // Max distance between two foots.[m]
+    double rang_constraint_ = 1.0; // Max distance between two foots.[m]
 
-    int ZeroDetectorWindowSize = 3;// Size of the Zero Detector.
+    int ZeroDetectorWindowSize_ = 3;// Size of the Zero Detector.
 
 
-    double init_heading1 = (-97.5) * M_PI /180.0;//heading
-    double init_heading2 = (96.05) * M_PI / 180.0;
+    double init_heading1_ = (-97.5) * M_PI /180.0;//heading
+    double init_heading2_ = (96.05) * M_PI / 180.0;
 
-    Eigen::Vector3d init_pos1 ;//pose
-    Eigen::Vector3d init_pos2   ;
+    Eigen::Vector3d init_pos1_ ;//pose
+    Eigen::Vector3d init_pos2_   ;
 
-    double sigma_a = 0.035;//Stanard deviation of the accelermter noise [ m/ s^2];
-    double sigma_g = 0.35 * M_PI /180.0;
+    double sigma_a_ = 0.035;//Stanard deviation of the accelermter noise [ m/ s^2];
+    double sigma_g_ = 0.35 * M_PI /180.0;
 
-    double gamma = 200;//Threshold used in the zero-velocity detector.
+    double gamma_ = 200;//Threshold used in the zero-velocity detector.
+
+    bool Open_Distance_Constaint_ = true;
 
 
 
@@ -82,7 +90,7 @@ struct SettingPara
     {
         if(latitude_>800)
         {
-            MYERROR("latitude_ is not set or bigger than 800.0 !")
+            MYERROR("latitude_ is not set or it is  bigger than 800.0 !")
 
         }else{
             double lambda(M_PI /180.0 * latitude_);
