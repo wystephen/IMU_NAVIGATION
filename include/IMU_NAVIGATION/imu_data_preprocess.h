@@ -29,7 +29,8 @@ enum DATASOURCE{
 template <class DataType>
 class ImuDataPreProcess {
 public:
-    ImuDataPreProcess(std::string DataDir,ros::NodeHandle &n_h):csvReaderu1(DataDir +"/u1.csv"),
+    ImuDataPreProcess(std::string DataDir,ros::NodeHandle &n_h):
+            csvReaderu1(DataDir +"/u1.csv"),
                         csvReaderu2(DataDir +"/u2.csv"),
                         csvReaderzupt1(DataDir +"/zupt1.csv"),
                         csvReaderzupt2(DataDir +"/zupt2.csv"),
