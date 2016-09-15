@@ -162,7 +162,7 @@ Eigen::Matrix3d PdrEkf::Quaternion2Rotation(Eigen::Vector4d q) {
         p(5) = 0;
     }
 
-    Eigen::Matrix3d R;
+    Eigen::Matrix3d R(Eigen::Matrix3d::Zero());
 
     R(0, 0) = 1 - p(5) * p(4);
     R(1, 1) = 1 - p(5) * (p(0) + p(2));
@@ -172,6 +172,7 @@ Eigen::Matrix3d PdrEkf::Quaternion2Rotation(Eigen::Vector4d q) {
     p(1) = p(5) * q(1);
     p(4) = p(5) * q(2) * q(3);
     p(5) = p(0) * q(1);
+
 
     R(0, 1) = p(5) - p(4);
     R(1, 0) = p(5) + p(4);

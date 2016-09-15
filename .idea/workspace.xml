@@ -81,7 +81,9 @@
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,10 +102,10 @@
     <favorites_list name="IMU_NAVIGATION" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4526244">
+    <splitter split-orientation="horizontal" split-proportion="0.42058623">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="true">
+          <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="339">
@@ -115,21 +117,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TwoFootContaint.cpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TwoFootContaint.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+                <state relative-caret-position="195">
+                  <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Zero_Detecter.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Zero_Detecter.cpp">
+          <file leaf-file-name="Zero_Detecter.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                <state relative-caret-position="210">
+                  <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -152,8 +154,8 @@
           <file leaf-file-name="DataSynchronization.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                <state relative-caret-position="420">
+                  <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                     <element signature="e#207#224#0" expanded="true" />
@@ -165,8 +167,8 @@
           <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+                <state relative-caret-position="270">
+                  <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                   </folding>
@@ -177,28 +179,40 @@
           <file leaf-file-name="ImuDataPreprocess.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+                <state relative-caret-position="375">
+                  <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StaticAssert.h" pinned="false" current-in-tab="false">
-            <entry file="file:///usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h">
+          <file leaf-file-name="SettingPara.h" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+                <state relative-caret-position="645">
+                  <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+                  <folding>
+                    <element signature="e#91#125#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Matrix.h" pinned="false" current-in-tab="false">
+            <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="464">
+                  <caret line="381" column="64" selection-start-line="381" selection-start-column="64" selection-end-line="381" selection-end-column="64" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1427">
-                  <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+                <state relative-caret-position="1275">
+                  <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
                   <folding>
                     <element signature="e#90#112#0" expanded="true" />
                   </folding>
@@ -222,15 +236,16 @@
         <option value="$PROJECT_DIR$/src/imu_data_preprocess.cpp" />
         <option value="$PROJECT_DIR$/include/Cpp_Extent/CSVReader.h" />
         <option value="$PROJECT_DIR$/include/Cpp_Extent/Matrix.h" />
-        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
         <option value="$PROJECT_DIR$/src/ImuDataPreprocess.cpp" />
         <option value="$PROJECT_DIR$/src/DataSync.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h" />
-        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
         <option value="$PROJECT_DIR$/src/TwoFootContaint.cpp" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" />
+        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
+        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h" />
+        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
       </list>
     </option>
   </component>
@@ -923,7 +938,7 @@
       <workItem from="1473833658820" duration="11536000" />
       <workItem from="1473859041564" duration="22000" />
       <workItem from="1473865951562" duration="572000" />
-      <workItem from="1473900403633" duration="2724000" />
+      <workItem from="1473900403633" duration="5483000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -1093,11 +1108,18 @@
       <option name="project" value="LOCAL" />
       <updated>1473845730378</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="----">
+      <created>1473906359972</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1473906359972</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58024000" />
+    <option name="totallyTimeSpent" value="60783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1126,23 +1148,23 @@
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33870968" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23799582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14704256" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18905473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15754561" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39979124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1194,16 +1216,11 @@
     <MESSAGE value="Add TwoFoot modules." />
     <MESSAGE value="Updata two new function." />
     <MESSAGE value="Refomt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refomt" />
+    <MESSAGE value="----" />
+    <option name="LAST_COMMIT_MESSAGE" value="----" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h</url>
-          <line>36</line>
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
@@ -1306,7 +1323,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="e#91#125#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1454,13 +1473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1062">
@@ -1496,21 +1508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="295" column="26" selection-start-line="295" selection-start-column="26" selection-end-line="295" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/u1.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1532,27 +1529,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zero_Detecter.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="e#90#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+          <folding>
+            <element signature="e#91#111#0" expanded="true" />
+            <element signature="e#207#224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding>
+            <element signature="e#91#111#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1566,49 +1594,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
+    <entry file="file://$PROJECT_DIR$/src/Zero_Detecter.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding>
-            <element signature="e#91#111#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        <state relative-caret-position="375">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/DataSynchronization.h">
+    <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#91#111#0" expanded="true" />
-            <element signature="e#207#224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="464">
+          <caret line="381" column="64" selection-start-line="381" selection-start-column="64" selection-end-line="381" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1427">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="645">
+          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
           <folding>
-            <element signature="e#90#112#0" expanded="true" />
+            <element signature="e#91#125#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -13,6 +13,16 @@
 #ifndef IMU_NAVIGATION_TWOFOOTCONTAINT_H
 #define IMU_NAVIGATION_TWOFOOTCONTAINT_H
 
+class TwoFootEkf:public PdrEkf
+{
+public:
+    TwoFootEkf()
 
+protected:
+
+private:
+
+
+};
 
 #endif //IMU_NAVIGATION_TWOFOOTCONTAINT_H

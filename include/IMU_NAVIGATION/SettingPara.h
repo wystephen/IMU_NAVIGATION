@@ -13,6 +13,8 @@
 
 #include "../Cpp_Extent/FileReader.h"
 
+#include <Eigen/Dense>
+
 
 
 
@@ -40,6 +42,11 @@ struct SettingPara
 
         rang_constraint = 1.0;
 
+        for(int i(0);i<3;++i)
+        {
+            init_pos1(i) = 0.0;
+            init_pos2(i) = 0.0;
+        }
 
 
 
@@ -54,6 +61,20 @@ struct SettingPara
     double gravity_;//The gravity based on altitude and latitude. [ m/s^2]
 
     double rang_constraint = 1.0; // Max distance between two foots.[m]
+
+    int ZeroDetectorWindowSize = 3;// Size of the Zero Detector.
+
+
+    double init_heading1 = (-97.5) * M_PI /180.0;//heading
+    double init_heading2 = (96.05) * M_PI / 180.0;
+
+    Eigen::Vector3d init_pos1 ;//pose
+    Eigen::Vector3d init_pos2   ;
+
+    double sigma_a = 0.035;//Stanard deviation of the accelermter noise [ m/ s^2];
+    double sigma_g = 0.35 * M_PI /180.0;
+
+    double gamma = 200;//Threshold used in the zero-velocity detector.
 
 
 
