@@ -84,7 +84,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -945,7 +944,7 @@
       <workItem from="1473900403633" duration="15662000" />
       <workItem from="1473926773980" duration="2583000" />
       <workItem from="1473943657794" duration="709000" />
-      <workItem from="1473991755282" duration="11135000" />
+      <workItem from="1473991755282" duration="11148000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -1157,11 +1156,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474013095166</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="INITIAL in TwoFoot Constaints.">
+      <created>1474014396027</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1474014396027</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85389000" />
+    <option name="totallyTimeSpent" value="85402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
