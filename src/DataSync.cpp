@@ -22,7 +22,7 @@ DataSync* data_ptr;
 
 void read_data()
 {
-    ros::Duration dura(0,10);
+    ros::Duration dura(0,90);
 
     SettingPara para;
 
