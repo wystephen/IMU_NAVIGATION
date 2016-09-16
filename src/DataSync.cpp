@@ -16,6 +16,8 @@
 
 #include "../include/IMU_NAVIGATION/Zero_Detecter.h"
 
+#include "../include/IMU_NAVIGATION/TwoFootContaint.h"
+
 DataSync* data_ptr;
 
 #include <fstream>
@@ -27,6 +29,8 @@ void read_data()
     SettingPara para;
 
     ZeroDetector detector(para);
+
+    TwoFootEkf edf2(para);
 
     std::ofstream of("/home/steve/1.csv");
     std::ofstream of2("/home/steve/2.csv");

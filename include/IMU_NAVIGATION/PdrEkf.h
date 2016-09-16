@@ -53,8 +53,8 @@ Eigen::Vector4d PdrEkf::correct_orientations(Eigen::Vector4d q_in, Eigen::Vector
     omega(0,1) = -epsilon(2);
     omega(0,2) = epsilon(1);
 
-    omege(1,0) = epsilon(2);
-    omege(1,1) = 0;
+    omega(1,0) = epsilon(2);
+    omega(1,1) = 0;
     omega(1,2) = -epsilon(0);
 
     omega(2,0) = -epsilon(1);
