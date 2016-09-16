@@ -52,6 +52,7 @@ struct SettingPara
         {
             init_pos1_(i) = 0.0;
             init_pos2_(i) = 0.0;
+            init_pos_(i) = 0.0;
         }
 
 
@@ -70,12 +71,15 @@ struct SettingPara
 
     int ZeroDetectorWindowSize_ = 3;// Size of the Zero Detector.
 
+    bool IsRangeConstraint = true;//Use or not use the range constraint to imporve the performence of location.
+
 
     double init_heading1_ = (-97.5) * M_PI /180.0;//heading
     double init_heading2_ = (96.05) * M_PI / 180.0;
 
     Eigen::Vector3d init_pos1_ ;//pose
     Eigen::Vector3d init_pos2_   ;
+    Eigen::Vector3d init_pos_;
 
     double sigma_a_ = 0.035;//Stanard deviation of the accelermter noise [ m/ s^2];
     double sigma_g_ = 0.35 * M_PI /180.0;
@@ -83,6 +87,28 @@ struct SettingPara
     double gamma_ = 200;//Threshold used in the zero-velocity detector.
 
     bool Open_Distance_Constaint_ = true;
+
+    //FILTER PARAMETERS
+    Eigen::Vector3d sigma_acc_ = 4 * 0.7 * Eigen::Vector3d(1,1,1);//[m/s^2]
+
+    Eigen::Vector3d sigma_gyro_ = 4 * 10 * Eigen::Vector3d(0.1,0.1,0.1) * M_PI / 180.0;//[rad/s]
+
+    Eigen::Vector3d sigma_vel_ = 5 * Eigen::Vector3d(0.01,0.01,0.01) ; // [m/s]
+
+    /////////////////////////////////////////////
+
+    Eigen::Vector3d sigma_initial_pos1_= 1e-2 * Eigen::Vector3d(0.1,0.1,0.1);//Position
+
+    Eigen::Vector3d sigma_initial_vel1_ = 1e-5 * Eigen::Vector3d(1,1,1);
+
+    Eigen::Vector3d sigma_initial_att1_ = (M_PI/180 * Eigen::Vector3d(0.1,0.1,0.001));
+
+    Eigen::Vector3d sigma_initial_pos2_= 1e-2 * Eigen::Vector3d(0.1,0.1,0.1);//Position
+
+    Eigen::Vector3d sigma_initial_vel2_ = 1e-5 * Eigen::Vector3d(1,1,1);
+
+    Eigen::Vector3d sigma_initial_att2_ = (M_PI/180 * Eigen::Vector3d(0.1,0.1,0.001));
+
 
 
 

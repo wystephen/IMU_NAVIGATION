@@ -10,6 +10,9 @@
 #ifndef IMU_NAVIGATION_PDREKF_H
 #define IMU_NAVIGATION_PDREKF_H
 
+/*
+ * Content some tool-function use for PDR.
+ */
 class PdrEkf {
 public:
 

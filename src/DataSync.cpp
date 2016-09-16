@@ -37,7 +37,8 @@ void read_data()
     {
 //         std::cout << (data_ptr->GetImuData(ros::Time::now().toSec())).transpose() << std::endl;
         int status(0);
-        status =  detector.Detector(data_ptr->GetImuData(ros::Time::now().toSec())) ;
+        double the_time(ros::Time::now().toSec());
+        status =  detector.Detector(data_ptr->GetImuData(the_time)) ;
         if(status == 0)
         {
             of << 0 << std::endl;
@@ -56,7 +57,6 @@ void read_data()
             of2 << 1 << std::endl;
         }
         dura.sleep();
-
     }
     of.close();
     of2.close();
