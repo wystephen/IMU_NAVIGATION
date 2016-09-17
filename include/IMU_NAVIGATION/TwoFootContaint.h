@@ -157,13 +157,13 @@ bool TwoFootEkf::StateMatrix() {
     G_.block(12,6,3,3) = Quaternion2Rotation(quat2_);
     G_.block(15,9,3,3) = Quaternion2Rotation(quat2_);
 
-    F_ = dt*F_;
+    F_ = dt * F_;
     for(int i(0);i<F_.cols();++i)
     {
         F_(i,i) +=1;
     }
 
-    G_ = dt* G_;
+    G_ = dt * G_;
 
     return true;
 
@@ -271,7 +271,7 @@ bool TwoFootEkf::NavigationEq() {
     B.block(3,0,3,3) = dt * Eigen::Matrix3d::Identity();
 
     x_h_.block(0,0,6,1) = A * last_x_h.block(0,0,6,1) + B * acc_t;
-    x_h_.block((9,0,6,1) = A * last_x_h.block(9,0,6,1) + B * acc_t2;
+    x_h_.block(9,0,6,1) = A * last_x_h.block(9,0,6,1) + B * acc_t2;
 
     return  true;
 }
@@ -412,6 +412,12 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         //Get State matrix.
 
         StateMatrix();
+
+
+        //Updata covariance matrix
+
+        P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
+
 
 
 
