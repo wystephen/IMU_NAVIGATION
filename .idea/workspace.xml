@@ -84,8 +84,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
@@ -135,11 +133,11 @@
           <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="676">
-                  <caret line="177" column="5" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
+                <state relative-caret-position="613">
+                  <caret line="186" column="4" selection-start-line="186" selection-start-column="4" selection-end-line="186" selection-end-column="4" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
-                    <element signature="e#5342#6024#0" expanded="false" />
+                    <element signature="e#5556#6238#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -851,7 +849,7 @@
       <workItem from="1473926773980" duration="2583000" />
       <workItem from="1473943657794" duration="709000" />
       <workItem from="1473991755282" duration="13466000" />
-      <workItem from="1474074366990" duration="8815000" />
+      <workItem from="1474074366990" duration="9236000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -1084,11 +1082,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474016675174</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="INITIAL .">
+      <created>1474095810881</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1474095810881</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96535000" />
+    <option name="totallyTimeSpent" value="96956000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1166,7 +1171,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="A bad class,set the Matrix m_ as a public member of the class,have to modificat this class." />
     <MESSAGE value="Read Data from file,and publish it as topics named  &quot;imu1/data&quot; and &quot;imu2/data&quot;." />
     <MESSAGE value="Safe update." />
     <MESSAGE value="Set value." />
@@ -1191,7 +1195,8 @@
     <MESSAGE value="Add configure parameter." />
     <MESSAGE value="INITIAL in TwoFoot Constaints." />
     <MESSAGE value="Modified the readme.md&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified the readme.md&#10;" />
+    <MESSAGE value="INITIAL ." />
+    <option name="LAST_COMMIT_MESSAGE" value="INITIAL ." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1588,11 +1593,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="177" column="5" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
+        <state relative-caret-position="613">
+          <caret line="186" column="4" selection-start-line="186" selection-start-column="4" selection-end-line="186" selection-end-column="4" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
-            <element signature="e#5342#6024#0" expanded="false" />
+            <element signature="e#5556#6238#0" expanded="false" />
           </folding>
         </state>
       </provider>

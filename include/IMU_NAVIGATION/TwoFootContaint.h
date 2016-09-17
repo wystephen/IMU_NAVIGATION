@@ -178,6 +178,15 @@ bool TwoFootEkf::NavigationEq() {
     }
 
 
+    /*
+     * Update the position and velocity states using the measured specific force,
+     * and the newly calculated attitude.
+     */
+
+    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);
+    
+
+    return  true;
 }
 
 bool TwoFootEkf::InitNavEq() {
