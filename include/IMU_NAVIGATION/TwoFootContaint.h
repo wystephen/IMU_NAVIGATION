@@ -12,6 +12,8 @@
 
 #include "SettingPara.h"
 
+#include <deque>
+
 #ifndef IMU_NAVIGATION_TWOFOOTCONTAINT_H
 #define IMU_NAVIGATION_TWOFOOTCONTAINT_H
 
@@ -36,6 +38,12 @@ public:
 
     }
 
+    /*
+     * Compute a estimation of position(return this value as a Matrix)
+     * use the giving Matrix u.
+     */
+    Eigen::MatrixXd GetPosition(Eigen::MatrixXd u,int detector_signal,double time);
+
 
 
 protected:
@@ -59,21 +67,253 @@ protected:
 
     Eigen::Matrix<double,6,6> R12_;
 
+    //quat
+    Eigen::Vector4d quat1_,quat2_;
 
+    std::deque<Eigen::MatrixXd> u_deque_;
+
+
+
+    bool zupt1_ = false;
+    bool zupt2_ = false;
+
+    double last_time_ = 0.0;//
+    double the_time_ = 0.0;
 
     /*
      * Initialization.
      */
     bool Initial();
 
+    /*
+     *  Convert detector_signal to two bool value.
+     * return false when detector_signal is out of range([0,1,2,3]).
+     */
+
+    bool Signal2Bool(int signal);
+
+    /*
+     * This function is use for calculates the initial stata of the
+     * navigation equations.
+     */
+    bool InitNavEq();
 
 
-
+    /*
+     * The mechanized navigation euqtions of the inertial navigation system.
+     */
+    bool NavigationEq();
 
 private:
 
-
 };
+
+bool TwoFootEkf::NavigationEq() {
+    Eigen::Vectorxd u1(6),u2(6);
+
+    u1 = u_deque_.end()->block(0,0,6,1);
+    u2 = u_deque_.end()->block(6,0,6,1);
+
+    Eigen::VectorXd last_x_h(18);
+    last_x_h = x_h_;
+
+
+
+    Eigen::Vector3d w_tb;
+    double v(0.0);
+    double P(0.0),Q(0.0),R(0.0),dt(the_time_-last_time_);
+
+
+    /*
+     * Update quaternion q.
+     */
+
+    //For quat1_
+    w_tb = u1.block(3,0,3,1);
+    v = w_tb.norm() * dt;
+
+    Eigen::Matrix4d OMEGA;
+
+    if(std::fabs(v) > 1e-8)
+    {
+        P = w_tb(0)*dt*0.5;
+        Q = w_tb(1) * dt * 0.5;
+        R = w_tb(3) * dt * 0.5;
+
+        OMEGA(0,0) = 0;OMEGA(0,1)   = R;OMEGA(0,2)  =-Q;OMEGA(0,3)  = P;
+
+        OMEGA(1,0) = -R;OMEGA(1,1)  = 0;OMEGA(1,2)  = P;OMEGA(1,3)  = Q;
+
+        OMEGA(2,0) = Q;OMEGA(2,1)   = -P;OMEGA(2,2) = 0;OMEGA(2,3)  = R;
+
+        OMEGA(3,0) = -P;OMEGA(3,1)  = -Q;OMEGA(3,2) = -R;OMEGA(3,3) = 0;
+
+        quat1_ = (std::cos(v/2)*Eigen::Matrix4d::Identity()+
+        2/v * std::sin(v/2) *OMEGA) * quat1_;
+
+    }
+
+    //For quat2_
+    w_tb = u2.block(3,0,3,1);
+    v = w_tb.norm() * dt;
+
+    Eigen::Matrix4d OMEGA;
+
+    if(std::fabs(v) > 1e-8)
+    {
+        P = w_tb(0)*dt*0.5;
+        Q = w_tb(1) * dt * 0.5;
+        R = w_tb(3) * dt * 0.5;
+
+        OMEGA(0,0) = 0;OMEGA(0,1)   = R;OMEGA(0,2)  =-Q;OMEGA(0,3)  = P;
+
+        OMEGA(1,0) = -R;OMEGA(1,1)  = 0;OMEGA(1,2)  = P;OMEGA(1,3)  = Q;
+
+        OMEGA(2,0) = Q;OMEGA(2,1)   = -P;OMEGA(2,2) = 0;OMEGA(2,3)  = R;
+
+        OMEGA(3,0) = -P;OMEGA(3,1)  = -Q;OMEGA(3,2) = -R;OMEGA(3,3) = 0;
+
+        quat2_ = (std::cos(v/2)*Eigen::Matrix4d::Identity()+
+                  2/v * std::sin(v/2) *OMEGA) * quat2_;
+    }
+
+
+}
+
+bool TwoFootEkf::InitNavEq() {
+    /*
+     * This function used the assumption that the system is
+     * stationary during the first
+     * server samples(depends on the parameter
+     * SettingPara.navigation_initial_min_length_),
+     * all data use the average of these data.
+     */
+    Eigen::MatrixXd u1(6,u_deque_.size());
+    Eigen::MatrixXd u2(6,u_deque_.size());
+
+    Eigen::Vector3d attitude(0,0,0);
+
+    int index(0);
+
+    for(auto it = u_deque_.begin();it!=u_deque_.end();++it)
+    {
+        u1.block(0,index,6,1) = it->block(0,0,6,1);
+        u2.block(0,index,6,1) = it->block(6,0,6,1);
+        index ++;
+    }
+
+    /////////////////////////////////
+    /*
+     * For u1.
+     */
+
+    double f_u(u1.block(0,0,1,u_deque_.size()).mean());
+    double f_v(u1.block(1,0,1,u_deque_.size()).mean());
+    double f_w(u1.block(2,0,1,u_deque_.size()).mean());
+
+    double roll(std::atan2(-f_v,-f_w));
+    double pitch(std::atan2(f_u,std::sqrt(std::pow(f_v,2)+std::pow(f_w,2))));
+
+    attitude = Eigen::Vector3d(roll,pitch,para_ptr_->init_heading1_);
+
+    quat1_ = Rotation2Quaternion(Rotation2b(attitude));
+
+    x_h_.block(0,0,3,1) = para_ptr_->init_pos1_;
+    x_h_.block(6,0,3,1) = attitude;
+
+    /*
+     * For u2
+     */
+
+    f_u = u2.block(0,0,1,u_deque_.size()).mean();
+    f_v = u2.block(1,0,1,u_deque_.size()).mean();
+    f_w = u2.block(2,0,1,u_deque_.size()).mean();
+
+    roll = std::atan2(-f_v,-f_w);
+    pitch = std::atan2(f_u,std::sqrt(std::pow(f_v,2)+std::pow(f_w,2)));
+
+    attitude = Eigen::Vector3d(roll,pitch,para_ptr_->init_heading2_);
+
+    quat2_ = Rotation2Quaternion(Rotation2b(attitude));
+
+    x_h_.block(9,0,3,1) = para_ptr_->init_pos2_;
+    x_h_.block(15,0,3,1) = attitude;
+
+    return true;
+
+}
+
+bool TwoFootEkf::Signal2Bool(int signal) {
+
+    if(signal>3 || signal<0)
+    {
+        MYERROR("Detector signal is out of range ([0,1,2,3]),please check!")
+        return false;
+    }
+
+    switch(signal)
+    {
+        case 0:
+            zupt1_ = false;
+            zupt2_ = true;
+            break;
+        case 1:
+            zupt1_ = true;
+            zupt2_ = false;
+            break;
+        case 2:
+            zupt1_ = false;
+            zupt2_ = true;
+            break;
+        case 3:
+            zupt1_ = true;
+            zupt2_ = true;
+            break;
+        default:
+
+            MYERROR("signal is :" + signal)
+            return false;
+
+    }
+    return true;
+}
+
+Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
+                                        int detector_signal,
+                                        double time) {
+    //Update the time stamp.
+    last_time_ = the_time_;
+    the_time_ = time;
+
+    Signal2Bool(detector_signal);
+
+    //Check size of U.
+    //Don't use try and catch for unusal value processed
+    if( u.rows() != 12 || u.cols() != 1)
+    {
+        std::cout << "size of u is :"
+                  << u.rows() << " x " << u.cols() << std::endl;
+        MYERROR("HERE");
+    }
+
+    if(u_deque_.size()<para_ptr_->navigation_initial_min_length_-1)
+    {
+        u_deque_.push_back(u);
+        return true;
+    }
+    if(u_deque_.size() == para_ptr_->navigation_initial_min_length_-1)
+    {
+        u_deque_.push_back(u);
+        //Initial nav equations.
+        return InitNavEq();
+    }
+    if(u_deque_.size() == para_ptr_->navigation_initial_min_length_)
+    {
+        //Navigation equations
+
+    }
+
+}
 
 bool TwoFootEkf::Initial() {
     ZEROLIZEMATRIX(P_);

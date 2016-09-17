@@ -26,7 +26,7 @@ protected:
     /*
      * Convert a directional cosine matrix in to a quaternion vector.
      */
-    Eigen::Vector4d Rotatioin2Quaternion(Eigen::Matrix3d R);
+    Eigen::Vector4d Rotation2Quaternion(Eigen::Matrix3d R);
 
     /*
      * Convert rotation matrix for rotatin a vector.
