@@ -73,6 +73,10 @@ protected:
     std::deque<Eigen::MatrixXd> u_deque_;
 
 
+    //State Matix
+    Eigen::Matrix<double,18,18> F_;//State transition matrix
+    Eigen::Matrix<double,18,12> G_;//Process noise gain matrix.
+
 
     bool zupt1_ = false;
     bool zupt2_ = false;
@@ -104,9 +108,66 @@ protected:
      */
     bool NavigationEq();
 
+
+    /*
+     * Compute States Matrix
+     */
+    bool StateMatrix();
+
 private:
 
 };
+
+bool TwoFootEkf::StateMatrix() {
+
+    Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_)*u_deque_.end()->block(0,0,3,1));
+    Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_)*u_deque_.end()->block(9,0,3,1));
+
+    Eigen::Matrix3d St1,St2;
+
+    St1(0,0) = 0.0;         St2(0,0) = 0.0;
+    St1(0,1) = -f_t1(2);    St2(0,1) = -f_t2(2);
+    St1(0,2) = f_t1(1);     St2(0,2) =-f_t2(1);
+
+    St1(1,0) = f_t1(2);     St2(1,0) = f_t2(0);
+    St1(1,1) = 0.0;         St2(1,1) = 0.0;
+    St1(1,2) = -f_t1(0);    St2(1,2) = -f_t2(0);
+
+    St1(2,0) = -f_t1(1);    St2(2,0) = -f_t2(1);
+    St1(2,1) = f_t1(0);     St2(2,1) = f_t2(0);
+    St1(2,2) = 0.0;         St2(2,2) = 0.0;
+
+    Eigen::Matrix3d Zero(Eigen::Matrix3d::Zero());
+
+    Eigen::Matrix3d Id(Eigen::Matrix3d::Identity());
+
+    ZEROLIZEMATRIX(F_);
+
+    F_.block(0,3,3,3) = Id;
+    F_.block(3,6,3,3) = St1;
+
+    F_.block(9,12,3,3) = Id;
+    F_.block(12,15,3,3) = St2;
+
+    ZEROLIZEMATRIX(G_)
+
+    G_.block(3,0,3,3) = Quaternion2Rotation(quat1_);
+    G_.block(6,3,3,3) = Quaternion2Rotation(quat1_);
+
+    G_.block(12,6,3,3) = Quaternion2Rotation(quat2_);
+    G_.block(15,9,3,3) = Quaternion2Rotation(quat2_);
+
+    F_ = dt*F_;
+    for(int i(0);i<F_.cols();++i)
+    {
+        F_(i,i) +=1;
+    }
+
+    G_ = dt* G_;
+
+    return true;
+
+}
 
 bool TwoFootEkf::NavigationEq() {
     Eigen::Vectorxd u1(6),u2(6);
@@ -345,6 +406,14 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     if(u_deque_.size() == para_ptr_->navigation_initial_min_length_)
     {
         //Navigation equations
+
+        NavigationEq();
+
+        //Get State matrix.
+
+        StateMatrix();
+
+
 
     }
 

@@ -103,7 +103,7 @@
     <favorites_list name="IMU_NAVIGATION" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55610836">
+    <splitter split-orientation="horizontal" split-proportion="0.6705362">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="false">
@@ -133,11 +133,14 @@
           <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="604">
-                  <caret line="206" column="16" selection-start-line="206" selection-start-column="16" selection-end-line="206" selection-end-column="16" />
+                <state relative-caret-position="772">
+                  <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
-                    <element signature="e#6232#6914#0" expanded="false" />
+                    <element signature="e#3460#5999#0" expanded="false" />
+                    <element signature="e#6001#7720#0" expanded="false" />
+                    <element signature="e#7722#8404#0" expanded="false" />
+                    <element signature="e#9462#11424#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -171,17 +174,17 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="false">
+          <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="504">
+                <state relative-caret-position="414">
                   <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SettingPara.h" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SettingPara.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="612">
@@ -850,7 +853,7 @@
       <workItem from="1473943657794" duration="709000" />
       <workItem from="1473991755282" duration="13466000" />
       <workItem from="1474074366990" duration="9548000" />
-      <workItem from="1474096531549" duration="1473000" />
+      <workItem from="1474096531549" duration="3991000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -1097,11 +1100,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474096278190</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Navigation Equation.">
+      <created>1474098239920</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1474098239920</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98741000" />
+    <option name="totallyTimeSpent" value="101259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -1179,7 +1189,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Safe update." />
     <MESSAGE value="Set value." />
     <MESSAGE value="Add frame_id." />
     <MESSAGE value="Error in complily DataSync." />
@@ -1204,7 +1213,8 @@
     <MESSAGE value="Modified the readme.md&#10;" />
     <MESSAGE value="INITIAL ." />
     <MESSAGE value="Pause." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pause." />
+    <MESSAGE value="Navigation Equation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Navigation Equation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1580,14 +1590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -1598,13 +1600,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="206" column="16" selection-start-line="206" selection-start-column="16" selection-end-line="206" selection-end-column="16" />
+        <state relative-caret-position="772">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
-            <element signature="e#6232#6914#0" expanded="false" />
+            <element signature="e#3460#5999#0" expanded="false" />
+            <element signature="e#6001#7720#0" expanded="false" />
+            <element signature="e#7722#8404#0" expanded="false" />
+            <element signature="e#9462#11424#0" expanded="false" />
           </folding>
         </state>
       </provider>
