@@ -183,8 +183,34 @@ bool TwoFootEkf::NavigationEq() {
      * and the newly calculated attitude.
      */
 
-    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);
-    
+    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);//Gravity vector
+
+    Eigen::Vector3d f_t(0,0,0),f_t2(0,0,0);
+
+    f_t = Quaternion2Rotation(quat1_) * u1.block(0,0,3,1);
+
+    f_t2 = Quaternion2Rotation(quat2_) * u2.block(0,0,3,1);
+
+    Eigen::Vector3d acc_t(f_t+g_t);
+    Eigen::Vector3d acc_t2(f_t2 + g_t);
+
+    Eigen::MatrixXd A(6,6),B(6,3);
+
+    ZEROLIZEMATRIX(A)
+
+    for(int i(0);i< A.cols();++i)
+    {
+        A(i,i) = 1.0;
+    }
+    A(0,3) = dt;
+    A(1,4) = dt;
+    A(2,5) = dt;
+
+    B.block(0,0,3,3) = Eigen::Matrix3d::Zero();
+    B.block(3,0,3,3) = dt * Eigen::Matrix3d::Identity();
+
+    x_h_.block(0,0,6,1) = A * last_x_h.block(0,0,6,1) + B * acc_t;
+    x_h_.block((9,0,6,1) = A * last_x_h.block(9,0,6,1) + B * acc_t2;
 
     return  true;
 }
