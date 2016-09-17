@@ -63,7 +63,7 @@ Eigen::Vector4d PdrEkf::correct_orientations(Eigen::Vector4d q_in, Eigen::Vector
 
     R = (Eigen::Matrix3d::Identity() - omega) *R;
 
-    q_out = Rotatioin2Quaternion(R);
+    q_out = Rotation2Quaternion(R);
 
     return q_out;
 }
@@ -101,7 +101,7 @@ Eigen::Matrix3d PdrEkf::Rotation2b(Eigen::Vector3d ang) {
 }
 
 
-Eigen::Vector4d PdrEkf::Rotatioin2Quaternion(Eigen::Matrix3d R) {
+Eigen::Vector4d PdrEkf::Rotation2Quaternion(Eigen::Matrix3d R) {
     double T(1 + R(0, 0) + R(1, 1) + R(2, 2));
     double S(0.0);
 

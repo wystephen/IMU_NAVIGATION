@@ -50,7 +50,7 @@ protected:
 
     SettingPara* para_ptr_;//Use the pointer point to a global value .
 
-    Eigen::VectorXf x_h_ = Eigen::VectorXf(18);
+    Eigen::VectorXd x_h_ = Eigen::VectorXd(18);
 
     Eigen::Matrix<double,18,18> Id_;
 
@@ -120,6 +120,9 @@ private:
 
 bool TwoFootEkf::StateMatrix() {
 
+    double dt ( the_time_-last_time_);
+
+
     Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_)*u_deque_.end()->block(0,0,3,1));
     Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_)*u_deque_.end()->block(9,0,3,1));
 
@@ -170,7 +173,7 @@ bool TwoFootEkf::StateMatrix() {
 }
 
 bool TwoFootEkf::NavigationEq() {
-    Eigen::Vectorxd u1(6),u2(6);
+    Eigen::VectorXd u1(6),u2(6);
 
     u1 = u_deque_.end()->block(0,0,6,1);
     u2 = u_deque_.end()->block(6,0,6,1);
@@ -217,8 +220,6 @@ bool TwoFootEkf::NavigationEq() {
     //For quat2_
     w_tb = u2.block(3,0,3,1);
     v = w_tb.norm() * dt;
-
-    Eigen::Matrix4d OMEGA;
 
     if(std::fabs(v) > 1e-8)
     {
@@ -395,13 +396,17 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     if(u_deque_.size()<para_ptr_->navigation_initial_min_length_-1)
     {
         u_deque_.push_back(u);
-        return true;
+        return Eigen::MatrixXd::Zero(18,1);
     }
     if(u_deque_.size() == para_ptr_->navigation_initial_min_length_-1)
     {
         u_deque_.push_back(u);
         //Initial nav equations.
-        return InitNavEq();
+        if(InitNavEq())
+        {
+            std::cout << "Initial navigation equation," << x_h_ << std::endl;
+        }
+        return x_h_;
     }
     if(u_deque_.size() == para_ptr_->navigation_initial_min_length_)
     {
