@@ -271,7 +271,7 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::Matrix4d OMEGA;
 
-    if(std::fabs(v) > 1e-8)
+    if (std::fabs(v) > 1e-12)
     {
 
         P = w_tb(0)*dt*0.5;
@@ -290,6 +290,8 @@ bool TwoFootEkf::NavigationEq() {
 
         quat1_ = (std::cos(v/2)*Eigen::Matrix4d::Identity()+
         2/v * std::sin(v/2) *OMEGA) * quat1_;
+
+        quat1_ = quat1_ / quat1_.norm();
 
     }
 
@@ -313,6 +315,9 @@ bool TwoFootEkf::NavigationEq() {
 
         quat2_ = (std::cos(v/2)*Eigen::Matrix4d::Identity()+
                   2/v * std::sin(v/2) *OMEGA) * quat2_;
+
+        quat2_ = quat2_ / quat2_.norm();
+        std::cout << "quat2_ :" << quat2_ << std::endl;
     }
 
 
