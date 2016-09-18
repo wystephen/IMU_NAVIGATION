@@ -191,9 +191,11 @@ bool TwoFootEkf::StateMatrix() {
 
     St1(0,0) = 0.0;         St2(0,0) = 0.0;
     St1(0,1) = -f_t1(2);    St2(0,1) = -f_t2(2);
-    St1(0,2) = f_t1(1);     St2(0,2) =-f_t2(1);
+    St1(0, 2) = f_t1(1);
+    St2(0, 2) = f_t2(1);
 
-    St1(1,0) = f_t1(2);     St2(1,0) = f_t2(0);
+    St1(1, 0) = f_t1(2);
+    St2(1, 0) = f_t2(2);
     St1(1,1) = 0.0;         St2(1,1) = 0.0;
     St1(1,2) = -f_t1(0);    St2(1,2) = -f_t2(0);
 
@@ -216,10 +218,10 @@ bool TwoFootEkf::StateMatrix() {
     ZEROLIZEMATRIX(G_)
 
     G_.block(3,0,3,3) = Quaternion2Rotation(quat1_);
-    G_.block(6,3,3,3) = Quaternion2Rotation(quat1_);
+    G_.block(6, 3, 3, 3) = -Quaternion2Rotation(quat1_);
 
     G_.block(12,6,3,3) = Quaternion2Rotation(quat2_);
-    G_.block(15,9,3,3) = Quaternion2Rotation(quat2_);
+    G_.block(15, 9, 3, 3) = -Quaternion2Rotation(quat2_);
 
     F_ = dt * F_;
     for(int i(0);i<F_.cols();++i)

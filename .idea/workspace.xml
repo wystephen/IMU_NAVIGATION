@@ -84,7 +84,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
@@ -154,8 +153,8 @@
           <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="397">
-                  <caret line="325" column="41" selection-start-line="325" selection-start-column="41" selection-end-line="325" selection-end-column="41" />
+                <state relative-caret-position="1315">
+                  <caret line="231" column="16" selection-start-line="231" selection-start-column="16" selection-end-line="231" selection-end-column="16" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                   </folding>
@@ -872,7 +871,7 @@
       <workItem from="1474074366990" duration="9548000" />
       <workItem from="1474096531549" duration="5938000" />
       <workItem from="1474160795587" duration="14428000" />
-      <workItem from="1474183791336" duration="6143000" />
+      <workItem from="1474183791336" duration="6848000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -1189,11 +1188,25 @@
       <option name="project" value="LOCAL" />
       <updated>1474188921656</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="quat2_ = quat2_ / quat2_.norm();">
+      <created>1474189998207</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1474189998207</updated>
+    </task>
+    <task id="LOCAL-00047" summary="//    Eigen::Vector3d g_t(0,0,para_ptr_-&gt;gravity_);//Gravity vector&#10;    Eigen::Vector3d g_t(0,0,9.8173);//Gravity vector">
+      <created>1474190238576</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1474190238576</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123777000" />
+    <option name="totallyTimeSpent" value="124482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1201,12 +1214,12 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19568823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21189979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21189979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16805845" sideWeight="0.5023989" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16805845" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23068893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23068893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15920398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1271,8 +1284,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="OPENMP&#10;" />
-    <MESSAGE value="pause." />
     <MESSAGE value="Get Value at any time use linear interpolation." />
     <MESSAGE value="Delete the interpolation,and use the last two data of the deque to compute the data for current." />
     <MESSAGE value="Add TwoFoot modules." />
@@ -1296,7 +1307,9 @@
     <MESSAGE value="Fixed bug." />
     <MESSAGE value="The new way for test." />
     <MESSAGE value="````" />
-    <option name="LAST_COMMIT_MESSAGE" value="````" />
+    <MESSAGE value="quat2_ = quat2_ / quat2_.norm();" />
+    <MESSAGE value="//    Eigen::Vector3d g_t(0,0,para_ptr_-&gt;gravity_);//Gravity vector&#10;    Eigen::Vector3d g_t(0,0,9.8173);//Gravity vector" />
+    <option name="LAST_COMMIT_MESSAGE" value="//    Eigen::Vector3d g_t(0,0,para_ptr_-&gt;gravity_);//Gravity vector&#10;    Eigen::Vector3d g_t(0,0,9.8173);//Gravity vector" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1305,11 +1318,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h</url>
-          <line>552</line>
+          <line>554</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1707,8 +1720,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="325" column="41" selection-start-line="325" selection-start-column="41" selection-end-line="325" selection-end-column="41" />
+        <state relative-caret-position="1315">
+          <caret line="231" column="16" selection-start-line="231" selection-start-column="16" selection-end-line="231" selection-end-column="16" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
           </folding>
