@@ -59,7 +59,7 @@ struct SettingPara
 
     }
 
-    int navigation_initial_min_length_ = 20;//The minimal length for initial the navigation equational.
+    int navigation_initial_min_length_ = 10000;//The minimal length for initial the navigation equational.
 
     double Ts_ = 10000;//Sampling period [s]
 

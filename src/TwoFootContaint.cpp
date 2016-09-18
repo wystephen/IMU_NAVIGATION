@@ -59,9 +59,8 @@ int main(int argc, char **argv) {
 
     std::cout << "END" << std::endl;
 
+    std::cout << M_PI << std::endl;
 
 
-
-    ros::spin();
     return 0;
 }
