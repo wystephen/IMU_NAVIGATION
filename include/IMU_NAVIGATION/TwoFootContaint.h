@@ -317,7 +317,7 @@ bool TwoFootEkf::NavigationEq() {
                   2/v * std::sin(v/2) *OMEGA) * quat2_;
 
         quat2_ = quat2_ / quat2_.norm();
-        std::cout << "quat2_ :" << quat2_ << std::endl;
+//        std::cout << "quat2_ :" << quat2_ << std::endl;
     }
 
 
@@ -326,7 +326,9 @@ bool TwoFootEkf::NavigationEq() {
      * and the newly calculated attitude.
      */
 
-    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);//Gravity vector
+//    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);//Gravity vector
+    Eigen::Vector3d g_t(0, 0, 9.8173);//Gravity vector
+
 
     Eigen::Vector3d f_t(0,0,0),f_t2(0,0,0);
 
