@@ -236,7 +236,6 @@ bool TwoFootEkf::StateMatrix() {
 bool TwoFootEkf::NavigationEq() {
     Eigen::VectorXd u1(6),u2(6);
 
-    //std::cout << "begin 1.1" << std::endl;
 
     //std::cout << u_deque_.size() << std::endl;
     //std::cout <<
@@ -245,19 +244,17 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
 
-    //std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
+    std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
 
     u1 = u.block(0, 0, 6, 1);
-    //std::cout <<"block 1" << std::endl;
+    std::cout << "block 1" << std::endl;
     u2 = u.block(6, 0, 6, 1);
 
-//    std::cout << "1.1.1" << std::endl;
 
     Eigen::VectorXd last_x_h(18);
     last_x_h = x_h_;
 
 
-//    std::cout << "1.1.2" << std::endl;
 
     Eigen::Vector3d w_tb;
     double v(0.0);
@@ -271,15 +268,17 @@ bool TwoFootEkf::NavigationEq() {
     //For quat1_
     w_tb = u1.block(3,0,3,1);
     v = w_tb.norm() * dt;
-//    std::cout << "1.1.3" << std::endl;
 
     Eigen::Matrix4d OMEGA;
 
     if(std::fabs(v) > 1e-8)
     {
+
         P = w_tb(0)*dt*0.5;
         Q = w_tb(1) * dt * 0.5;
-        R = w_tb(3) * dt * 0.5;
+        R = w_tb(2) * dt * 0.5;
+
+
 
         OMEGA(0,0) = 0;OMEGA(0,1)   = R;OMEGA(0,2)  =-Q;OMEGA(0,3)  = P;
 
@@ -302,7 +301,7 @@ bool TwoFootEkf::NavigationEq() {
     {
         P = w_tb(0)*dt*0.5;
         Q = w_tb(1) * dt * 0.5;
-        R = w_tb(3) * dt * 0.5;
+        R = w_tb(2) * dt * 0.5;
 
         OMEGA(0,0) = 0;OMEGA(0,1)   = R;OMEGA(0,2)  =-Q;OMEGA(0,3)  = P;
 
@@ -469,7 +468,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                   << u.rows() << " x " << u.cols() << std::endl;
         MYERROR("HERE");
     }
-    std::cout << "0" << std::endl;
+//    std::cout << "0" << std::endl;
 
 
     if(u_deque_.size()<para_ptr_->navigation_initial_min_length_-1)
@@ -487,7 +486,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         }
         return x_h_;
     }
-    std::cout << "1" << std::endl;
+//    std::cout << "1" << std::endl;
 
     if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_)
     {
@@ -502,7 +501,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 //        std::cout << " 2.1" << std::endl;
         StateMatrix();
 
-        std::cout << "3.1" << std::endl;
+//        std::cout << "3.1" << std::endl;
         //Updata covariance matrix
 
         P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
@@ -539,17 +538,17 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
             K = (P_ * H.transpose()) * tmp.inverse();
             //R.cwiseInverse()
 
-            std::cout << "4.1" << std::endl;
+//            std::cout << "4.1" << std::endl;
             dx_ = K * z;
 
             P_ = (Id_ - K * H) * P_;
 
             ComputeInternalStates();
         }//End Zero-velocity constaint.
-        std::cout << "5.1" << std::endl;
+//        std::cout << "5.1" << std::endl;
 
-        std::cout << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
-        std::cout << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
+        std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
+        std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
         without_range_constraint_times_++;
         if (para_ptr_->IsRangeConstraint &&
             without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_ &&
@@ -559,7 +558,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
         }
 
-        std::cout << "6.1" << std::endl;
+//        std::cout << "6.1" << std::endl;
 
 
     }
