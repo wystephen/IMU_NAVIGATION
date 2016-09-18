@@ -117,6 +117,7 @@ Eigen::Vector4d PdrEkf::Rotation2Quaternion(Eigen::Matrix3d R) {
 
     } else {
         if ((R(0, 0) > R(1, 1)) && (R(0, 0) > R(2, 2))) {
+
             S = std::sqrt(1 + R(0, 0) - R(1, 1) - R(2, 2)) * 2.0;
 
             qw = (R(2, 1) - R(1, 2)) / S;
@@ -159,7 +160,7 @@ Eigen::Matrix3d PdrEkf::Quaternion2Rotation(Eigen::Vector4d q) {
     }
     p(4) = p(1) + p(2);
 
-    if ((p(0) + p(3) + p(5)) > 0.000001) {
+    if (std::fabs(p(0) + p(3) + p(4)) > 1e-8) {
         p(5) = 2 / (p(0) + p(3) + p(4));
     } else {
         p(5) = 0;
