@@ -52,6 +52,8 @@ protected:
 
     Eigen::VectorXd x_h_ = Eigen::VectorXd(18);
 
+    Eigen::VectorXd dx_ = Eigen::VectorXd(18);//
+
     Eigen::Matrix<double,18,18> Id_;
 
     //Value use for filter.
@@ -114,9 +116,18 @@ protected:
      */
     bool StateMatrix();
 
+    /*
+     * Function corrects the navigation states use the value compute by kalman filter.
+     */
+    bool ComputeInternalStates();
+
 private:
 
 };
+
+bool TwoFootEkf::ComputeInternalStates() {
+
+}
 
 bool TwoFootEkf::StateMatrix() {
 
@@ -422,6 +433,44 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         //Updata covariance matrix
 
         P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
+
+        if (zupt1_ || zupt2_) {
+
+            Eigen::MatrixXd H;
+            Eigen::MatrixXd R;
+            Eigen::MatrixXd z;
+            //Eigen::MatrixXd dx;
+            Eigen::MatrixXd K;
+
+            if (zupt1_ && zupt2_) {
+                z = Eigen::MatrixXd(6, 1);
+                H = H12_;
+                R = R12_;
+
+                z.block(0, 0, 3, 1) = -x_h_.block(3, 0, 3, 1);
+                z.block(3, 0, 3, 1) = -x_h_.block(12, 0, 3, 1);
+
+            } else if (zupt1_ && !zupt2_) {
+                H = H1_;
+                R = R1_;
+                z = -x_h_.block(3, 0, 3, 1);
+            } else if (!zupt1_ && zupt2_) {
+                H = H2_;
+                R = R2_;
+                z = -x_h_.block(12, 0, 3, 1);
+            }
+
+            Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
+            std::cout << "Remenber to delete here , DDDDDDDDDD: " << tmp.inverse() << std::endl;
+            K = (P_ * H.transpose()) * tmp.inverse();
+            //R.cwiseInverse()
+
+            dx_ = K * z;
+
+            P_ = (Id_ - K * H) * P_;
+
+            
+        }
 
 
 
