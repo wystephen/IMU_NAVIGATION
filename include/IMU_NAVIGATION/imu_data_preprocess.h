@@ -89,7 +89,7 @@ public:
         double the_time;
 
         ros::Duration d;
-        d.fromSec(t_s* 0.01);
+        d.fromSec(t_s);
 
         for( int i(0);i<u1.GetRows();++i)
         {

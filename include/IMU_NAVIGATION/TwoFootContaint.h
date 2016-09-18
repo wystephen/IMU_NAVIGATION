@@ -244,10 +244,10 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
 
-    std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
+//    std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
 
     u1 = u.block(0, 0, 6, 1);
-    std::cout << "block 1" << std::endl;
+//    std::cout << "block 1" << std::endl;
     u2 = u.block(6, 0, 6, 1);
 
 
@@ -428,7 +428,7 @@ bool TwoFootEkf::Signal2Bool(int signal) {
     {
         case 0:
             zupt1_ = false;
-            zupt2_ = true;
+            zupt2_ = false;
             break;
         case 1:
             zupt1_ = true;
@@ -531,6 +531,9 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 H = H2_;
                 R = R2_;
                 z = -x_h_.block(12, 0, 3, 1);
+
+//                std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
+//                std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
             }
 
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
@@ -540,6 +543,12 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
 //            std::cout << "4.1" << std::endl;
             dx_ = K * z;
+
+            if (std::isnan(dx_(2))) {
+                std::cout << "nan" << std::endl;
+            }
+
+//            std::cout << dx_ << std::endl;
 
             P_ = (Id_ - K * H) * P_;
 
@@ -551,10 +560,11 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
         without_range_constraint_times_++;
         if (para_ptr_->IsRangeConstraint &&
-            without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_ &&
-            (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() > para_ptr_->rang_constraint_
+            without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_
+            && (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() > para_ptr_->rang_constraint_
                 ) {
             without_range_constraint_times_ = 0;//Rest the counter.
+
 
         }
 
@@ -562,6 +572,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
 
     }
+
+    P_ = (P_ + P_.transpose()) * 0.5;
 
     return x_h_;
 
