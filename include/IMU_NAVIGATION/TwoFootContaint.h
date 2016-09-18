@@ -86,6 +86,8 @@ protected:
     double last_time_ = 0.0;//
     double the_time_ = 0.0;
 
+    int without_range_constraint_times_ = 0;
+
     /*
      * Initialization.
      */
@@ -180,9 +182,10 @@ bool TwoFootEkf::StateMatrix() {
 
     double dt ( the_time_-last_time_);
 
+    Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
 
-    Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_)*u_deque_.end()->block(0,0,3,1));
-    Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_)*u_deque_.end()->block(9,0,3,1));
+    Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_) * u.block(0, 0, 3, 1));
+    Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_) * u.block(9, 0, 3, 1));
 
     Eigen::Matrix3d St1,St2;
 
@@ -233,13 +236,28 @@ bool TwoFootEkf::StateMatrix() {
 bool TwoFootEkf::NavigationEq() {
     Eigen::VectorXd u1(6),u2(6);
 
-    u1 = u_deque_.end()->block(0,0,6,1);
-    u2 = u_deque_.end()->block(6,0,6,1);
+    //std::cout << "begin 1.1" << std::endl;
+
+    //std::cout << u_deque_.size() << std::endl;
+    //std::cout <<
+    //
+    // .end()->rows() << " x " << u_deque_.end()->cols() << std::endl;
+
+    Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
+
+    //std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
+
+    u1 = u.block(0, 0, 6, 1);
+    //std::cout <<"block 1" << std::endl;
+    u2 = u.block(6, 0, 6, 1);
+
+//    std::cout << "1.1.1" << std::endl;
 
     Eigen::VectorXd last_x_h(18);
     last_x_h = x_h_;
 
 
+//    std::cout << "1.1.2" << std::endl;
 
     Eigen::Vector3d w_tb;
     double v(0.0);
@@ -253,6 +271,7 @@ bool TwoFootEkf::NavigationEq() {
     //For quat1_
     w_tb = u1.block(3,0,3,1);
     v = w_tb.norm() * dt;
+//    std::cout << "1.1.3" << std::endl;
 
     Eigen::Matrix4d OMEGA;
 
@@ -450,6 +469,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                   << u.rows() << " x " << u.cols() << std::endl;
         MYERROR("HERE");
     }
+    std::cout << "0" << std::endl;
+
 
     if(u_deque_.size()<para_ptr_->navigation_initial_min_length_-1)
     {
@@ -466,17 +487,22 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         }
         return x_h_;
     }
-    if(u_deque_.size() == para_ptr_->navigation_initial_min_length_)
+    std::cout << "1" << std::endl;
+
+    if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_)
     {
         //Navigation equations
+        u_deque_.push_back(u);
+        u_deque_.pop_front();
 
+//        std::cout  << "1.1" << std::endl;
         NavigationEq();
 
         //Get State matrix.
-
+//        std::cout << " 2.1" << std::endl;
         StateMatrix();
 
-
+        std::cout << "3.1" << std::endl;
         //Updata covariance matrix
 
         P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
@@ -509,21 +535,36 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
             }
 
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
-            std::cout << "Remenber to delete here , DDDDDDDDDD: " << tmp.inverse() << std::endl;
+//            std::cout << "Remenber to delete here , DDDDDDDDDD: " << tmp.inverse() << std::endl;
             K = (P_ * H.transpose()) * tmp.inverse();
             //R.cwiseInverse()
 
+            std::cout << "4.1" << std::endl;
             dx_ = K * z;
 
             P_ = (Id_ - K * H) * P_;
 
             ComputeInternalStates();
         }//End Zero-velocity constaint.
+        std::cout << "5.1" << std::endl;
 
+        std::cout << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
+        std::cout << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
+        without_range_constraint_times_++;
+        if (para_ptr_->IsRangeConstraint &&
+            without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_ &&
+            (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() > para_ptr_->rang_constraint_
+                ) {
+            without_range_constraint_times_ = 0;//Rest the counter.
 
+        }
+
+        std::cout << "6.1" << std::endl;
 
 
     }
+
+    return x_h_;
 
 }
 

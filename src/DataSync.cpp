@@ -42,24 +42,26 @@ void read_data()
 //         std::cout << (data_ptr->GetImuData(ros::Time::now().toSec())).transpose() << std::endl;
         int status(0);
         double the_time(ros::Time::now().toSec());
-        status =  detector.Detector(data_ptr->GetImuData(the_time)) ;
-        if(status == 0)
-        {
-            of << 0 << std::endl;
-            of2 << 0 << std::endl;
-        }else if(status == 1)
-        {
-            of << 1 << std::endl;
-            of2 << 0 << std::endl;
-        }else if (status == 3)
-        {
-            of << 0 << std::endl;
-            of2 << 1 << std::endl;
-        }else
-        {
-            of << 1 << std::endl;
-            of2 << 1 << std::endl;
-        }
+        Eigen::VectorXd u(data_ptr->GetImuData(the_time));
+        status = detector.Detector(u);
+//        if(status == 0)
+//        {
+//            of << 0 << std::endl;
+//            of2 << 0 << std::endl;
+//        }else if(status == 1)
+//        {
+//            of << 1 << std::endl;
+//            of2 << 0 << std::endl;
+//        }else if (status == 3)
+//        {
+//            of << 0 << std::endl;
+//            of2 << 1 << std::endl;
+//        }else
+//        {
+//            of << 1 << std::endl;
+//            of2 << 1 << std::endl;
+//        }
+        edf2.GetPosition(u, status, the_time);
         dura.sleep();
     }
     of.close();

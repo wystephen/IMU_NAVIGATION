@@ -75,6 +75,7 @@ struct SettingPara
 
     bool IsRangeConstraint = true;//Use or not use the range constraint to imporve the performence of location.
 
+    int RangConstraintIntervel_ = 820;
 
     double init_heading1_ = (-97.5) * M_PI /180.0;//heading
     double init_heading2_ = (96.05) * M_PI / 180.0;
@@ -88,7 +89,7 @@ struct SettingPara
 
     double gamma_ = 200;//Threshold used in the zero-velocity detector.
 
-    bool Open_Distance_Constaint_ = true;
+//    bool Open_Distance_Constaint_ = true;
 
     //FILTER PARAMETERS
     Eigen::Vector3d sigma_acc_ = 4 * 0.7 * Eigen::Vector3d(1,1,1);//[m/s^2]
