@@ -127,6 +127,53 @@ private:
 
 bool TwoFootEkf::ComputeInternalStates() {
 
+    Eigen::Matrix3d R1, R2;
+
+    R1 = Quaternion2Rotation(quat1_);
+    R2 = Quaternion2Rotation(quat2_);
+
+    x_h_ = x_h_ + dx_;
+
+    Eigen::Vector3d epsilon;
+    Eigen::Matrix3d omega;
+//////////////////////////////For R1
+    epsilon = dx_.block(6, 0, 3, 1);
+
+    omega(0, 0) = 0.0;
+    omega(0, 1) = -epsilon(2);
+    omega(0, 2) = epsilon(1);
+
+    omega(1, 0) = epsilon(2);
+    omega(1, 1) = 0.0;
+    omega(1, 2) = -epsilon(0);
+
+    omega(2, 0) = -epsilon(1);
+    omega(2, 1) = epsilon(0);
+    omega(2, 2) = 0.0;
+
+    R1 = (Eigen::Matrix3d::Identity() - omega) * R1;
+//////////////////////////////For R2
+    epsilon = dx_.block(15, 0, 3, 1);
+
+    omega(0, 0) = 0.0;
+    omega(0, 1) = -epsilon(2);
+    omega(0, 2) = epsilon(1);
+
+    omega(1, 0) = epsilon(2);
+    omega(1, 1) = 0.0;
+    omega(1, 2) = -epsilon(0);
+
+    omega(2, 0) = -epsilon(1);
+    omega(2, 1) = epsilon(0);
+    omega(2, 2) = 0.0;
+
+    R2 = (Eigen::Matrix3d::Identity() - omega) * R2;
+
+    quat1_ = Rotation2Quaternion(R1);
+    quat2_ = Rotation2Quaternion(R2);
+
+    return true;
+
 }
 
 bool TwoFootEkf::StateMatrix() {
@@ -434,6 +481,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
         P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
 
+        //Begin Zero-velocity constan
         if (zupt1_ || zupt2_) {
 
             Eigen::MatrixXd H;
@@ -469,8 +517,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
             P_ = (Id_ - K * H) * P_;
 
-            
-        }
+            ComputeInternalStates();
+        }//End Zero-velocity constaint.
 
 
 

@@ -133,12 +133,12 @@
           <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="568">
-                  <caret line="475" column="12" selection-start-line="475" selection-start-column="12" selection-end-line="475" selection-end-column="12" />
+                <state relative-caret-position="687">
+                  <caret line="521" column="0" selection-start-line="521" selection-start-column="0" selection-end-line="521" selection-end-column="0" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
-                    <element signature="e#3738#6248#0" expanded="false" />
-                    <marker date="1474166064966" expanded="false" signature="11090:13025" ph="{...}" />
+                    <element signature="e#4762#7272#0" expanded="false" />
+                    <marker date="1474166711966" expanded="false" signature="12175:14110" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -852,7 +852,7 @@
       <workItem from="1473991755282" duration="13466000" />
       <workItem from="1474074366990" duration="9548000" />
       <workItem from="1474096531549" duration="5938000" />
-      <workItem from="1474160795587" duration="3791000" />
+      <workItem from="1474160795587" duration="4522000" />
     </task>
     <task id="LOCAL-00001" summary="````&#10;">
       <created>1473596824620</created>
@@ -1127,11 +1127,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474103739114</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="The inverse .">
+      <created>1474166142419</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1474166142419</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106997000" />
+    <option name="totallyTimeSpent" value="107728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -1209,7 +1216,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed.&#10;" />
     <MESSAGE value="Vector is Ok!&#10;" />
     <MESSAGE value="Subscriber." />
     <MESSAGE value="Fixed a bug." />
@@ -1234,7 +1240,10 @@
     <MESSAGE value="State Matrix." />
     <MESSAGE value="Convariance update." />
     <MESSAGE value="Fixed bug." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug." />
+    <MESSAGE value="The inverse ." />
+    <option name="LAST_COMMIT_MESSAGE" value="The inverse ." />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1607,6 +1616,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1630,12 +1640,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="475" column="12" selection-start-line="475" selection-start-column="12" selection-end-line="475" selection-end-column="12" />
+        <state relative-caret-position="687">
+          <caret line="521" column="0" selection-start-line="521" selection-start-column="0" selection-end-line="521" selection-end-column="0" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
-            <element signature="e#3738#6248#0" expanded="false" />
-            <marker date="1474166064966" expanded="false" signature="11090:13025" ph="{...}" />
+            <element signature="e#4762#7272#0" expanded="false" />
+            <marker date="1474166711966" expanded="false" signature="12175:14110" ph="{...}" />
           </folding>
         </state>
       </provider>
