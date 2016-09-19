@@ -31,12 +31,10 @@
             }\
         }}
 
-class TwoFootEkf:public PdrEkf
-{
+class TwoFootEkf : public PdrEkf {
 public:
 
-    TwoFootEkf(SettingPara &para):para_ptr_(&para)
-    {
+    TwoFootEkf(SettingPara &para) : para_ptr_(&para) {
         //Initial the filter.
         Initial();
 
@@ -52,32 +50,31 @@ public:
                                 double time);
 
 
-
 protected:
 
-    SettingPara* para_ptr_;//Use the pointer point to a global value .
+    SettingPara *para_ptr_;//Use the pointer point to a global value .
 
     Eigen::VectorXd x_h_ = Eigen::VectorXd(18);
 
     Eigen::VectorXd dx_ = Eigen::VectorXd(18);//
 
-    Eigen::Matrix<double,18,18> Id_;
+    Eigen::Matrix<double, 18, 18> Id_;
 
     //Value use for filter.
-    Eigen::Matrix<double,18,18> P_;
+    Eigen::Matrix<double, 18, 18> P_;
 
-    Eigen::Matrix<double,12,12> Q_;
+    Eigen::Matrix<double, 12, 12> Q_;
 
-    Eigen::Matrix<double,3,18> H1_,H2_;
+    Eigen::Matrix<double, 3, 18> H1_, H2_;
 
-    Eigen::Matrix<double,6,18> H12_;
+    Eigen::Matrix<double, 6, 18> H12_;
 
-    Eigen::Matrix<double,3,3> R1_,R2_;
+    Eigen::Matrix<double, 3, 3> R1_, R2_;
 
-    Eigen::Matrix<double,6,6> R12_;
+    Eigen::Matrix<double, 6, 6> R12_;
 
     //quat
-    Eigen::Vector4d quat1_,quat2_;
+    Eigen::Vector4d quat1_, quat2_;
 
     std::deque<Eigen::MatrixXd> u_deque_;
     std::deque<double> time_deque_;
@@ -87,8 +84,8 @@ protected:
     Eigen::Matrix<double, 12, 1> u_;
 
     //State Matix
-    Eigen::Matrix<double,18,18> F_;//State transition matrix
-    Eigen::Matrix<double,18,12> G_;//Process noise gain matrix.
+    Eigen::Matrix<double, 18, 18> F_;//State transition matrix
+    Eigen::Matrix<double, 18, 12> G_;//Process noise gain matrix.
 
 
     bool zupt1_ = false;
@@ -195,7 +192,7 @@ bool TwoFootEkf::ComputeInternalStates() {
 
 bool TwoFootEkf::StateMatrix() {
 
-    double dt ( the_time_-last_time_);
+    double dt(the_time_ - last_time_);
 
     Eigen::MatrixXd u = u_;
 
@@ -204,21 +201,28 @@ bool TwoFootEkf::StateMatrix() {
     Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_) *
                          u.block(9, 0, 3, 1));
 
-    Eigen::Matrix3d St1,St2;
+    Eigen::Matrix3d St1, St2;
 
-    St1(0,0) = 0.0;         St2(0,0) = 0.0;
-    St1(0,1) = -f_t1(2);    St2(0,1) = -f_t2(2);
+    St1(0, 0) = 0.0;
+    St2(0, 0) = 0.0;
+    St1(0, 1) = -f_t1(2);
+    St2(0, 1) = -f_t2(2);
     St1(0, 2) = f_t1(1);
     St2(0, 2) = f_t2(1);
 
     St1(1, 0) = f_t1(2);
     St2(1, 0) = f_t2(2);
-    St1(1,1) = 0.0;         St2(1,1) = 0.0;
-    St1(1,2) = -f_t1(0);    St2(1,2) = -f_t2(0);
+    St1(1, 1) = 0.0;
+    St2(1, 1) = 0.0;
+    St1(1, 2) = -f_t1(0);
+    St2(1, 2) = -f_t2(0);
 
-    St1(2,0) = -f_t1(1);    St2(2,0) = -f_t2(1);
-    St1(2,1) = f_t1(0);     St2(2,1) = f_t2(0);
-    St1(2,2) = 0.0;         St2(2,2) = 0.0;
+    St1(2, 0) = -f_t1(1);
+    St2(2, 0) = -f_t2(1);
+    St1(2, 1) = f_t1(0);
+    St2(2, 1) = f_t2(0);
+    St1(2, 2) = 0.0;
+    St2(2, 2) = 0.0;
 
     Eigen::Matrix3d Zero(Eigen::Matrix3d::Zero());
 
@@ -226,24 +230,23 @@ bool TwoFootEkf::StateMatrix() {
 
     ZEROLIZEMATRIX(F_);
 
-    F_.block(0,3,3,3) = Id;
-    F_.block(3,6,3,3) = St1;
+    F_.block(0, 3, 3, 3) = Id;
+    F_.block(3, 6, 3, 3) = St1;
 
-    F_.block(9,12,3,3) = Id;
-    F_.block(12,15,3,3) = St2;
+    F_.block(9, 12, 3, 3) = Id;
+    F_.block(12, 15, 3, 3) = St2;
 
     ZEROLIZEMATRIX(G_)
 
-    G_.block(3,0,3,3) = Quaternion2Rotation(quat1_);
+    G_.block(3, 0, 3, 3) = Quaternion2Rotation(quat1_);
     G_.block(6, 3, 3, 3) = -Quaternion2Rotation(quat1_);
 
-    G_.block(12,6,3,3) = Quaternion2Rotation(quat2_);
+    G_.block(12, 6, 3, 3) = Quaternion2Rotation(quat2_);
     G_.block(15, 9, 3, 3) = -Quaternion2Rotation(quat2_);
 
     F_ = dt * F_;
-    for(int i(0);i<F_.cols();++i)
-    {
-        F_(i,i) +=1;
+    for (int i(0); i < F_.cols(); ++i) {
+        F_(i, i) += 1;
     }
 
     G_ = dt * G_;
@@ -253,7 +256,7 @@ bool TwoFootEkf::StateMatrix() {
 }
 
 bool TwoFootEkf::NavigationEq() {
-    Eigen::VectorXd u1(6),u2(6);
+    Eigen::VectorXd u1(6), u2(6);
 
 
     //std::cout << u_deque_.size() << std::endl;
@@ -274,10 +277,9 @@ bool TwoFootEkf::NavigationEq() {
     last_x_h = x_h_;
 
 
-
     Eigen::Vector3d w_tb;
     double v(0.0);
-    double P(0.0),Q(0.0),R(0.0),dt(the_time_-last_time_);
+    double P(0.0), Q(0.0), R(0.0), dt(the_time_ - last_time_);
 
 
     /*
@@ -285,55 +287,76 @@ bool TwoFootEkf::NavigationEq() {
      */
 
     //For quat1_
-    w_tb = u1.block(3,0,3,1);
+    w_tb = u1.block(3, 0, 3, 1);
     v = w_tb.norm() * dt;
 
     Eigen::Matrix4d OMEGA;
 
-    if (std::fabs(v) > 1e-12)
-    {
+    if (std::fabs(v) > 1e-12) {
 
-        P = w_tb(0)*dt*0.5;
+        P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
         R = w_tb(2) * dt * 0.5;
 
 
+        OMEGA(0, 0) = 0;
+        OMEGA(0, 1) = R;
+        OMEGA(0, 2) = -Q;
+        OMEGA(0, 3) = P;
 
-        OMEGA(0,0) = 0;OMEGA(0,1)   = R;OMEGA(0,2)  =-Q;OMEGA(0,3)  = P;
+        OMEGA(1, 0) = -R;
+        OMEGA(1, 1) = 0;
+        OMEGA(1, 2) = P;
+        OMEGA(1, 3) = Q;
 
-        OMEGA(1,0) = -R;OMEGA(1,1)  = 0;OMEGA(1,2)  = P;OMEGA(1,3)  = Q;
+        OMEGA(2, 0) = Q;
+        OMEGA(2, 1) = -P;
+        OMEGA(2, 2) = 0;
+        OMEGA(2, 3) = R;
 
-        OMEGA(2,0) = Q;OMEGA(2,1)   = -P;OMEGA(2,2) = 0;OMEGA(2,3)  = R;
+        OMEGA(3, 0) = -P;
+        OMEGA(3, 1) = -Q;
+        OMEGA(3, 2) = -R;
+        OMEGA(3, 3) = 0;
 
-        OMEGA(3,0) = -P;OMEGA(3,1)  = -Q;OMEGA(3,2) = -R;OMEGA(3,3) = 0;
-
-        quat1_ = (std::cos(v/2)*Eigen::Matrix4d::Identity()+
-        2/v * std::sin(v/2) *OMEGA) * quat1_;
+        quat1_ = (std::cos(v / 2) * Eigen::Matrix4d::Identity() +
+                  2 / v * std::sin(v / 2) * OMEGA) * quat1_;
 
         quat1_ = quat1_ / quat1_.norm();
 
     }
 
     //For quat2_
-    w_tb = u2.block(3,0,3,1);
+    w_tb = u2.block(3, 0, 3, 1);
     v = w_tb.norm() * dt;
 
-    if(std::fabs(v) > 1e-8)
-    {
-        P = w_tb(0)*dt*0.5;
+    if (std::fabs(v) > 1e-8) {
+        P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
         R = w_tb(2) * dt * 0.5;
 
-        OMEGA(0,0) = 0;OMEGA(0,1)   = R;OMEGA(0,2)  =-Q;OMEGA(0,3)  = P;
+        OMEGA(0, 0) = 0;
+        OMEGA(0, 1) = R;
+        OMEGA(0, 2) = -Q;
+        OMEGA(0, 3) = P;
 
-        OMEGA(1,0) = -R;OMEGA(1,1)  = 0;OMEGA(1,2)  = P;OMEGA(1,3)  = Q;
+        OMEGA(1, 0) = -R;
+        OMEGA(1, 1) = 0;
+        OMEGA(1, 2) = P;
+        OMEGA(1, 3) = Q;
 
-        OMEGA(2,0) = Q;OMEGA(2,1)   = -P;OMEGA(2,2) = 0;OMEGA(2,3)  = R;
+        OMEGA(2, 0) = Q;
+        OMEGA(2, 1) = -P;
+        OMEGA(2, 2) = 0;
+        OMEGA(2, 3) = R;
 
-        OMEGA(3,0) = -P;OMEGA(3,1)  = -Q;OMEGA(3,2) = -R;OMEGA(3,3) = 0;
+        OMEGA(3, 0) = -P;
+        OMEGA(3, 1) = -Q;
+        OMEGA(3, 2) = -R;
+        OMEGA(3, 3) = 0;
 
-        quat2_ = (std::cos(v/2)*Eigen::Matrix4d::Identity()+
-                  2/v * std::sin(v/2) *OMEGA) * quat2_;
+        quat2_ = (std::cos(v / 2) * Eigen::Matrix4d::Identity() +
+                  2 / v * std::sin(v / 2) * OMEGA) * quat2_;
 
         quat2_ = quat2_ / quat2_.norm();
 //        std::cout << "quat2_ :" << quat2_ << std::endl;
@@ -349,34 +372,33 @@ bool TwoFootEkf::NavigationEq() {
     Eigen::Vector3d g_t(0, 0, 9.8173);//Gravity vector
 
 
-    Eigen::Vector3d f_t(0,0,0),f_t2(0,0,0);
+    Eigen::Vector3d f_t(0, 0, 0), f_t2(0, 0, 0);
 
-    f_t = Quaternion2Rotation(quat1_) * u1.block(0,0,3,1);
+    f_t = Quaternion2Rotation(quat1_) * u1.block(0, 0, 3, 1);
 
-    f_t2 = Quaternion2Rotation(quat2_) * u2.block(0,0,3,1);
+    f_t2 = Quaternion2Rotation(quat2_) * u2.block(0, 0, 3, 1);
 
-    Eigen::Vector3d acc_t(f_t+g_t);
+    Eigen::Vector3d acc_t(f_t + g_t);
     Eigen::Vector3d acc_t2(f_t2 + g_t);
 
-    Eigen::MatrixXd A(6,6),B(6,3);
+    Eigen::MatrixXd A(6, 6), B(6, 3);
 
     ZEROLIZEMATRIX(A)
 
-    for(int i(0);i< A.cols();++i)
-    {
-        A(i,i) = 1.0;
+    for (int i(0); i < A.cols(); ++i) {
+        A(i, i) = 1.0;
     }
-    A(0,3) = dt;
-    A(1,4) = dt;
-    A(2,5) = dt;
+    A(0, 3) = dt;
+    A(1, 4) = dt;
+    A(2, 5) = dt;
 
-    B.block(0,0,3,3) = Eigen::Matrix3d::Zero();
-    B.block(3,0,3,3) = dt * Eigen::Matrix3d::Identity();
+    B.block(0, 0, 3, 3) = Eigen::Matrix3d::Zero();
+    B.block(3, 0, 3, 3) = dt * Eigen::Matrix3d::Identity();
 
-    x_h_.block(0,0,6,1) = A * last_x_h.block(0,0,6,1) + B * acc_t;
-    x_h_.block(9,0,6,1) = A * last_x_h.block(9,0,6,1) + B * acc_t2;
+    x_h_.block(0, 0, 6, 1) = A * last_x_h.block(0, 0, 6, 1) + B * acc_t;
+    x_h_.block(9, 0, 6, 1) = A * last_x_h.block(9, 0, 6, 1) + B * acc_t2;
 
-    return  true;
+    return true;
 }
 
 bool TwoFootEkf::InitNavEq() {
@@ -387,18 +409,18 @@ bool TwoFootEkf::InitNavEq() {
      * SettingPara.navigation_initial_min_length_),
      * all data use the average of these data.
      */
-    Eigen::MatrixXd u1(6,u_deque_.size());
-    Eigen::MatrixXd u2(6,u_deque_.size());
+    Eigen::MatrixXd u1(6, u_deque_.size());
+    Eigen::MatrixXd u2(6, u_deque_.size());
 
-    Eigen::Vector3d attitude(0,0,0);
+    Eigen::Vector3d attitude(0, 0, 0);
 
     int index(0);
 
-    for(auto it = u_deque_.begin();it!=u_deque_.end();++it)
-    {
-        u1.block(0,index,6,1) = it->block(0,0,6,1);
-        u2.block(0,index,6,1) = it->block(6,0,6,1);
-        index ++;
+    //I have use a c++11 feature here.
+    for (auto it = u_deque_.begin(); it != u_deque_.end(); ++it) {
+        u1.block(0, index, 6, 1) = it->block(0, 0, 6, 1);
+        u2.block(0, index, 6, 1) = it->block(6, 0, 6, 1);
+        ++index;
     }
 
     /////////////////////////////////
@@ -406,37 +428,37 @@ bool TwoFootEkf::InitNavEq() {
      * For u1.
      */
 
-    double f_u(u1.block(0,0,1,u_deque_.size()).mean());
-    double f_v(u1.block(1,0,1,u_deque_.size()).mean());
-    double f_w(u1.block(2,0,1,u_deque_.size()).mean());
+    double f_u(u1.block(0, 0, 1, u_deque_.size()).mean());
+    double f_v(u1.block(1, 0, 1, u_deque_.size()).mean());
+    double f_w(u1.block(2, 0, 1, u_deque_.size()).mean());
 
-    double roll(std::atan2(-f_v,-f_w));
-    double pitch(std::atan2(f_u,std::sqrt(std::pow(f_v,2)+std::pow(f_w,2))));
+    double roll(std::atan2(-f_v, -f_w));
+    double pitch(std::atan2(f_u, std::sqrt(std::pow(f_v, 2) + std::pow(f_w, 2))));
 
-    attitude = Eigen::Vector3d(roll,pitch,para_ptr_->init_heading1_);
+    attitude = Eigen::Vector3d(roll, pitch, para_ptr_->init_heading1_);
 
     quat1_ = Rotation2Quaternion(Rotation2b(attitude));
 
-    x_h_.block(0,0,3,1) = para_ptr_->init_pos1_;
-    x_h_.block(6,0,3,1) = attitude;
+    x_h_.block(0, 0, 3, 1) = para_ptr_->init_pos1_;
+    x_h_.block(6, 0, 3, 1) = attitude;
 
     /*
      * For u2
      */
 
-    f_u = u2.block(0,0,1,u_deque_.size()).mean();
-    f_v = u2.block(1,0,1,u_deque_.size()).mean();
-    f_w = u2.block(2,0,1,u_deque_.size()).mean();
+    f_u = u2.block(0, 0, 1, u_deque_.size()).mean();
+    f_v = u2.block(1, 0, 1, u_deque_.size()).mean();
+    f_w = u2.block(2, 0, 1, u_deque_.size()).mean();
 
-    roll = std::atan2(-f_v,-f_w);
-    pitch = std::atan2(f_u,std::sqrt(std::pow(f_v,2)+std::pow(f_w,2)));
+    roll = std::atan2(-f_v, -f_w);
+    pitch = std::atan2(f_u, std::sqrt(std::pow(f_v, 2) + std::pow(f_w, 2)));
 
-    attitude = Eigen::Vector3d(roll,pitch,para_ptr_->init_heading2_);
+    attitude = Eigen::Vector3d(roll, pitch, para_ptr_->init_heading2_);
 
     quat2_ = Rotation2Quaternion(Rotation2b(attitude));
 
-    x_h_.block(9,0,3,1) = para_ptr_->init_pos2_;
-    x_h_.block(15,0,3,1) = attitude;
+    x_h_.block(9, 0, 3, 1) = para_ptr_->init_pos2_;
+    x_h_.block(15, 0, 3, 1) = attitude;
 
     return true;
 
@@ -444,14 +466,12 @@ bool TwoFootEkf::InitNavEq() {
 
 bool TwoFootEkf::Signal2Bool(int signal) {
 
-    if(signal>3 || signal<0)
-    {
+    if (signal > 3 || signal < 0) {
         MYERROR("Detector signal is out of range ([0,1,2,3]),please check!")
         return false;
     }
 
-    switch(signal)
-    {
+    switch (signal) {
         case 0:
             zupt1_ = false;
             zupt2_ = false;
@@ -490,8 +510,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
     //Check size of U.
     //Don't use try and catch for unusal value processed
-    if( u.rows() != 12 || u.cols() != 1)
-    {
+    if (u.rows() != 12 || u.cols() != 1) {
         std::cout << "size of u is :"
                   << u.rows() << " x " << u.cols() << std::endl;
         MYERROR("HERE");
@@ -499,21 +518,18 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 //    std::cout << "0" << std::endl;
 
 
-    if(u_deque_.size()<para_ptr_->navigation_initial_min_length_-1)
-    {
+    if (u_deque_.size() < para_ptr_->navigation_initial_min_length_ - 1) {
         u_deque_.push_back(u);
         status_deque_.push_back(detector_signal);
         time_deque_.push_back(time);
-        return Eigen::MatrixXd::Zero(18,1);
+        return Eigen::MatrixXd::Zero(18, 1);
     }
-    if(u_deque_.size() == para_ptr_->navigation_initial_min_length_-1)
-    {
+    if (u_deque_.size() == para_ptr_->navigation_initial_min_length_ - 1) {
         u_deque_.push_back(u);
         status_deque_.push_back(detector_signal);
         time_deque_.push_back(time);
         //Initial nav equations.
-        if(InitNavEq())
-        {
+        if (InitNavEq()) {
             std::cout << "Initial navigation equation," << x_h_ << std::endl;
         }
         last_time_ = 0.0;
@@ -527,8 +543,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     }
 //    std::cout << "1" << std::endl;
 
-    if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_)
-    {
+    if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_) {
         //Navigation equations
 
 
@@ -618,38 +633,34 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 }
 
 bool TwoFootEkf::Initial() {
+
+    ZEROLIZEMATRIX(x_h_);
     ZEROLIZEMATRIX(P_);
 
     //System number 1.
-    for(int i(0);i<3;++i)
-    {
-        P_(i,i) = std::sqrt(para_ptr_->sigma_initial_pos1_(i));
+    for (int i(0); i < 3; ++i) {
+        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_pos1_(i));
     }
 
-    for(int i(3);i<6;++i)
-    {
-        P_(i,i) = std::sqrt(para_ptr_->sigma_initial_vel1_(i-3));
+    for (int i(3); i < 6; ++i) {
+        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_vel1_(i - 3));
     }
 
-    for(int i(6);i<9;++i)
-    {
-        P_(i,i) = std::sqrt(para_ptr_->sigma_initial_att1_(i-6));
+    for (int i(6); i < 9; ++i) {
+        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_att1_(i - 6));
     }
 
     //System number 2.
-    for(int i(9);i<12;++i)
-    {
-        P_(i,i) = std::sqrt(para_ptr_->sigma_initial_pos2_(i-9));
+    for (int i(9); i < 12; ++i) {
+        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_pos2_(i - 9));
     }
 
-    for(int i(12);i<15;++i)
-    {
-        P_(i,i) = std::sqrt(para_ptr_->sigma_initial_vel2_(i-12));
+    for (int i(12); i < 15; ++i) {
+        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_vel2_(i - 12));
     }
 
-    for(int i(15);i<18;++i)
-    {
-        P_(i,i) = std::sqrt(para_ptr_->sigma_initial_att2_(i-15));
+    for (int i(15); i < 18; ++i) {
+        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_att2_(i - 15));
     }
 
     /////////////////////////////////////////////////
@@ -660,37 +671,32 @@ bool TwoFootEkf::Initial() {
     ZEROLIZEMATRIX(R12_)
 
 
-    for(int i(0);i<3;++i)
-    {
-        R1_(i,i) = std::sqrt(para_ptr_->sigma_vel_(i));
-        R2_(i,i) = std::sqrt(para_ptr_->sigma_vel_(i));
+    for (int i(0); i < 3; ++i) {
+        R1_(i, i) = std::sqrt(para_ptr_->sigma_vel_(i));
+        R2_(i, i) = std::sqrt(para_ptr_->sigma_vel_(i));
     }
 
-    R12_.block(0,0,3,3) = R1_;
+    R12_.block(0, 0, 3, 3) = R1_;
 
-    R12_.block(3,3,3,3) = R2_;
+    R12_.block(3, 3, 3, 3) = R2_;
 
     //Q
     ZEROLIZEMATRIX(Q_)
 
-    for(int i(0);i<3;++i)
-    {
-        Q_(i,i) = std::sqrt(para_ptr_->sigma_acc_(i));
+    for (int i(0); i < 3; ++i) {
+        Q_(i, i) = std::sqrt(para_ptr_->sigma_acc_(i));
     }
 
-    for(int i(3);i<6;++i)
-    {
-        Q_(i,i) = std::sqrt(para_ptr_->sigma_gyro_(i-3));
+    for (int i(3); i < 6; ++i) {
+        Q_(i, i) = std::sqrt(para_ptr_->sigma_gyro_(i - 3));
     }
 
-    for(int i(6);i<9;++i)
-    {
-        Q_(i,i) = std::sqrt(para_ptr_->sigma_acc_(i-6));
+    for (int i(6); i < 9; ++i) {
+        Q_(i, i) = std::sqrt(para_ptr_->sigma_acc_(i - 6));
     }
 
-    for(int i(9);i<12;++i)
-    {
-        Q_(i,i) = std::sqrt(para_ptr_->sigma_gyro_(i-9));
+    for (int i(9); i < 12; ++i) {
+        Q_(i, i) = std::sqrt(para_ptr_->sigma_gyro_(i - 9));
     }
 
     //H1 H2
@@ -699,21 +705,19 @@ bool TwoFootEkf::Initial() {
     ZEROLIZEMATRIX(H12_)
 
 
+    H1_.block(0, 3, 3, 3) = Eigen::Matrix3d::Identity();
 
-    H1_.block(0,3,3,3) = Eigen::Matrix3d::Identity();
+    H2_.block(0, 12, 3, 3) = Eigen::Matrix3d::Identity();
 
-    H2_.block(0,12,3,3) = Eigen::Matrix3d::Identity();
-
-    H12_.block(0,3,3,3) = Eigen::Matrix3d::Identity();
-    H12_.block(3,12,3,3) = Eigen::Matrix3d::Identity();
+    H12_.block(0, 3, 3, 3) = Eigen::Matrix3d::Identity();
+    H12_.block(3, 12, 3, 3) = Eigen::Matrix3d::Identity();
 
 
     //Identity matrix
     ZEROLIZEMATRIX(Id_)
 
-    for(int i(0);i<Id_.rows();++i)
-    {
-        Id_(i,i) = 1.0;
+    for (int i(0); i < Id_.rows(); ++i) {
+        Id_(i, i) = 1.0;
     }
 
     return true;
