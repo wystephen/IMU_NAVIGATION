@@ -533,7 +533,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
             std::cout << "Initial navigation equation," << x_h_ << std::endl;
         }
         last_time_ = 0.0;
-        the_time_ = 0.0;
+        the_time_ = 0.0 - para_ptr_->Ts_;
         for (int i(0); i < u_deque_.size(); ++i) {
             GetPosition(u_deque_.at(i),
                         status_deque_.at(i),
@@ -546,6 +546,9 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_) {
         //Navigation equations
 
+        /*
+         * Time Update
+         */
 
 //        std::cout  << "1.1" << std::endl;
         NavigationEq();
@@ -559,6 +562,10 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
         P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
 
+
+        /*
+         * Zero-velocity Update.
+         */
         //Begin Zero-velocity constan
         if (zupt1_ || zupt2_) {
 
@@ -610,6 +617,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
         std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
         std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
+
+
         without_range_constraint_times_++;
         if (para_ptr_->IsRangeConstraint &&
             without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_
@@ -634,7 +643,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
 bool TwoFootEkf::Initial() {
 
-    ZEROLIZEMATRIX(x_h_);
+    the_time_ = 0 - para_ptr_->Ts_;
+
     ZEROLIZEMATRIX(P_);
 
     //System number 1.
@@ -672,8 +682,8 @@ bool TwoFootEkf::Initial() {
 
 
     for (int i(0); i < 3; ++i) {
-        R1_(i, i) = std::sqrt(para_ptr_->sigma_vel_(i));
-        R2_(i, i) = std::sqrt(para_ptr_->sigma_vel_(i));
+        R1_(i, i) = std::pow(para_ptr_->sigma_vel_(i), 2);
+        R2_(i, i) = std::pow(para_ptr_->sigma_vel_(i), 2);
     }
 
     R12_.block(0, 0, 3, 3) = R1_;
@@ -684,19 +694,19 @@ bool TwoFootEkf::Initial() {
     ZEROLIZEMATRIX(Q_)
 
     for (int i(0); i < 3; ++i) {
-        Q_(i, i) = std::sqrt(para_ptr_->sigma_acc_(i));
+        Q_(i, i) = std::pow(para_ptr_->sigma_acc_(i), 2);
     }
 
     for (int i(3); i < 6; ++i) {
-        Q_(i, i) = std::sqrt(para_ptr_->sigma_gyro_(i - 3));
+        Q_(i, i) = std::pow(para_ptr_->sigma_gyro_(i - 3), 2);
     }
 
     for (int i(6); i < 9; ++i) {
-        Q_(i, i) = std::sqrt(para_ptr_->sigma_acc_(i - 6));
+        Q_(i, i) = std::pow(para_ptr_->sigma_acc_(i - 6), 2);
     }
 
     for (int i(9); i < 12; ++i) {
-        Q_(i, i) = std::sqrt(para_ptr_->sigma_gyro_(i - 9));
+        Q_(i, i) = std::pow(para_ptr_->sigma_gyro_(i - 9), 2);
     }
 
     //H1 H2
@@ -712,6 +722,13 @@ bool TwoFootEkf::Initial() {
     H12_.block(0, 3, 3, 3) = Eigen::Matrix3d::Identity();
     H12_.block(3, 12, 3, 3) = Eigen::Matrix3d::Identity();
 
+
+    /*
+     * Initial vec (In matlab code.)
+     */
+
+
+    ZEROLIZEMATRIX(x_h_);
 
     //Identity matrix
     ZEROLIZEMATRIX(Id_)
