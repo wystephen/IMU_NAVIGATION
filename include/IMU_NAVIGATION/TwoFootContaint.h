@@ -80,6 +80,8 @@ protected:
     Eigen::Vector4d quat1_,quat2_;
 
     std::deque<Eigen::MatrixXd> u_deque_;
+    std::deque<double> time_deque_;
+    std::deque<int> status_deque_;
 
 
     Eigen::Matrix<double, 12, 1> u_;
@@ -195,7 +197,7 @@ bool TwoFootEkf::StateMatrix() {
 
     double dt ( the_time_-last_time_);
 
-    Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
+    Eigen::MatrixXd u = u_;
 
     Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_) *
                          u.block(0, 0, 3, 1));
@@ -259,13 +261,13 @@ bool TwoFootEkf::NavigationEq() {
     //
     // .end()->rows() << " x " << u_deque_.end()->cols() << std::endl;
 
-    Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
+    //Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
 
 //    std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
 
-    u1 = u.block(0, 0, 6, 1);
+    u1 = u_.block(0, 0, 6, 1);
 //    std::cout << "block 1" << std::endl;
-    u2 = u.block(6, 0, 6, 1);
+    u2 = u_.block(6, 0, 6, 1);
 
 
     Eigen::VectorXd last_x_h(18);
@@ -484,6 +486,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
     Signal2Bool(detector_signal);
 
+    u_ = u;
+
     //Check size of U.
     //Don't use try and catch for unusal value processed
     if( u.rows() != 12 || u.cols() != 1)
@@ -498,15 +502,26 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     if(u_deque_.size()<para_ptr_->navigation_initial_min_length_-1)
     {
         u_deque_.push_back(u);
+        status_deque_.push_back(detector_signal);
+        time_deque_.push_back(time);
         return Eigen::MatrixXd::Zero(18,1);
     }
     if(u_deque_.size() == para_ptr_->navigation_initial_min_length_-1)
     {
         u_deque_.push_back(u);
+        status_deque_.push_back(detector_signal);
+        time_deque_.push_back(time);
         //Initial nav equations.
         if(InitNavEq())
         {
             std::cout << "Initial navigation equation," << x_h_ << std::endl;
+        }
+        last_time_ = 0.0;
+        the_time_ = 0.0;
+        for (int i(0); i < u_deque_.size(); ++i) {
+            GetPosition(u_deque_.at(i),
+                        status_deque_.at(i),
+                        time_deque_.at(i));
         }
         return x_h_;
     }
@@ -515,8 +530,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_)
     {
         //Navigation equations
-        u_deque_.push_back(u);
-        u_deque_.pop_front();
+
 
 //        std::cout  << "1.1" << std::endl;
         NavigationEq();
