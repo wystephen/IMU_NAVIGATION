@@ -54,7 +54,13 @@ int main(int argc, char **argv) {
             u(j, 0) = *r_u1.m_(i, j);
             u(j + 6, 0) = *r_u2.m_(i, j);
         }
-        edf2.GetPosition(u, states, time);
+        Eigen::MatrixXd x_h_ = edf2.GetPosition(u, states, time);
+
+        if (i % 820 == 0) {
+            std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose();//<< std::endl;
+            std::cout << "  u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
+        }
+
     }
 
     std::cout << "END" << std::endl;

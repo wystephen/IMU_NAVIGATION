@@ -54,7 +54,7 @@ protected:
 
     SettingPara *para_ptr_;//Use the pointer point to a global value .
 
-    Eigen::VectorXd x_h_ = Eigen::VectorXd(18);
+    Eigen::Matrix<double, 18, 1> x_h_ = Eigen::VectorXd(18);
 
     Eigen::VectorXd dx_ = Eigen::VectorXd(18);//
 
@@ -618,8 +618,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         }//End Zero-velocity constaint.
 //        std::cout << "5.1" << std::endl;
 
-        std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
-        std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
+//        std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
+//        std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
 
 
         without_range_constraint_times_++;
