@@ -14,6 +14,10 @@
 
 #include <deque>
 
+//This value use control whether the MYCHECK(ISDEBUG) should output the file
+//name and the line number.
+#define ISDEBUG true
+
 #ifndef IMU_NAVIGATION_TWOFOOTCONTAINT_H
 #define IMU_NAVIGATION_TWOFOOTCONTAINT_H
 
@@ -39,10 +43,13 @@ public:
     }
 
     /*
-     * Compute a estimation of position(return this value as a Matrix)
+     * Compute a estimation of position
+     * (return this value as a Matrix)
      * use the giving Matrix u.
      */
-    Eigen::MatrixXd GetPosition(Eigen::MatrixXd u,int detector_signal,double time);
+    Eigen::MatrixXd GetPosition(Eigen::MatrixXd u,
+                                int detector_signal,
+                                double time);
 
 
 
@@ -75,6 +82,8 @@ protected:
     std::deque<Eigen::MatrixXd> u_deque_;
 
 
+    Eigen::Matrix<double, 12, 1> u_;
+
     //State Matix
     Eigen::Matrix<double,18,18> F_;//State transition matrix
     Eigen::Matrix<double,18,12> G_;//Process noise gain matrix.
@@ -95,20 +104,23 @@ protected:
 
     /*
      *  Convert detector_signal to two bool value.
-     * return false when detector_signal is out of range([0,1,2,3]).
+     * return false when detector_signal is out of
+     * range([0,1,2,3]).
      */
 
     bool Signal2Bool(int signal);
 
     /*
-     * This function is use for calculates the initial stata of the
+     * This function is use for calculates the
+     * initial stata of the
      * navigation equations.
      */
     bool InitNavEq();
 
 
     /*
-     * The mechanized navigation euqtions of the inertial navigation system.
+     * The mechanized navigation euqtions of the
+     * inertial navigation system.
      */
     bool NavigationEq();
 
@@ -119,7 +131,8 @@ protected:
     bool StateMatrix();
 
     /*
-     * Function corrects the navigation states use the value compute by kalman filter.
+     * Function corrects the navigation states use
+     * the value compute by kalman filter.
      */
     bool ComputeInternalStates();
 
@@ -184,8 +197,10 @@ bool TwoFootEkf::StateMatrix() {
 
     Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
 
-    Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_) * u.block(0, 0, 3, 1));
-    Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_) * u.block(9, 0, 3, 1));
+    Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_) *
+                         u.block(0, 0, 3, 1));
+    Eigen::Vector3d f_t2(Quaternion2Rotation(quat2_) *
+                         u.block(9, 0, 3, 1));
 
     Eigen::Matrix3d St1,St2;
 
@@ -366,7 +381,7 @@ bool TwoFootEkf::InitNavEq() {
     /*
      * This function used the assumption that the system is
      * stationary during the first
-     * server samples(depends on the parameter
+     * some samples(depends on the parameter
      * SettingPara.navigation_initial_min_length_),
      * all data use the average of these data.
      */
@@ -546,7 +561,6 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
             }
 
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
-//            std::cout << "Remenber to delete here , DDDDDDDDDD: " << tmp.inverse() << std::endl;
             K = (P_ * H.transpose()) * tmp.inverse();
             //R.cwiseInverse()
 
@@ -570,7 +584,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         without_range_constraint_times_++;
         if (para_ptr_->IsRangeConstraint &&
             without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_
-            && (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() > para_ptr_->rang_constraint_
+            && (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() >
+               para_ptr_->rang_constraint_
                 ) {
             without_range_constraint_times_ = 0;//Rest the counter.
 

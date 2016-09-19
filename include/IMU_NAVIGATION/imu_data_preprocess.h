@@ -48,9 +48,6 @@ public:
             MYERROR("The rows_ of u1 and u2 is not equal.")
         }
 
-
-
-
     }
 
     void test()
