@@ -27,8 +27,10 @@ enum ZeroDetectorAlogorithm
 #ifndef IMU_NAVIGATION_SETTINGPARA_H
 #define IMU_NAVIGATION_SETTINGPARA_H
 
-struct SettingPara
+class SettingPara
 {
+public:
+
     bool LoadParaFromJson()
     {
         //ToDo:Load paramenters form a json_like file.
@@ -54,6 +56,25 @@ struct SettingPara
 //            init_pos2_(i) = 0.0;
 //            init_pos_(i) = 0.0;
 //        }
+
+        init_heading1_ = -1.6857;
+        init_heading2_ = 1.6620;
+
+        init_pos1_ = Eigen::Vector3d(0, 0, 0);
+        init_pos2_ = Eigen::Vector3d(0, 0, 0);
+
+        //gravity_ = 9.8173;
+
+        //Ts_ = 0.0012;
+
+        sigma_a_ = 0.0350;
+        sigma_g_ = 0.0061;
+
+        sigma_acc_ = Eigen::Vector3d(2.8, 2.8, 2.8);
+        sigma_gyro_ = Eigen::Vector3d(0.0698, 0.0698, 0.0698);
+        sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05);
+
+
 
 
 
