@@ -44,28 +44,29 @@ struct SettingPara
 
         ComputeGravity();
 
-        Ts_ = 1/820.0;
+        // Ts_ = 1/820.0;
 
-        rang_constraint_ = 1.0;
+//        rang_constraint_ = 1.0;
 
-        for(int i(0);i<3;++i)
-        {
-            init_pos1_(i) = 0.0;
-            init_pos2_(i) = 0.0;
-            init_pos_(i) = 0.0;
-        }
+//        for(int i(0);i<3;++i)
+//        {
+//            init_pos1_(i) = 0.0;
+//            init_pos2_(i) = 0.0;
+//            init_pos_(i) = 0.0;
+//        }
 
 
 
     }
 
-    int navigation_initial_min_length_ = 20;//The minimal length for initial the navigation equational.
+    int navigation_initial_min_length_ = 20;
+    //The minimal length for initial the navigation equational.
 
-    double Ts_ = 10000;//Sampling period [s]
+    double Ts_ = 1 / 820.0;//Sampling period [s]
 
-    double latitude_=1000.0;//In paper 58 [degrees]
+    double latitude_ = 58.0;//In paper 58 [degrees]
 
-    double altitude_ = 1000.0;//In paper 100 [m]
+    double altitude_ = 100.0;//In paper 100 [m]
 
     double gravity_;//The gravity based on altitude and latitude. [ m/s^2]
 
@@ -80,9 +81,9 @@ struct SettingPara
     double init_heading1_ = (-97.5) * M_PI /180.0;//heading
     double init_heading2_ = (96.05) * M_PI / 180.0;
 
-    Eigen::Vector3d init_pos1_ ;//pose
-    Eigen::Vector3d init_pos2_   ;
-    Eigen::Vector3d init_pos_;
+    Eigen::Vector3d init_pos1_ = Eigen::Vector3d(0, 0, 0);//pose
+    Eigen::Vector3d init_pos2_ = Eigen::Vector3d(0, 0, 0);
+    Eigen::Vector3d init_pos_ = Eigen::Vector3d(0, 0, 0);
 
     double sigma_a_ = 0.035;//Stanard deviation of the accelermter noise [ m/ s^2];
     double sigma_g_ = 0.35 * M_PI /180.0;
@@ -117,26 +118,28 @@ struct SettingPara
 
     void ComputeGravity()
     {
+        //
+
         if(latitude_>800)
         {
             MYERROR("latitude_ is not set or it is  bigger than 800.0 !")
 
         }else{
-            double lambda(M_PI /180.0 * latitude_);
+            double lambda(M_PI * latitude_ / 180.0);
 
             /*
              * gamma=9.780327*(1+0.0053024*sin(lambda)^2-0.0000058*sin(2*lambda)^2);
              */
-            double gamma = 9.780327 * ( 1 + 0.0053024 * std::pow(std::sin(lambda),2.0) -
-                                      0.0000058 * std::pow(std::sin(2 * lambda) , 2.0));
+            double gamma = 9.780327 * (1 + 0.0053024 * std::pow(std::sin(lambda),2.0) -
+                                       0.0000058 * std::pow(std::sin(2.0 * lambda), 2.0));
 
             /*
              * gamma=9.780327*(1+0.0053024*sin(lambda)^2-0.0000058*sin(2*lambda)^2);
              * (h is altitude.)
              */
-            gravity_ = gamma - ( (3.0877e-6) -
-                    (0.004e-6) * std::pow(std::sin(lambda),2)*altitude_+
-                    (0.072e-12)*std::pow(altitude_,2));
+            gravity_ = gamma - ((3.0877e-6) -
+                                (0.004e-6) * std::pow(std::sin(lambda), 2)) * altitude_ +
+                       (0.072e-12) * std::pow(altitude_, 2);
 
 
         }

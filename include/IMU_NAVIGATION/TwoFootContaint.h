@@ -292,7 +292,7 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::Matrix4d OMEGA;
 
-    if (std::fabs(v) > 1e-12) {
+    if (std::fabs(v) > 1e-6) {
 
         P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
@@ -330,7 +330,7 @@ bool TwoFootEkf::NavigationEq() {
     w_tb = u2.block(3, 0, 3, 1);
     v = w_tb.norm() * dt;
 
-    if (std::fabs(v) > 1e-8) {
+    if (std::fabs(v) > 1e-6) {
         P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
         R = w_tb(2) * dt * 0.5;
@@ -438,6 +438,9 @@ bool TwoFootEkf::InitNavEq() {
     attitude = Eigen::Vector3d(roll, pitch, para_ptr_->init_heading1_);
 
     quat1_ = Rotation2Quaternion(Rotation2b(attitude));
+
+
+    ZEROLIZEMATRIX(x_h_);
 
     x_h_.block(0, 0, 3, 1) = para_ptr_->init_pos1_;
     x_h_.block(6, 0, 3, 1) = attitude;
@@ -649,28 +652,28 @@ bool TwoFootEkf::Initial() {
 
     //System number 1.
     for (int i(0); i < 3; ++i) {
-        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_pos1_(i));
+        P_(i, i) = std::pow(para_ptr_->sigma_initial_pos1_(i), 2);
     }
 
     for (int i(3); i < 6; ++i) {
-        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_vel1_(i - 3));
+        P_(i, i) = std::pow(para_ptr_->sigma_initial_vel1_(i - 3), 2);
     }
 
     for (int i(6); i < 9; ++i) {
-        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_att1_(i - 6));
+        P_(i, i) = std::pow(para_ptr_->sigma_initial_att1_(i - 6), 2);
     }
 
     //System number 2.
     for (int i(9); i < 12; ++i) {
-        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_pos2_(i - 9));
+        P_(i, i) = std::pow(para_ptr_->sigma_initial_pos2_(i - 9), 2);
     }
 
     for (int i(12); i < 15; ++i) {
-        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_vel2_(i - 12));
+        P_(i, i) = std::pow(para_ptr_->sigma_initial_vel2_(i - 12), 2);
     }
 
     for (int i(15); i < 18; ++i) {
-        P_(i, i) = std::sqrt(para_ptr_->sigma_initial_att2_(i - 15));
+        P_(i, i) = std::pow(para_ptr_->sigma_initial_att2_(i - 15), 2);
     }
 
     /////////////////////////////////////////////////
