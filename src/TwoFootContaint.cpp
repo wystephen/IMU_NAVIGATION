@@ -22,10 +22,10 @@ int main(int argc, char **argv) {
 
     SettingPara para(true);
 
-//    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-//    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
-//    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
-//    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
+    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
+    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
 
 //    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
 //    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
@@ -33,11 +33,11 @@ int main(int argc, char **argv) {
 //    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
 
 
-
-    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
-    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+//
+//    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+//    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+//    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+//    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
     double time = 0.0;
 
 //
@@ -76,6 +76,9 @@ int main(int argc, char **argv) {
         }
         std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose();//<< std::endl;
         std::cout << "  u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
+
+        std::cout << "u1 len:" << x_h_.block(0, 0, 3, 1).norm()
+                  << "  u2 len:" << x_h_.block(9, 0, 3, 1).norm() << std::endl;
 
     }
 

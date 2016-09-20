@@ -59,7 +59,6 @@ public:
 
         init_heading1_ = -1.6857;
         init_heading2_ = 1.6620;
-        init_heading2_ = init_heading1_;
 
         init_pos1_ = Eigen::Vector3d(0, 0, 0);
         init_pos2_ = Eigen::Vector3d(0, 0, 0);
