@@ -75,9 +75,6 @@ public:
         sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05);
 
 
-
-
-
     }
 
     int navigation_initial_min_length_ = 20;

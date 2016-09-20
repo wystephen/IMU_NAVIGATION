@@ -282,6 +282,9 @@ bool TwoFootEkf::NavigationEq() {
     double P(0.0), Q(0.0), R(0.0), dt(the_time_ - last_time_);
 
 
+
+
+
     /*
      * Update quaternion q.
      */
@@ -292,7 +295,7 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::Matrix4d OMEGA;
 
-    if (std::fabs(v) > 1e-6) {
+    if (v > 1e-18) {
 
         P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
@@ -330,7 +333,7 @@ bool TwoFootEkf::NavigationEq() {
     w_tb = u2.block(3, 0, 3, 1);
     v = w_tb.norm() * dt;
 
-    if (std::fabs(v) > 1e-6) {
+    if (v > 1e-18) {
         P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
         R = w_tb(2) * dt * 0.5;
@@ -370,7 +373,7 @@ bool TwoFootEkf::NavigationEq() {
 
 //    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);//Gravity vector
     Eigen::Vector3d g_t(0, 0, 9.8173);//Gravity vector
-
+    //ToDo:Change this as a constant.
 
     Eigen::Vector3d f_t(0, 0, 0), f_t2(0, 0, 0);
 
@@ -391,6 +394,8 @@ bool TwoFootEkf::NavigationEq() {
     A(0, 3) = dt;
     A(1, 4) = dt;
     A(2, 5) = dt;
+
+    ZEROLIZEMATRIX(B)
 
     B.block(0, 0, 3, 3) = Eigen::Matrix3d::Zero();
     B.block(3, 0, 3, 3) = dt * Eigen::Matrix3d::Identity();
@@ -474,28 +479,29 @@ bool TwoFootEkf::Signal2Bool(int signal) {
         return false;
     }
 
-    switch (signal) {
-        case 0:
-            zupt1_ = false;
-            zupt2_ = false;
-            break;
-        case 1:
-            zupt1_ = true;
-            zupt2_ = false;
-            break;
-        case 2:
-            zupt1_ = false;
-            zupt2_ = true;
-            break;
-        case 3:
-            zupt1_ = true;
-            zupt2_ = true;
-            break;
-        default:
 
-            MYERROR("signal is :" + signal)
-            return false;
+    if (signal == 0) {
+        zupt1_ = false;
+        zupt2_ = true;
+        return true;
+    } else if (signal == 1) {
+        zupt1_ = true;
+        zupt2_ = false;
+        return true;
 
+    } else if (signal == 2) {
+        zupt1_ = false;
+        zupt2_ = true;
+        return true;
+
+    } else if (signal == 3) {
+        zupt1_ = true;
+        zupt2_ = true;
+        return true;
+
+    } else {
+        MYERROR("signal is :" + signal)
+        return false;
     }
     return true;
 }
@@ -544,7 +550,6 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         }
         return x_h_;
     }
-//    std::cout << "1" << std::endl;
 
     if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_) {
         //Navigation equations
@@ -563,14 +568,15 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 //        std::cout << "3.1" << std::endl;
         //Updata covariance matrix
 
-        P_ = F_ * P_ * F_.transpose() + G_ * Q_ * G_.transpose();
+        P_ = F_ * P_ * F_.transpose() +
+             G_ * Q_ * G_.transpose();
 
 
         /*
          * Zero-velocity Update.
          */
-        //Begin Zero-velocity constan
         if (zupt1_ || zupt2_) {
+
 
             Eigen::MatrixXd H;
             Eigen::MatrixXd R;
@@ -595,9 +601,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 R = R2_;
                 z = -x_h_.block(12, 0, 3, 1);
 
-//                std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
-//                std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
             }
+            std::cout << "z:" << z << std::endl;
 
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
             K = (P_ * H.transpose()) * tmp.inverse();
@@ -623,15 +628,16 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 
 
         without_range_constraint_times_++;
-        if (para_ptr_->IsRangeConstraint &&
-            without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_
-            && (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() >
-               para_ptr_->rang_constraint_
-                ) {
-            without_range_constraint_times_ = 0;//Rest the counter.
-
-
-        }
+//        if (para_ptr_->IsRangeConstraint &&
+//            without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_
+//            && (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() >
+//               para_ptr_->rang_constraint_
+//                ) {
+//            without_range_constraint_times_ = 0;//Rest the counter.
+//            std::cout << "IN HERE" <<std::endl;
+//
+//
+//        }
 
 //        std::cout << "6.1" << std::endl;
 
@@ -639,6 +645,13 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     }
 
     P_ = (P_ + P_.transpose()) * 0.5;
+
+    if (without_range_constraint_times_ % 100 == 0) {
+        std::cout << P_.norm() << std::endl;
+        std::cout << "------------------------------" << std::endl;
+
+    }
+
 
     return x_h_;
 
