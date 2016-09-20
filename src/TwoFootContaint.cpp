@@ -14,6 +14,8 @@
 
 #include "../include/Cpp_Extent/CSVReader.h"
 
+#include <nav_msgs/Odometry.h>
+
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "TwoFoot");
@@ -21,6 +23,9 @@ int main(int argc, char **argv) {
     ros::NodeHandle n_handle;
 
     SettingPara para(true);
+
+    ros::Publisher pub = n_handle.advertise<nav_msgs::Odometry>("imu1", 1);
+    ros::Publisher pub2 = n_handle.advertise<nav_msgs::Odometry>("imu2", 1);
 
     CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
     CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
@@ -48,7 +53,7 @@ int main(int argc, char **argv) {
 //    std::cout << r_zupt1.rows_ << std::endl;
 //    std::cout << r_zupt2.rows_ << std::endl;
 
-    for (int j(0); j < 10; ++j) {
+    for (int j(0); j < 1; ++j) {
         TwoFootEkf edf2(para);
         Eigen::MatrixXd x_h_;
         for (int i(0); i < r_u1.rows_; ++i) {
@@ -68,6 +73,29 @@ int main(int argc, char **argv) {
             }
 
             x_h_ = edf2.GetPosition(u, states, time);
+
+            nav_msgs::Odometry tmp;
+
+            tmp.header.frame_id = "map";
+            tmp.header.stamp.fromSec(ros::Time::now().toSec());
+
+            tmp.pose.pose.position.x = x_h_(0);
+            tmp.pose.pose.position.y = x_h_(1);
+            tmp.pose.pose.position.z = x_h_(2);
+
+            pub.publish(tmp);
+
+            nav_msgs::Odometry tmp2;
+            tmp2.header.frame_id = "map";
+            tmp2.header.stamp = tmp.header.stamp;
+
+            tmp2.pose.pose.position.x = x_h_(9);
+            tmp2.pose.pose.position.y = x_h_(10);
+            tmp2.pose.pose.position.z = x_h_(11);
+
+            pub2.publish(tmp2);
+            ros::Duration a(1 / 820);
+            a.sleep();
 
         }
         std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose();//<< std::endl;

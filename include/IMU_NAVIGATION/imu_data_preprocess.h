@@ -75,9 +75,9 @@ public:
     {
         SetNodeHandle(n_h);
 
-        pub1_ =  node_ptr_->advertise<sensor_msgs::Imu>("imu1/data",1);//Define the publisher.
+        pub1_ = node_ptr_->advertise<sensor_msgs::Imu>("imu1/data", 100);//Define the publisher.
 
-        pub2_ = node_ptr_->advertise<sensor_msgs::Imu>("imu2/data",1);
+        pub2_ = node_ptr_->advertise<sensor_msgs::Imu>("imu2/data", 100);
 
         double start_time(ros::Time::now().toSec());//
 
@@ -135,6 +135,9 @@ public:
 
             pub1_.publish(imu1);
             pub2_.publish(imu2);
+
+            usleep(100000);
+
 
 
         }

@@ -67,17 +67,24 @@ public:
 
         //Ts_ = 0.0012;
 
-        sigma_a_ = 0.0350;
-        sigma_g_ = 0.0061;
+//        sigma_a_ = 0.0350  ;
+//        sigma_g_ = 0.0061;
+//
+//        sigma_acc_ = Eigen::Vector3d(2.8, 2.8, 2.8);
+//        sigma_gyro_ = Eigen::Vector3d(0.0698, 0.0698, 0.0698);
+//        sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05);
 
-        sigma_acc_ = Eigen::Vector3d(2.8, 2.8, 2.8);
-        sigma_gyro_ = Eigen::Vector3d(0.0698, 0.0698, 0.0698);
-        sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05);
+//        sigma_a_ = 0.0350  *10;
+//        sigma_g_ = 0.0061*10;
+//
+//        sigma_acc_ = Eigen::Vector3d(2.8, 2.8, 2.8)*10;
+//        sigma_gyro_ = Eigen::Vector3d(0.0698, 0.0698, 0.0698)*10;
+//        sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05)*10;
 
 
     }
 
-    int navigation_initial_min_length_ = 20;
+    int navigation_initial_min_length_ = 40;
     //The minimal length for initial the navigation equational.
 
     double Ts_ = 1 / 820.0;//Sampling period [s]
@@ -129,7 +136,7 @@ public:
 
     Eigen::Vector3d sigma_initial_vel2_ = 1e-5 * Eigen::Vector3d(1,1,1);
 
-    Eigen::Vector3d sigma_initial_att2_ = (M_PI/180 * Eigen::Vector3d(0.1,0.1,0.001));
+    Eigen::Vector3d sigma_initial_att2_ = (M_PI / 180.0 * Eigen::Vector3d(0.1, 0.1, 0.001));
 
 
 

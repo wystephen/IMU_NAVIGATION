@@ -625,11 +625,11 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 z = -x_h_.block(12, 0, 3, 1);
 
             } else {
-                MYERROR("This code shound be run.")
+                MYERROR("n     ")
             }
 
             //Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
-            K = (P_ * H.transpose()) * (H * P_ * H.transpose() + R).inverse();
+            K = P_ * H.transpose() * (H * P_ * H.transpose() + R).inverse();
 
             dx_ = K * z;
 
@@ -658,6 +658,12 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 //        }
 
         P_ = (P_ + P_.transpose()) * 0.5;
+
+        //std::cout << P_ << std::endl;
+        //std::cout << "00000000000000000000000000000000000000" << std::endl;
+
+
+
 
 
     }
