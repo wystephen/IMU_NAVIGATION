@@ -186,6 +186,15 @@ bool TwoFootEkf::ComputeInternalStates() {
     quat1_ = Rotation2Quaternion(R1);
     quat2_ = Rotation2Quaternion(R2);
 
+    x_h_(6) = std::atan2(R1(2, 1), R1(2, 2));
+    x_h_(7) = -std::atan(R1(2, 0) / std::sqrt(1 - R1(2, 0) * R1(2, 0)));
+    x_h_(8) = std::atan2(R1(1, 0), R1(0, 0));
+
+    x_h_(15) = std::atan2(R2(2, 1), R2(2, 2));
+    x_h_(16) = -std::atan(R2(2, 0) / std::sqrt(1 - R2(2, 0) * R2(2, 0)));
+    x_h_(17) = std::atan2(R2(1, 0), R2(0, 0));
+
+
     return true;
 
 }
@@ -602,10 +611,11 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 z = -x_h_.block(12, 0, 3, 1);
 
             }
-            std::cout << "z:" << z << std::endl;
+            //std::cout << "z:" << z << std::endl;
 
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
             K = (P_ * H.transpose()) * tmp.inverse();
+            //K = P_ * H.transpose() * R.inverse();
             //R.cwiseInverse()
 
 //            std::cout << "4.1" << std::endl;
@@ -688,6 +698,8 @@ bool TwoFootEkf::Initial() {
     for (int i(15); i < 18; ++i) {
         P_(i, i) = std::pow(para_ptr_->sigma_initial_att2_(i - 15), 2);
     }
+
+
 
     /////////////////////////////////////////////////
 
