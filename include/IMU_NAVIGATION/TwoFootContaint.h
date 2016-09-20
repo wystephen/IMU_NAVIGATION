@@ -22,14 +22,16 @@
 #define IMU_NAVIGATION_TWOFOOTCONTAINT_H
 
 
-#define ZEROLIZEMATRIX(m) {\
-        for(int i(0);i<m.rows();++i)\
-        {\
-            for(int j(0);j<m.cols();++j)\
-            {\
-                m(i,j) = 0.0;\
-            }\
-        }}
+//#define ZEROLIZEMATRIX(m) {\
+//        for(int i(0);i<m.rows();++i)\
+//        {\
+//            for(int j(0);j<m.cols();++j)\
+//            {\
+//                m(i,j) = 0.0;\
+//            }\
+//        }}
+
+#define ZEROLIZEMATRIX(m) m.setZero();
 
 class TwoFootEkf : public PdrEkf {
 public:
@@ -278,7 +280,7 @@ bool TwoFootEkf::StateMatrix() {
 
     F_ = dt * F_;
     for (int i(0); i < F_.cols(); ++i) {
-        F_(i, i) += 1;
+        F_(i, i) += 1.0;
     }
 
     G_ = dt * G_;
@@ -314,7 +316,7 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::Matrix4d OMEGA;
 
-    if (v > 1e-18) {
+    if (std::abs(v) > 0.000001) {
 
         P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
@@ -341,8 +343,8 @@ bool TwoFootEkf::NavigationEq() {
         OMEGA(3, 2) = -R;
         OMEGA(3, 3) = 0;
 
-        quat1_ = (std::cos(v / 2) * Eigen::Matrix4d::Identity() +
-                  2 / v * std::sin(v / 2) * OMEGA) * quat1_;
+        quat1_ = (std::cos(v / 2.0) * Eigen::Matrix4d::Identity() +
+                  2.0 / v * std::sin(v / 2.0) * OMEGA) * quat1_;
 
         quat1_ = quat1_ / quat1_.norm();
 
@@ -352,7 +354,7 @@ bool TwoFootEkf::NavigationEq() {
     w_tb = u2.block(3, 0, 3, 1);
     v = w_tb.norm() * dt;
 
-    if (v > 1e-18) {
+    if (std::abs(v) > 0.000001) {
         P = w_tb(0) * dt * 0.5;
         Q = w_tb(1) * dt * 0.5;
         R = w_tb(2) * dt * 0.5;
@@ -377,8 +379,8 @@ bool TwoFootEkf::NavigationEq() {
         OMEGA(3, 2) = -R;
         OMEGA(3, 3) = 0;
 
-        quat2_ = (std::cos(v / 2) * Eigen::Matrix4d::Identity() +
-                  2 / v * std::sin(v / 2) * OMEGA) * quat2_;
+        quat2_ = (std::cos(v / 2.0) * Eigen::Matrix4d::Identity() +
+                  2.0 / v * std::sin(v / 2.0) * OMEGA) * quat2_;
 
         quat2_ = quat2_ / quat2_.norm();
 //        std::cout << "quat2_ :" << quat2_ << std::endl;
@@ -389,7 +391,6 @@ bool TwoFootEkf::NavigationEq() {
      * Update the position and velocity states using the measured specific force,
      * and the newly calculated attitude.
      */
-
 //    Eigen::Vector3d g_t(0,0,para_ptr_->gravity_);//Gravity vector
     Eigen::Vector3d g_t(0, 0, 9.8173);//Gravity vector
     //ToDo:Change this as a constant.
@@ -760,7 +761,8 @@ bool TwoFootEkf::Initial() {
      */
 
 
-    ZEROLIZEMATRIX(x_h_);
+    ZEROLIZEMATRIX(x_h_)
+
 
     //Identity matrix
     ZEROLIZEMATRIX(Id_)
