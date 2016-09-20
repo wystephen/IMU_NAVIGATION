@@ -57,8 +57,8 @@ public:
 //            init_pos_(i) = 0.0;
 //        }
 
-        init_heading1_ = -1.6857;
-        init_heading2_ = 1.6620;
+//        init_heading1_ = -1.6857;
+//        init_heading2_ = 1.6620;
 
         init_pos1_ = Eigen::Vector3d(0, 0, 0);
         init_pos2_ = Eigen::Vector3d(0, 0, 0);

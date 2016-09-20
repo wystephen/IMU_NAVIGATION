@@ -85,8 +85,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" afterPath="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TwoFootContaint.cpp" afterPath="$PROJECT_DIR$/src/TwoFootContaint.cpp" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -112,7 +112,7 @@
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="684">
-                  <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+                  <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
                   <folding>
                     <element signature="e#39#75#0" expanded="true" />
                   </folding>
@@ -120,11 +120,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TwoFootContaint.cpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TwoFootContaint.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="702">
-                  <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+                <state relative-caret-position="486">
+                  <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
@@ -140,11 +140,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
+          <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="504" column="22" selection-start-line="504" selection-start-column="22" selection-end-line="504" selection-end-column="22" />
+                <state relative-caret-position="917">
+                  <caret line="577" column="9" selection-start-line="577" selection-start-column="9" selection-end-line="577" selection-end-column="9" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                   </folding>
@@ -193,8 +193,8 @@
           <file leaf-file-name="SettingPara.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="482">
-                  <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+                <state relative-caret-position="446">
+                  <caret line="59" column="0" selection-start-line="59" selection-start-column="2" selection-end-line="60" selection-end-column="34" />
                   <folding>
                     <element signature="e#91#125#0" expanded="true" />
                   </folding>
@@ -229,10 +229,10 @@
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" />
         <option value="$PROJECT_DIR$/include/Cpp_Extent/MyError.h" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" />
-        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
-        <option value="$PROJECT_DIR$/src/TwoFootContaint.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
+        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
+        <option value="$PROJECT_DIR$/src/TwoFootContaint.cpp" />
       </list>
     </option>
   </component>
@@ -864,14 +864,7 @@
       <workItem from="1474160795587" duration="14428000" />
       <workItem from="1474183791336" duration="8560000" />
       <workItem from="1474256648594" duration="18593000" />
-      <workItem from="1474347355498" duration="21739000" />
-    </task>
-    <task id="LOCAL-00019" summary="pause.">
-      <created>1473823312592</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1473823312592</updated>
+      <workItem from="1474347355498" duration="22422000" />
     </task>
     <task id="LOCAL-00020" summary="Get Value at any time use linear interpolation.">
       <created>1473835819634</created>
@@ -1209,11 +1202,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474378723513</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="A problem in Signal2Bool.">
+      <created>1474379413167</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1474379413167</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166526000" />
+    <option name="totallyTimeSpent" value="167209000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1292,7 +1292,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Some butg." />
     <MESSAGE value="Fixed bug." />
     <MESSAGE value="The new way for test." />
     <MESSAGE value="````" />
@@ -1317,7 +1316,8 @@
     <MESSAGE value="chage setZero function." />
     <MESSAGE value="have change the initial heading." />
     <MESSAGE value="Output distance." />
-    <option name="LAST_COMMIT_MESSAGE" value="Output distance." />
+    <MESSAGE value="A problem in Signal2Bool." />
+    <option name="LAST_COMMIT_MESSAGE" value="A problem in Signal2Bool." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1677,34 +1677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding>
-            <element signature="e#39#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="e#91#125#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1713,13 +1685,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <element signature="e#39#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="504" column="22" selection-start-line="504" selection-start-column="22" selection-end-line="504" selection-end-column="22" />
+        <state relative-caret-position="917">
+          <caret line="577" column="9" selection-start-line="577" selection-start-column="9" selection-end-line="577" selection-end-column="9" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="2" selection-end-line="60" selection-end-column="34" />
+          <folding>
+            <element signature="e#91#125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
