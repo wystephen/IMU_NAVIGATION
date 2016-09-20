@@ -18,8 +18,6 @@
 //name and the line number.
 #define ISDEBUG true
 
-#ifndef IMU_NAVIGATION_TWOFOOTCONTAINT_H
-#define IMU_NAVIGATION_TWOFOOTCONTAINT_H
 
 
 //#define ZEROLIZEMATRIX(m) {\
@@ -229,6 +227,7 @@ bool TwoFootEkf::StateMatrix() {
     double dt(the_time_ - last_time_);
 
     Eigen::MatrixXd u = u_;
+
 
     Eigen::Vector3d f_t1(Quaternion2Rotation(quat1_) *
                          u.block(0, 0, 3, 1));
@@ -658,10 +657,12 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 //
 //        }
 
+        P_ = (P_ + P_.transpose()) * 0.5;
+
 
     }
 
-    P_ = (P_ + P_.transpose()) * 0.5;
+
 
 //    if (without_range_constraint_times_ % 100 == 0) {
 //        std::cout << P_.norm() << std::endl;
@@ -776,4 +777,4 @@ bool TwoFootEkf::Initial() {
     return true;
 }
 
-#endif //IMU_NAVIGATION_TWOFOOTCONTAINT_H
+
