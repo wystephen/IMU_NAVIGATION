@@ -570,20 +570,14 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         /*
          * Time Update
          */
-
-//        std::cout  << "1.1" << std::endl;
         NavigationEq();
 
         //Get State matrix.
-//        std::cout << " 2.1" << std::endl;
         StateMatrix();
 
-//        std::cout << "3.1" << std::endl;
         //Updata covariance matrix
-
         P_ = F_ * P_ * F_.transpose() +
              G_ * Q_ * G_.transpose();
-
 
         /*
          * Zero-velocity Update.
@@ -594,7 +588,6 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
             Eigen::MatrixXd H;
             Eigen::MatrixXd R;
             Eigen::MatrixXd z;
-            //Eigen::MatrixXd dx;
             Eigen::MatrixXd K;
 
             if (zupt1_ && zupt2_) {
@@ -614,34 +607,25 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 R = R2_;
                 z = -x_h_.block(12, 0, 3, 1);
 
-            }
-            //std::cout << "z:" << z << std::endl;
-
+            }\
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
             K = (P_ * H.transpose()) * tmp.inverse();
-            //K = P_ * H.transpose() * R.inverse();
-            //R.cwiseInverse()
 
-//            std::cout << "4.1" << std::endl;
             dx_ = K * z;
 
             if (std::isnan(dx_(2))) {
                 std::cout << "nan" << std::endl;
             }
 
-//            std::cout << dx_ << std::endl;
 
             P_ = (Id_ - K * H) * P_;
 
             ComputeInternalStates();
         }//End Zero-velocity constaint.
-//        std::cout << "5.1" << std::endl;
-
-//        std::cout << "u1:" << x_h_.block(0, 0, 3, 1).transpose() << std::endl;
-//        std::cout << "u2:" << x_h_.block(9, 0, 3, 1).transpose() << std::endl;
 
 
         without_range_constraint_times_++;
+        //ToDo:The code use to range constraint.
 //        if (para_ptr_->IsRangeConstraint &&
 //            without_range_constraint_times_ > para_ptr_->RangConstraintIntervel_
 //            && (x_h_.block(0, 0, 3, 1) - x_h_.block(9, 0, 3, 1)).norm() >
@@ -653,18 +637,16 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
 //
 //        }
 
-//        std::cout << "6.1" << std::endl;
-
 
     }
 
     P_ = (P_ + P_.transpose()) * 0.5;
 
-    if (without_range_constraint_times_ % 100 == 0) {
-        std::cout << P_.norm() << std::endl;
-        std::cout << "------------------------------" << std::endl;
-
-    }
+//    if (without_range_constraint_times_ % 100 == 0) {
+//        std::cout << P_.norm() << std::endl;
+//        std::cout << "------------------------------" << std::endl;
+//
+//    }
 
 
     return x_h_;
