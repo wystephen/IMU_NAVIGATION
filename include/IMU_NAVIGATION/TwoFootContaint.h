@@ -183,16 +183,22 @@ bool TwoFootEkf::ComputeInternalStates() {
 
     R2 = (Eigen::Matrix3d::Identity() - omega) * R2;
 
+
+
+    /*
+     * Get the correct oriention of the imu.
+     */
+    //ToDo:Test this segment.
+//    x_h_(6) = std::atan2(R1(2, 1), R1(2, 2));
+//    x_h_(7) = -std::atan(R1(2, 0) / std::sqrt(1 - R1(2, 0) * R1(2, 0)));
+//    x_h_(8) = std::atan2(R1(1, 0), R1(0, 0));
+//
+//    x_h_(15) = std::atan2(R2(2, 1), R2(2, 2));
+//    x_h_(16) = -std::atan(R2(2, 0) / std::sqrt(1 - R2(2, 0) * R2(2, 0)));
+//    x_h_(17) = std::atan2(R2(1, 0), R2(0, 0));
+
     quat1_ = Rotation2Quaternion(R1);
     quat2_ = Rotation2Quaternion(R2);
-
-    x_h_(6) = std::atan2(R1(2, 1), R1(2, 2));
-    x_h_(7) = -std::atan(R1(2, 0) / std::sqrt(1 - R1(2, 0) * R1(2, 0)));
-    x_h_(8) = std::atan2(R1(1, 0), R1(0, 0));
-
-    x_h_(15) = std::atan2(R2(2, 1), R2(2, 2));
-    x_h_(16) = -std::atan(R2(2, 0) / std::sqrt(1 - R2(2, 0) * R2(2, 0)));
-    x_h_(17) = std::atan2(R2(1, 0), R2(0, 0));
 
 
     return true;
