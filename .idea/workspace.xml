@@ -3,7 +3,7 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
     <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h" line="61" />
-    <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" line="449" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" line="466" mnemonic="0" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
@@ -105,14 +105,14 @@
     <favorites_list name="IMU_NAVIGATION" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7206851">
+    <splitter split-orientation="horizontal" split-proportion="0.75757575">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="486">
-                  <caret line="52" column="15" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
+                <state relative-caret-position="684">
+                  <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
                   <folding>
                     <element signature="e#39#75#0" expanded="true" />
                   </folding>
@@ -120,11 +120,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TwoFootContaint.cpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="TwoFootContaint.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+                <state relative-caret-position="180">
+                  <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -133,18 +133,18 @@
           <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+                <state relative-caret-position="342">
+                  <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-128">
-                  <caret line="647" column="50" selection-start-line="647" selection-start-column="50" selection-end-line="647" selection-end-column="50" />
+                <state relative-caret-position="519">
+                  <caret line="244" column="24" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                   </folding>
@@ -183,8 +183,8 @@
           <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="559">
-                  <caret line="38" column="40" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="40" />
+                <state relative-caret-position="2044">
+                  <caret line="172" column="39" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
@@ -226,11 +226,11 @@
         <option value="$PROJECT_DIR$/src/ImuDataPreprocess.cpp" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/DataSync.cpp" />
-        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h" />
         <option value="$PROJECT_DIR$/include/Cpp_Extent/MyError.h" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h" />
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
         <option value="$PROJECT_DIR$/src/TwoFootContaint.cpp" />
       </list>
@@ -864,21 +864,7 @@
       <workItem from="1474160795587" duration="14428000" />
       <workItem from="1474183791336" duration="8560000" />
       <workItem from="1474256648594" duration="18593000" />
-      <workItem from="1474347355498" duration="12483000" />
-    </task>
-    <task id="LOCAL-00013" summary="Vector is Ok!&#10;">
-      <created>1473773435545</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1473773435545</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Vector is Ok!&#10;">
-      <created>1473773474785</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1473773474785</updated>
+      <workItem from="1474347355498" duration="18639000" />
     </task>
     <task id="LOCAL-00015" summary="Subscriber.">
       <created>1473775974865</created>
@@ -1209,34 +1195,48 @@
       <option name="project" value="LOCAL" />
       <updated>1474369428500</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Multi test.">
+      <created>1474370078494</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1474370078495</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Add test().">
+      <created>1474374337006</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1474374337006</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157270000" />
+    <option name="totallyTimeSpent" value="163426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19568823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.52296454" sideWeight="0.49209487" order="7" side_tool="false" content_ui="tabs" x="2699" y="886" width="1518" height="152" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.52296454" sideWeight="0.49209487" order="7" side_tool="false" content_ui="tabs" x="2331" y="870" width="1518" height="203" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22860125" sideWeight="0.5092227" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16805845" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.4164927" sideWeight="0.49077734" order="2" side_tool="false" content_ui="tabs" x="2697" y="199" width="1134" height="665" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16086236" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.4164927" sideWeight="0.49077734" order="2" side_tool="false" content_ui="tabs" x="2711" y="157" width="1134" height="665" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19568823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16086236" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3966597" sideWeight="0.49604744" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39561588" sideWeight="0.49604744" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1292,8 +1292,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Pause." />
-    <MESSAGE value="Navigation Equation." />
     <MESSAGE value="State Matrix." />
     <MESSAGE value="Convariance update." />
     <MESSAGE value="The inverse ." />
@@ -1317,17 +1315,20 @@
     <MESSAGE value="Add R to x_h." />
     <MESSAGE value="Delete the update of the x_h according to the rotation get by dx_." />
     <MESSAGE value="Some algorithm reduce code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some algorithm reduce code." />
+    <MESSAGE value="Multi test." />
+    <MESSAGE value="Add test()." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add test()." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="32" />
+      <option name="time" value="35" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="edf2.x_h_.m_storage.m_data.array" />
+        <watch expression="q" />
       </configuration>
     </watches-manager>
   </component>
@@ -1660,14 +1661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -1686,28 +1679,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="38" column="40" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="40" />
+        <state relative-caret-position="342">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="647" column="50" selection-start-line="647" selection-start-column="50" selection-end-line="647" selection-end-column="50" />
-          <folding>
-            <element signature="e#91#111#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2044">
+          <caret line="172" column="39" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/imu_data_preprocess.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="52" column="15" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
+        <state relative-caret-position="684">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
           <folding>
             <element signature="e#39#75#0" expanded="true" />
           </folding>
@@ -1716,9 +1707,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TwoFootContaint.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        <state relative-caret-position="180">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="244" column="24" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
+          <folding>
+            <element signature="e#91#111#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

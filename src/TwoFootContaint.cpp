@@ -22,25 +22,25 @@ int main(int argc, char **argv) {
 
     SettingPara para(true);
 
-//    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-//    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
-//    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
-//    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
+    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
+    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
 
-    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
-    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
-    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+//    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
+//    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+//    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
+//    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
 
     double time = 0.0;
 
-
-
-    std::cout << r_u1.rows_ << std::endl;
-    std::cout << r_u2.rows_ << std::endl;
-
-    std::cout << r_zupt1.rows_ << std::endl;
-    std::cout << r_zupt2.rows_ << std::endl;
+//
+//
+//    std::cout << r_u1.rows_ << std::endl;
+//    std::cout << r_u2.rows_ << std::endl;
+//
+//    std::cout << r_zupt1.rows_ << std::endl;
+//    std::cout << r_zupt2.rows_ << std::endl;
 
     for (int j(0); j < 10; ++j) {
         TwoFootEkf edf2(para);
@@ -73,9 +73,11 @@ int main(int argc, char **argv) {
 
     }
 
-    for (int i(0); i < 10; ++i) {
-        edf2.test();
-    }
+//    for (int i(0); i < 10; ++i) {
+//        TwoFootEkf edf2(para);
+//        std::cout << "-----" << std::endl;
+//        edf2.test();
+//    }
 
     std::cout << "END" << std::endl;
 

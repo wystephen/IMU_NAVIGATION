@@ -50,6 +50,11 @@ public:
                                 double time);
 
 
+    /*
+     * Function use for test.
+     */
+    void test();
+
 protected:
 
     SettingPara *para_ptr_;//Use the pointer point to a global value .
@@ -136,17 +141,19 @@ protected:
     bool ComputeInternalStates();
 
 
-    /*
-     * Function use for test.
-     */
-    void test();
 private:
 
 };
 
 void TwoFootEkf::test() {
-    Eigen::Vector4d quart(0.2, 0.2, 0.2, 1);
-    std::cout << Rotation2Quaternion(Quaternion2Rotation(quart));
+
+    Eigen::Vector4d quart(0.0, 0.1, 0.2, 0);
+    std::cout << quart.transpose() << std::endl;
+
+    Eigen::Vector4d q = Rotation2Quaternion(Quaternion2Rotation(quart));
+
+    std::cout << (q - quart).transpose() << std::endl;
+
 }
 
 bool TwoFootEkf::ComputeInternalStates() {
@@ -618,6 +625,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 z = -x_h_.block(12, 0, 3, 1);
 
             }\
+
             Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
             K = (P_ * H.transpose()) * tmp.inverse();
 
