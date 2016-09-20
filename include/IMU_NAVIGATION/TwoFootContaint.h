@@ -502,7 +502,7 @@ bool TwoFootEkf::Signal2Bool(int signal) {
 
     if (signal == 0) {
         zupt1_ = false;
-        zupt2_ = true;
+        zupt2_ = false;
         return true;
     } else if (signal == 1) {
         zupt1_ = true;
@@ -625,10 +625,12 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                 R = R2_;
                 z = -x_h_.block(12, 0, 3, 1);
 
-            }\
+            } else {
+                MYERROR("This code shound be run.")
+            }
 
-            Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
-            K = (P_ * H.transpose()) * tmp.inverse();
+            //Eigen::MatrixXd tmp(H * P_ * H.transpose() + R);
+            K = (P_ * H.transpose()) * (H * P_ * H.transpose() + R).inverse();
 
             dx_ = K * z;
 
