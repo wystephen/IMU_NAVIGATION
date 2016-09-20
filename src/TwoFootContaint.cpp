@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 //    std::cout << r_zupt1.rows_ << std::endl;
 //    std::cout << r_zupt2.rows_ << std::endl;
 
-    for (int j(0); j < 20; ++j) {
+    for (int j(0); j < 10; ++j) {
         TwoFootEkf edf2(para);
         Eigen::MatrixXd x_h_;
         for (int i(0); i < r_u1.rows_; ++i) {
