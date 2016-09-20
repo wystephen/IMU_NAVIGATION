@@ -135,9 +135,19 @@ protected:
      */
     bool ComputeInternalStates();
 
+
+    /*
+     * Function use for test.
+     */
+    void test();
 private:
 
 };
+
+void TwoFootEkf::test() {
+    Eigen::Vector4d quart(0.2, 0.2, 0.2, 1);
+    std::cout << Rotation2Quaternion(Quaternion2Rotation(quart));
+}
 
 bool TwoFootEkf::ComputeInternalStates() {
 
@@ -549,7 +559,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         time_deque_.push_back(time);
         //Initial nav equations.
         if (InitNavEq()) {
-            std::cout << "Initial navigation equation," << x_h_ << std::endl;
+//            std::cout << "Initial navigation equation," << x_h_ << std::endl;
         }
         last_time_ = 0.0;
         the_time_ = 0.0 - para_ptr_->Ts_;

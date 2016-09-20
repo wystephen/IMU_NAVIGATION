@@ -73,6 +73,10 @@ int main(int argc, char **argv) {
 
     }
 
+    for (int i(0); i < 10; ++i) {
+        edf2.test();
+    }
+
     std::cout << "END" << std::endl;
 
     std::cout << M_PI << std::endl;

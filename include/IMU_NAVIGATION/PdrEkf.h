@@ -102,13 +102,14 @@ Eigen::Matrix3d PdrEkf::Rotation2b(Eigen::Vector3d ang) {
 
 
 Eigen::Vector4d PdrEkf::Rotation2Quaternion(Eigen::Matrix3d R) {
-    double T(1 + R(0, 0) + R(1, 1) + R(2, 2));
+    long double T(1 + R(0, 0) + R(1, 1) + R(2, 2));
     double S(0.0);
 
     double qw(0.0), qx(0.0), qy(0.0), qz(0.0);
 
     if (T > 1e-8) {
         S = 0.5 / std::sqrt(T);
+
 
         qw = 0.25 / S;
         qx = (R(2, 1) - R(1, 2)) * S;
@@ -119,11 +120,11 @@ Eigen::Vector4d PdrEkf::Rotation2Quaternion(Eigen::Matrix3d R) {
         if ((R(0, 0) > R(1, 1)) && (R(0, 0) > R(2, 2))) {
 
             S = std::sqrt(1 + R(0, 0) - R(1, 1) - R(2, 2)) * 2.0;
-
             qw = (R(2, 1) - R(1, 2)) / S;
             qx = 0.25 * S;
             qy = (R(0, 1) + R(1, 0)) / S;
             qz = (R(0, 2) + R(2, 0)) / S;
+
         } else if (R(1, 1) > R(2, 2)) {
             S = std::sqrt(1 + R(1, 1) - R(0, 0) - R(2, 2)) * 2;
 
