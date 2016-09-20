@@ -3,7 +3,7 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h" />
     <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h" line="61" />
-    <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" line="462" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" line="449" mnemonic="0" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
@@ -104,7 +104,7 @@
     <favorites_list name="IMU_NAVIGATION" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8267457">
+    <splitter split-orientation="horizontal" split-proportion="0.7206851">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="imu_data_preprocess.h" pinned="false" current-in-tab="false">
@@ -142,8 +142,8 @@
           <file leaf-file-name="TwoFootContaint.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="190" column="29" selection-start-line="190" selection-start-column="29" selection-end-line="190" selection-end-column="29" />
+                <state relative-caret-position="378">
+                  <caret line="564" column="24" selection-start-line="564" selection-start-column="24" selection-end-line="564" selection-end-column="24" />
                   <folding>
                     <element signature="e#91#111#0" expanded="true" />
                   </folding>
@@ -179,17 +179,17 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="false">
+          <file leaf-file-name="PdrEkf.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1278">
-                  <caret line="71" column="7" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="7" />
+                <state relative-caret-position="559">
+                  <caret line="38" column="40" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="40" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SettingPara.h" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SettingPara.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/SettingPara.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="464">
@@ -863,14 +863,7 @@
       <workItem from="1474160795587" duration="14428000" />
       <workItem from="1474183791336" duration="8560000" />
       <workItem from="1474256648594" duration="18593000" />
-      <workItem from="1474347355498" duration="10891000" />
-    </task>
-    <task id="LOCAL-00011" summary="Error in complily DataSync.">
-      <created>1473689814182</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1473689814182</updated>
+      <workItem from="1474347355498" duration="11829000" />
     </task>
     <task id="LOCAL-00012" summary="Vector is Ok!&#10;">
       <created>1473690981405</created>
@@ -1208,11 +1201,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474368028378</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Delete the update of the x_h according to the rotation get by dx_.">
+      <created>1474368513086</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1474368513086</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155678000" />
+    <option name="totallyTimeSpent" value="156616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1225,7 +1225,7 @@
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22860125" sideWeight="0.5092227" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16805845" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.4164927" sideWeight="0.49077734" order="2" side_tool="false" content_ui="tabs" x="2697" y="199" width="1134" height="665" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.4164927" sideWeight="0.49077734" order="2" side_tool="false" content_ui="tabs" x="2697" y="199" width="1134" height="665" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16086236" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1291,7 +1291,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Modified the readme.md&#10;" />
     <MESSAGE value="INITIAL ." />
     <MESSAGE value="Pause." />
     <MESSAGE value="Navigation Equation." />
@@ -1316,7 +1315,8 @@
     <MESSAGE value="Unstable result of the algorithm." />
     <MESSAGE value="Unkonw error." />
     <MESSAGE value="Add R to x_h." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add R to x_h." />
+    <MESSAGE value="Delete the update of the x_h according to the rotation get by dx_." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete the update of the x_h according to the rotation get by dx_." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1649,14 +1649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="71" column="7" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/Zero_Detecter.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
@@ -1711,10 +1703,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/PdrEkf.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="190" column="29" selection-start-line="190" selection-start-column="29" selection-end-line="190" selection-end-column="29" />
+        <state relative-caret-position="378">
+          <caret line="564" column="24" selection-start-line="564" selection-start-column="24" selection-end-line="564" selection-end-column="24" />
           <folding>
             <element signature="e#91#111#0" expanded="true" />
           </folding>

@@ -271,20 +271,10 @@ bool TwoFootEkf::StateMatrix() {
 }
 
 bool TwoFootEkf::NavigationEq() {
+
     Eigen::VectorXd u1(6), u2(6);
 
-
-    //std::cout << u_deque_.size() << std::endl;
-    //std::cout <<
-    //
-    // .end()->rows() << " x " << u_deque_.end()->cols() << std::endl;
-
-    //Eigen::MatrixXd u = u_deque_.at(u_deque_.size() - 1);
-
-//    std::cout << "size of u: " << u.rows() << " x " << u.cols() << std::endl;
-
     u1 = u_.block(0, 0, 6, 1);
-//    std::cout << "block 1" << std::endl;
     u2 = u_.block(6, 0, 6, 1);
 
 
@@ -295,9 +285,6 @@ bool TwoFootEkf::NavigationEq() {
     Eigen::Vector3d w_tb;
     double v(0.0);
     double P(0.0), Q(0.0), R(0.0), dt(the_time_ - last_time_);
-
-
-
 
 
     /*
@@ -539,15 +526,23 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
                   << u.rows() << " x " << u.cols() << std::endl;
         MYERROR("HERE");
     }
-//    std::cout << "0" << std::endl;
 
 
+    /*
+     * Push data into the vector and not compute other data.
+     */
     if (u_deque_.size() < para_ptr_->navigation_initial_min_length_ - 1) {
         u_deque_.push_back(u);
         status_deque_.push_back(detector_signal);
         time_deque_.push_back(time);
         return Eigen::MatrixXd::Zero(18, 1);
     }
+
+    /*
+     * Initial data use some data.
+     * And the data save in the deque also use to compute
+     * the EKF.
+     */
     if (u_deque_.size() == para_ptr_->navigation_initial_min_length_ - 1) {
         u_deque_.push_back(u);
         status_deque_.push_back(detector_signal);
@@ -566,6 +561,9 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
         return x_h_;
     }
 
+    /*
+     * Filter algorithm.
+     */
     if (u_deque_.size() >= para_ptr_->navigation_initial_min_length_) {
         //Navigation equations
 
