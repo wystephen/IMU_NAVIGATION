@@ -9,6 +9,10 @@ import ros
 
 import matplotlib.pylab as plt
 
+from Setting import settings
+
+from PdrEkf import ZUPTaidedIns as INS
+
 if __name__ == '__main__':
 
     # Load data
@@ -18,6 +22,9 @@ if __name__ == '__main__':
     zupt1 = np.loadtxt("../Data/zupt1.csv", dtype=int, delimiter=",")
     zupt2 = np.loadtxt("../Data/zupt2.csv", dtype=int, delimiter=",")
 
-    for index in range(u1.shape(0)):
+    para = settings()
+    ins_filter = INS(para)
 
-    print u1.shape;
+
+    # for index in range(u1.shape[0]):
+    #     print (index)
