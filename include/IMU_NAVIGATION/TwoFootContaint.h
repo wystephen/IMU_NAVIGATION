@@ -59,6 +59,9 @@ protected:
 
     SettingPara *para_ptr_;//Use the pointer point to a global value .
 
+
+    double dt_ = 0.0;
+
     Eigen::Matrix<double, 18, 1> x_h_ = Eigen::VectorXd(18);
 
     Eigen::VectorXd dx_ = Eigen::VectorXd(18);//
@@ -224,7 +227,7 @@ bool TwoFootEkf::ComputeInternalStates() {
 
 bool TwoFootEkf::StateMatrix() {
 
-    double dt(the_time_ - last_time_);
+    //dt_=(the_time_ - last_time_);
 
     Eigen::MatrixXd u = u_;
 
@@ -257,7 +260,6 @@ bool TwoFootEkf::StateMatrix() {
     St1(2, 2) = 0.0;
     St2(2, 2) = 0.0;
 
-    Eigen::Matrix3d Zero(Eigen::Matrix3d::Zero());
 
     Eigen::Matrix3d Id(Eigen::Matrix3d::Identity());
 
@@ -277,12 +279,12 @@ bool TwoFootEkf::StateMatrix() {
     G_.block(12, 6, 3, 3) = Quaternion2Rotation(quat2_);
     G_.block(15, 9, 3, 3) = -Quaternion2Rotation(quat2_);
 
-    F_ = dt * F_;
+    F_ = dt_ * F_;
     for (int i(0); i < F_.cols(); ++i) {
         F_(i, i) += 1.0;
     }
 
-    G_ = dt * G_;
+    G_ = dt_ * G_;
 
     return true;
 
@@ -302,7 +304,7 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::Vector3d w_tb;
     double v(0.0);
-    double P(0.0), Q(0.0), R(0.0), dt(the_time_ - last_time_);
+    double P(0.0), Q(0.0), R(0.0);
 
 
     /*
@@ -311,15 +313,15 @@ bool TwoFootEkf::NavigationEq() {
 
     //For quat1_
     w_tb = u1.block(3, 0, 3, 1);
-    v = w_tb.norm() * dt;
+    v = w_tb.norm() * dt_;
 
     Eigen::Matrix4d OMEGA;
 
-    if (std::abs(v) > 0.000001) {
+    if (std::abs(v) > 1e-12) {
 
-        P = w_tb(0) * dt * 0.5;
-        Q = w_tb(1) * dt * 0.5;
-        R = w_tb(2) * dt * 0.5;
+        P = w_tb(0) * dt_ * 0.5;
+        Q = w_tb(1) * dt_ * 0.5;
+        R = w_tb(2) * dt_ * 0.5;
 
 
         OMEGA(0, 0) = 0;
@@ -351,12 +353,12 @@ bool TwoFootEkf::NavigationEq() {
 
     //For quat2_
     w_tb = u2.block(3, 0, 3, 1);
-    v = w_tb.norm() * dt;
+    v = w_tb.norm() * dt_;
 
-    if (std::abs(v) > 0.000001) {
-        P = w_tb(0) * dt * 0.5;
-        Q = w_tb(1) * dt * 0.5;
-        R = w_tb(2) * dt * 0.5;
+    if (std::abs(v) > 1e-12) {
+        P = w_tb(0) * dt_ * 0.5;
+        Q = w_tb(1) * dt_ * 0.5;
+        R = w_tb(2) * dt_ * 0.5;
 
         OMEGA(0, 0) = 0;
         OMEGA(0, 1) = R;
@@ -410,14 +412,14 @@ bool TwoFootEkf::NavigationEq() {
     for (int i(0); i < A.cols(); ++i) {
         A(i, i) = 1.0;
     }
-    A(0, 3) = dt;
-    A(1, 4) = dt;
-    A(2, 5) = dt;
+    A(0, 3) = dt_;
+    A(1, 4) = dt_;
+    A(2, 5) = dt_;
 
     ZEROLIZEMATRIX(B)
 
     B.block(0, 0, 3, 3) = Eigen::Matrix3d::Zero();
-    B.block(3, 0, 3, 3) = dt * Eigen::Matrix3d::Identity();
+    B.block(3, 0, 3, 3) = dt_ * Eigen::Matrix3d::Identity();
 
     x_h_.block(0, 0, 6, 1) = A * last_x_h.block(0, 0, 6, 1) + B * acc_t;
     x_h_.block(9, 0, 6, 1) = A * last_x_h.block(9, 0, 6, 1) + B * acc_t2;
@@ -531,6 +533,8 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     //Update the time stamp.
     last_time_ = the_time_;
     the_time_ = time;
+
+    dt_ = para_ptr_->Ts_;
 
     Signal2Bool(detector_signal);
 

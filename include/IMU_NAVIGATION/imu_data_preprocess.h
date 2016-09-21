@@ -136,8 +136,6 @@ public:
             pub1_.publish(imu1);
             pub2_.publish(imu2);
 
-            usleep(100000);
-
 
 
         }

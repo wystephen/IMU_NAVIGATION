@@ -67,12 +67,12 @@ public:
 
         //Ts_ = 0.0012;
 
-//        sigma_a_ = 0.0350  ;
-//        sigma_g_ = 0.0061;
-//
-//        sigma_acc_ = Eigen::Vector3d(2.8, 2.8, 2.8);
-//        sigma_gyro_ = Eigen::Vector3d(0.0698, 0.0698, 0.0698);
-//        sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05);
+        sigma_a_ = 0.0350;
+        sigma_g_ = 0.0061;
+
+        sigma_acc_ = Eigen::Vector3d(2.8, 2.8, 2.8);
+        sigma_gyro_ = Eigen::Vector3d(0.0698, 0.0698, 0.0698);
+        sigma_vel_ = Eigen::Vector3d(0.05, 0.05, 0.05);
 
 //        sigma_a_ = 0.0350  *10;
 //        sigma_g_ = 0.0061*10;
