@@ -80,10 +80,10 @@ class ZUPTaidedIns:
         # print(self.P)
 
         self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2))
-        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2));
-        self.R12 = np.zeros([6, 3])
+        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2))
+        self.R12 = np.zeros([6, 6])
         self.R12[0:3, 0:3] = self.R1
-        self.R12[3:6, 0:3] = self.R2
+        self.R12[3:6, 3:6] = self.R2
 
         # print(self.R12)
 
@@ -104,7 +104,8 @@ class ZUPTaidedIns:
         self.H2[0:3, 12:15] = np.diagflat(np.transpose([1.0, 1.0, 1.0]))
 
         self.H12 = np.zeros([6, 18])
-        self.H12 = self.H1 + self.H2
+        self.H12[0:3, :] = self.H1
+        self.H12[3:6, :] = self.H2
 
         # print(self.H12)
 
@@ -214,12 +215,12 @@ class ZUPTaidedIns:
         self.P = (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
 
-        if zupt1 is True or zupt2 is True:
-            if zupt1 is True and not (zupt2 is True):
+        if zupt1 == 1 or zupt2 == 1:
+            if zupt1 == 1 and not (zupt2 == 1):
                 H = self.H1
                 R = self.R1
                 z = -self.x_h[3:6]
-            elif not (zupt1 is True) and zupt2 is True:
+            elif not (zupt1 == 1) and zupt2 == 1:
                 H = self.H2
                 R = self.R2
                 z = -self.x_h[12:15]
@@ -229,6 +230,8 @@ class ZUPTaidedIns:
                 z = np.zeros([6, 1])
                 z[0:3] = -self.x_h[3:6]
                 z[3:6] = -self.x_h[12:15]
+
+            # print (R.shape)
 
             self.K = self.P.dot(np.transpose(H)). \
                 dot(np.linalg.pinv(
@@ -362,7 +365,7 @@ class ZUPTaidedIns:
 
         return F, G
 
-    def comp_interneal_states(self, x_in, dx, q_in, q_in2):
+    def comp_internal_states(self, x_in, dx, q_in, q_in2):
 
         R = self.q2dcm(q_in)
         R2 = self.q2dcm(q_in2)

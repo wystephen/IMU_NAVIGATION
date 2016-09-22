@@ -99,7 +99,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474528330930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
+    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474530632946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -112,11 +112,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5878704">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Data_Test.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Data_Test.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/Data_Test.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="487">
-                  <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+                  <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
                   <folding>
                     <element signature="e#63#81#0" expanded="true" />
                   </folding>
@@ -124,11 +124,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+            <entry file="file:///usr/lib/pymodules/python2.7/matplotlib/projections/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="319" selection-end-column="38" />
+                <state relative-caret-position="185">
+                  <caret line="230" column="39" selection-start-line="230" selection-start-column="39" selection-end-line="230" selection-end-column="39" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -199,8 +209,8 @@
         <option value="$PROJECT_DIR$/include/IMU_NAVIGATION/TwoFootContaint.h" />
         <option value="$PROJECT_DIR$/src/TwoFootContaint.cpp" />
         <option value="$PROJECT_DIR$/script/Setting.py" />
-        <option value="$PROJECT_DIR$/script/Data_Test.py" />
         <option value="$PROJECT_DIR$/script/PdrEkf.py" />
+        <option value="$PROJECT_DIR$/script/Data_Test.py" />
       </list>
     </option>
   </component>
@@ -839,13 +849,6 @@
       <workItem from="1474347355498" duration="23936000" />
       <workItem from="1474384736741" duration="13895000" />
     </task>
-    <task id="LOCAL-00026" summary="Add paramenter.">
-      <created>1473909373689</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1473909373689</updated>
-    </task>
     <task id="LOCAL-00027" summary="Zero velocity detector is Error!!!!">
       <created>1473929985197</created>
       <option name="number" value="00027" />
@@ -1182,7 +1185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474425651614</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="finished.">
+      <created>1474528356628</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1474528356629</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1207,8 +1217,8 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71085596" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31002086" sideWeight="0.49077734" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.112769485" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31002086" sideWeight="0.49077734" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16639027" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39561588" sideWeight="0.49604744" order="3" side_tool="false" content_ui="tabs" />
@@ -1275,7 +1285,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Checked the states matrix." />
     <MESSAGE value="Checked the ComputeInternalStates" />
     <MESSAGE value="Checked the PdrEkf." />
     <MESSAGE value="``" />
@@ -1300,7 +1309,8 @@
     <MESSAGE value="Add  nav_msgs::odometry." />
     <MESSAGE value="Use python ." />
     <MESSAGE value="Setting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting." />
+    <MESSAGE value="finished." />
+    <option name="LAST_COMMIT_MESSAGE" value="finished." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1323,13 +1333,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zero_Detecter.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ImuDataPreprocess.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1664,22 +1667,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/Data_Test.py">
+    <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="185">
+          <caret line="230" column="39" selection-start-line="230" selection-start-column="39" selection-end-line="230" selection-end-column="39" />
           <folding>
-            <element signature="e#63#81#0" expanded="true" />
+            <element signature="e#63#91#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
+    <entry file="file:///usr/lib/pymodules/python2.7/matplotlib/projections/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="319" selection-end-column="38" />
+        <state relative-caret-position="210">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/Data_Test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
           <folding>
-            <element signature="e#63#91#0" expanded="true" />
+            <element signature="e#63#81#0" expanded="true" />
           </folding>
         </state>
       </provider>
