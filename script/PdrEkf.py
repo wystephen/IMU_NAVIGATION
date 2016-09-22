@@ -23,6 +23,7 @@ class ZUPTaidedIns:
 
         # print(f_u,f_v,f_w)
         roll = math.atan2(-f_v, -f_w)  # ToDo:May be wrroy
+        roll = math.atan2(-f_w, -f_v)
         pitch = math.atan2(f_u, math.sqrt(f_v ** 2 + f_w ** 2))
 
         attitude = [roll, pitch, self.para.init_heading1]
@@ -110,7 +111,8 @@ class ZUPTaidedIns:
         # print(self.H12)
 
     def init_vec(self, P):
-        self.Id = np.zeros_like(self.P)
+        self.Id = np.diagflat(np.ones(self.P.shape[0]))
+
 
     def Rt2b(self, ang):
         cr = math.cos(ang[0])

@@ -51,8 +51,18 @@ if __name__ == '__main__':
     plt.plot(all_x[5, :], 'b')
 
     plt.figure(3)
+    plt.plot(u1[:, 0], 'r')
+    plt.plot(u1[:, 1], 'g')
+    plt.plot(u1[:, 2], 'b')
+
+    plt.figure(4)
     plt.plot(all_x[12, :], 'r')
     plt.plot(all_x[13, :], 'g')
     plt.plot(all_x[14, :], 'b')
+
+    plt.figure(5)
+    plt.plot(u2[:, 0], 'r')
+    plt.plot(u2[:, 1], 'g')
+    plt.plot(u2[:, 2], 'b')
 
     plt.show()
