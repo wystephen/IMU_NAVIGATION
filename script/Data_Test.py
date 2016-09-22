@@ -25,6 +25,10 @@ if __name__ == '__main__':
     para = settings()
     ins_filter = INS(para)
 
+    ins_filter.init_Nav_eq(u1[1:20, :], u2[1:20, :])
 
-    # for index in range(u1.shape[0]):
-    #     print (index)
+    # print(ins_filter.x_h,ins_filter.quat1,ins_filter.quat2)
+
+
+    for index in range(u1.shape[0]):
+        ins_filter.GetPosition(u1[index, :], u2[index, :], zupt1[index], zupt2[index])
