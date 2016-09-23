@@ -146,7 +146,7 @@ class ZUPTaidedIns:
             qy = (R[0, 2] - R[2, 0]) * S
             qz = (R[1, 0] - R[0, 1]) * S
         else:
-            if (R[0, 0] > R[1, 1] and R[0, 0] > R[2, 2]):
+            if (R[0, 0] > R[1, 1]) and (R[0, 0] > R[2, 2]):
                 S = math.sqrt(1 + R[0, 0] - R[1, 1] - R[2, 2]) * 2.0
 
                 qw = (R[2, 1] - R[1, 2]) / S
@@ -219,6 +219,8 @@ class ZUPTaidedIns:
 
         self.P = (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
+
+        self.P = self.P * 15.0
 
         if zupt1 == 1 or zupt2 == 1:
             #print (11)
