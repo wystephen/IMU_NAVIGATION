@@ -23,9 +23,7 @@ class ZUPTaidedIns:
 
         # print(f_u,f_v,f_w)
         roll = math.atan2(-f_v, -f_w)  # ToDo:May be wrroy
-        roll = math.atan2(-f_w, -f_v)
         pitch = math.atan2(f_u, math.sqrt(f_v ** 2 + f_w ** 2))
-        pitch = math.atan2(math.sqrt(f_v ** 2 + f_w ** 2.0), f_u)
 
         attitude = [roll, pitch, self.para.init_heading1]
         attitude = np.transpose(attitude)
@@ -45,9 +43,7 @@ class ZUPTaidedIns:
 
         # print(f_u,f_v,f_w)
         roll = math.atan2(-f_v, -f_w)  # ToDo:May be wrroy
-        roll = math.atan2(-f_w, -f_v)
         pitch = math.atan2(f_u, math.sqrt(f_v ** 2 + f_w ** 2))
-        pitch = math.atan2(math.sqrt(f_v ** 2 + f_w ** 2.0), f_u)
 
 
         attitude = [roll, pitch, self.para.init_heading2]
