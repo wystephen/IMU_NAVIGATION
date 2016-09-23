@@ -28,6 +28,14 @@ if __name__ == '__main__':
     para = settings()
     ins_filter = INS(para)
 
+    # the_len = 35000
+    # u1 = u1[1:the_len,:]
+    # u2 = u2[1:the_len,:]
+
+
+    # u1[:,3:6] = u1[:,3:6] * np.pi / 180.0
+    # u2[:,3:6] = u2[:,3:6] * np.pi / 180.0
+
     ins_filter.init_Nav_eq(u1[1:20, :], u2[1:20, :])
 
     # print(ins_filter.x_h,ins_filter.quat1,ins_filter.quat2)
@@ -47,29 +55,53 @@ if __name__ == '__main__':
     plt.plot(all_x[0, :], all_x[1, :], all_x[2, :], 'r')
     plt.plot(all_x[9, :], all_x[10, :], all_x[11, :], 'b')
 
-    plt.figure(2)
+    plt.figure(12)
 
     plt.plot(all_x[3, :], 'r')
     plt.plot(all_x[4, :], 'g')
     plt.plot(all_x[5, :], 'b')
 
-    plt.figure(3)
+    plt.figure(13)
     plt.plot(u1[:, 0], 'r')
     plt.plot(u1[:, 1], 'g')
     plt.plot(u1[:, 2], 'b')
 
-    plt.plot(zupt1[:], 'y')
+    plt.plot(zupt1[:] * 10.0, 'y')
 
-    plt.figure(4)
+    plt.figure(14)
+
+    plt.plot(all_x[6, :], 'r')
+    plt.plot(all_x[7, :], 'g')
+    plt.plot(all_x[8, :], 'b')
+
+    plt.figure(15)
+
+    plt.plot(u1[:, 3], 'r')
+    plt.plot(u1[:, 4], 'g')
+    plt.plot(u1[:, 5], 'b')
+
+    plt.figure(22)
     plt.plot(all_x[12, :], 'r')
     plt.plot(all_x[13, :], 'g')
     plt.plot(all_x[14, :], 'b')
 
-    plt.figure(5)
+    plt.figure(23)
     plt.plot(u2[:, 0], 'r')
     plt.plot(u2[:, 1], 'g')
     plt.plot(u2[:, 2], 'b')
 
-    plt.plot(zupt2[:], 'y')
+    plt.plot(zupt2[:] * 10.0, 'y')
+
+    plt.figure(24)
+
+    plt.plot(all_x[15, :], 'r')
+    plt.plot(all_x[16, :], 'g')
+    plt.plot(all_x[17, :], 'b')
+
+    plt.figure(25)
+
+    plt.plot(u2[:, 3], 'r')
+    plt.plot(u2[:, 4], 'g')
+    plt.plot(u2[:, 5], 'b')
 
     plt.show()

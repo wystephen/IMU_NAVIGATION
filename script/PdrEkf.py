@@ -15,6 +15,8 @@ class ZUPTaidedIns:
 
         self.init_vec(self.P)
 
+        self.x_h = np.zeros([18, 1])
+
     def init_Nav_eq(self, u1, u2):
 
         f_u = np.mean(u1[0, :])
@@ -70,18 +72,18 @@ class ZUPTaidedIns:
         self.P = (np.zeros([18, 18]))
         print(self.para.sigma_initial_pos ** 2)
 
-        self.P[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_initial_pos ** 2))
-        self.P[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_initial_vel ** 2))
-        self.P[6:9, 6:9] = np.diagflat(np.transpose(self.para.sigma_initial_att ** 2))
+        self.P[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_initial_pos ** 2.0))
+        self.P[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_initial_vel ** 2.0))
+        self.P[6:9, 6:9] = np.diagflat(np.transpose(self.para.sigma_initial_att ** 2.0))
 
-        self.P[9:12, 9:12] = np.diagflat(np.transpose(self.para.sigma_initial_pos2 ** 2))
-        self.P[12:15, 12:15] = np.diagflat(np.transpose(self.para.sigma_initial_vel2 ** 2))
-        self.P[15:18, 15:18] = np.diagflat(np.transpose(self.para.sigma_initial_att2 ** 2))
+        self.P[9:12, 9:12] = np.diagflat(np.transpose(self.para.sigma_initial_pos2 ** 2.0))
+        self.P[12:15, 12:15] = np.diagflat(np.transpose(self.para.sigma_initial_vel2 ** 2.0))
+        self.P[15:18, 15:18] = np.diagflat(np.transpose(self.para.sigma_initial_att2 ** 2.0))
 
         # print(self.P)
 
-        self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2))
-        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2))
+        self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
+        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
         self.R12 = np.zeros([6, 6])
         self.R12[0:3, 0:3] = self.R1
         self.R12[3:6, 3:6] = self.R2
@@ -90,11 +92,11 @@ class ZUPTaidedIns:
 
         self.Q = np.zeros([12, 12])
 
-        self.Q[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_acc ** 2))
-        self.Q[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_gyro ** 2))
+        self.Q[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_acc ** 2.0))
+        self.Q[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_gyro ** 2.0))
 
-        self.Q[6:9, 6:9] = np.diagflat(np.transpose(self.para.sigma_acc ** 2))
-        self.Q[9:12, 9:12] = np.diagflat(np.transpose(self.para.sigma_gyro ** 2))
+        self.Q[6:9, 6:9] = np.diagflat(np.transpose(self.para.sigma_acc ** 2.0))
+        self.Q[9:12, 9:12] = np.diagflat(np.transpose(self.para.sigma_gyro ** 2.0))
 
         # print (self.Q)
 
@@ -112,6 +114,7 @@ class ZUPTaidedIns:
 
     def init_vec(self, P):
         self.Id = np.diagflat(np.ones(self.P.shape[0]))
+        return
 
 
     def Rt2b(self, ang):
@@ -132,9 +135,10 @@ class ZUPTaidedIns:
         return R
 
     def dcm2q(self, R):
-        T = 1 + R[0, 0] + R[1, 1] + R[2, 2]
+        T = 1.0 + R[0, 0] + R[1, 1] + R[2, 2]
+        # print (T)
 
-        if T > 1e-8:
+        if math.fabs(T) > 1e-10:
             S = 0.5 / math.sqrt(T)
 
             qw = 0.25 / S
@@ -170,11 +174,11 @@ class ZUPTaidedIns:
     def q2dcm(self, q):
         p = np.zeros([6, 1])
 
-        p[0:4] = q ** 2.0
+        p[0:4, 0] = q ** 2.0
 
         p[4] = p[1] + p[2]
 
-        if abs(p[0] + p[3] + p[4]) > 1e-10:
+        if math.fabs(p[0] + p[3] + p[4]) > 1e-18:
             p[5] = 2.0 / (p[0] + p[3] + p[4])
         else:
             p[5] = 0.0
@@ -217,15 +221,19 @@ class ZUPTaidedIns:
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
 
         if zupt1 == 1 or zupt2 == 1:
+            #print (11)
             if (zupt1 == 1) and (not (zupt2 == 1)):
+                #print(1)
                 H = self.H1
                 R = self.R1
                 z = -self.x_h[3:6]
             elif (not (zupt1 == 1)) and (zupt2 == 1):
+                #print(2)
                 H = self.H2
                 R = self.R2
                 z = -self.x_h[12:15]
             else:
+                #print(3)
                 H = self.H12
                 R = self.R12
                 z = np.zeros([6, 1])
@@ -235,16 +243,18 @@ class ZUPTaidedIns:
             # print (R.shape)
 
             self.K = self.P.dot(np.transpose(H)). \
-                dot(np.linalg.inv(
-                (H.dot(self.P).
-                 dot(np.transpose(H))
-                 + R))
+                dot(
+                np.linalg.inv(
+                    (H.dot(self.P).dot(np.transpose(H)) + R))
             )
             dx = self.K.dot(z)
 
             self.P = (self.Id - self.K.dot(H)).dot(self.P)
 
-            self.x_h, self.quat1, self.quat2 = self.comp_internal_states(self.x_h, dx, self.quat1, self.quat2)
+            self.x_h, self.quat1, self.quat2 = self.comp_internal_states(self.x_h,
+                                                                         dx,
+                                                                         self.quat1,
+                                                                         self.quat2)
 
         self.P = (self.P + np.transpose(self.P)) * 0.5
 
@@ -257,35 +267,37 @@ class ZUPTaidedIns:
         w_tb = u1[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if abs(v) > 1e-10:
+        if math.fabs(v) > 1e-10:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
 
             OMEGA = np.array([
-                [0, R, -Q, P],
-                [-R, 0, P, Q],
-                [Q, -P, 0, R],
-                [-P, -Q, -R, 0]
+                [0.0, R, -Q, P],
+                [-R, 0.0, P, Q],
+                [Q, -P, 0.0, R],
+                [-P, -Q, -R, 0.0]
             ])
 
             q = (math.cos(v / 2.0) * np.diagflat([1.0, 1.0, 1.0, 1.0]) +
                  2.0 / v * math.sin(v / 2.0) * OMEGA).dot(quat1)
             q = q / np.linalg.norm(q)
 
+        ####################
+
         w_tb = u2[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if abs(v) > 1e-10:
+        if math.fabs(v) > 1e-10:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
 
             OMEGA = np.array([
-                [0, R, -Q, P],
-                [-R, 0, P, Q],
-                [Q, -P, 0, R],
-                [-P, -Q, -R, 0]
+                [0.0, R, -Q, P],
+                [-R, 0.0, P, Q],
+                [Q, -P, 0.0, R],
+                [-P, -Q, -R, 0.0]
             ])
 
             q2 = (math.cos(v / 2.0) * np.diagflat([1.0, 1.0, 1.0, 1.0]) +
@@ -295,6 +307,7 @@ class ZUPTaidedIns:
         g_t = np.array([0, 0, 9.8173])
         g_t = np.transpose(g_t)
 
+        #use rotation transform form imu to word
         Rb2t = self.q2dcm(q)
         f_t = Rb2t.dot(u1[0:3])
 
@@ -320,6 +333,7 @@ class ZUPTaidedIns:
         acc_t = acc_t.reshape(3, 1)
         acc_t2 = acc_t2.reshape(3, 1)
 
+        #accumulate acc and pose.
         y[0:6] = A.dot(x_h[0:6]) + B.dot(acc_t)
         y[9:15] = A.dot(x_h[9:15]) + B.dot(acc_t2)
 
@@ -374,6 +388,7 @@ class ZUPTaidedIns:
         x_out = x_in + dx
 
         epsilon = dx[6:9]
+        #print (dx)
 
         OMEGA = np.array([
             [0, -epsilon[2], epsilon[1]],
@@ -382,6 +397,7 @@ class ZUPTaidedIns:
         ])
 
         R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
+        #print(R)
 
         epsilon = dx[15:18]
         OMEGA = np.array([
@@ -391,6 +407,7 @@ class ZUPTaidedIns:
         ])
 
         R2 = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R2)
+        #print(R2)
 
         q_out = self.dcm2q(R)
         q_out2 = self.dcm2q(R2)
