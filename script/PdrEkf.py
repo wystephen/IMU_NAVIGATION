@@ -219,11 +219,11 @@ class ZUPTaidedIns:
 
         self.F, self.G = self.state_matrix(self.quat1, self.quat2, u1, u2, self.para.Ts)
 
-        self.P = (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
+        self.P = 1.01 ** 2 * (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
 
         # self.P = self.para.s_P
-        self.P = self.P * 50.0
+        # self.P = self.P * 50.0
 
         if zupt1 == 1 or zupt2 == 1:
             #print (11)
@@ -261,7 +261,7 @@ class ZUPTaidedIns:
                                                                          self.quat1,
                                                                          self.quat2)
 
-        self.P = (self.P + np.transpose(self.P)) * 0.5
+        #self.P = (self.P + np.transpose(self.P)) * 0.5
 
         # print(self.x_h,self.quat1,self.quat2)
         return self.x_h

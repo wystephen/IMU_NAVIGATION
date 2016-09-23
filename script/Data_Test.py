@@ -51,6 +51,7 @@ if __name__ == '__main__':
                                                  zupt2[index]).reshape([18])
 
     plt.figure(1)
+    plt.grid()
 
     plt.plot(all_x[0, :], all_x[1, :], all_x[2, :], 'r')
     plt.plot(all_x[9, :], all_x[10, :], all_x[11, :], 'b')
