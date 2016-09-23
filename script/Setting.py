@@ -47,6 +47,4 @@ class settings:
         self.sigma_initial_vel2 = 1e-5 * np.ones([3, 1])
         self.sigma_initial_att2 = (np.pi / 180.0 * np.array([0.1, 0.1, 0.001]).reshape(3, 1))
 
-        self.standard_P = np.array([
-            []
-        ])
+        self.s_P = np.loadtxt("../Data/P.csv", dtype=float, delimiter=",")

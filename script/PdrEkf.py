@@ -138,8 +138,10 @@ class ZUPTaidedIns:
         T = 1.0 + R[0, 0] + R[1, 1] + R[2, 2]
         # print (T)
 
-        if math.fabs(T) > 1e-10:
-            S = 0.5 / math.sqrt(T)
+
+        # Really Big Change.
+        if math.fabs(T) > 1e-4:
+            S = 0.5 / math.sqrt(math.fabs(T))
 
             qw = 0.25 / S
             qx = (R[2, 1] - R[1, 2]) * S
@@ -220,7 +222,8 @@ class ZUPTaidedIns:
         self.P = (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
 
-        self.P = self.P * 15.0
+        # self.P = self.para.s_P
+        self.P = self.P * 50.0
 
         if zupt1 == 1 or zupt2 == 1:
             #print (11)
