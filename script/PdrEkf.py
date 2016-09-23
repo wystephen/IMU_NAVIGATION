@@ -74,9 +74,9 @@ class ZUPTaidedIns:
         self.P[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_initial_vel ** 2))
         self.P[6:9, 6:9] = np.diagflat(np.transpose(self.para.sigma_initial_att ** 2))
 
-        self.P[9:12, 9:12] = np.diagflat(np.transpose(self.para.sigma_initial_pos ** 2))
-        self.P[12:15, 12:15] = np.diagflat(np.transpose(self.para.sigma_initial_vel ** 2))
-        self.P[15:18, 15:18] = np.diagflat(np.transpose(self.para.sigma_initial_att ** 2))
+        self.P[9:12, 9:12] = np.diagflat(np.transpose(self.para.sigma_initial_pos2 ** 2))
+        self.P[12:15, 12:15] = np.diagflat(np.transpose(self.para.sigma_initial_vel2 ** 2))
+        self.P[15:18, 15:18] = np.diagflat(np.transpose(self.para.sigma_initial_att2 ** 2))
 
         # print(self.P)
 
@@ -148,7 +148,7 @@ class ZUPTaidedIns:
                 qw = (R[2, 1] - R[1, 2]) / S
                 qx = 0.25 * S
                 qy = (R[0, 1] + R[1, 0]) / S
-                qz = (R[0, 2] + R[2, 1]) / S
+                qz = (R[0, 2] + R[2, 0]) / S
 
             elif (R[1, 1] > R[2, 2]):
                 S = math.sqrt(1 + R[1, 1] - R[0, 0] - R[2, 2]) * 2.0
@@ -170,11 +170,11 @@ class ZUPTaidedIns:
     def q2dcm(self, q):
         p = np.zeros([6, 1])
 
-        p[0:4, 0] = q ** 2.0
+        p[0:4] = q ** 2.0
 
-        p[4, 0] = p[1] + p[2]
+        p[4] = p[1] + p[2]
 
-        if abs(p[0] + p[3] + p[4]) > 1e-8:
+        if abs(p[0] + p[3] + p[4]) > 1e-10:
             p[5] = 2.0 / (p[0] + p[3] + p[4])
         else:
             p[5] = 0.0
@@ -188,7 +188,6 @@ class ZUPTaidedIns:
         p[0] = p[5] * q[0]
         p[1] = p[5] * q[1]
         p[2] = p[5] * q[2] * q[3]
-
         p[5] = p[0] * q[1]
 
         R[0, 1] = p[5] - p[4]
@@ -218,11 +217,11 @@ class ZUPTaidedIns:
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
 
         if zupt1 == 1 or zupt2 == 1:
-            if zupt1 == 1 and not (zupt2 == 1):
+            if (zupt1 == 1) and (not (zupt2 == 1)):
                 H = self.H1
                 R = self.R1
                 z = -self.x_h[3:6]
-            elif not (zupt1 == 1) and zupt2 == 1:
+            elif (not (zupt1 == 1)) and (zupt2 == 1):
                 H = self.H2
                 R = self.R2
                 z = -self.x_h[12:15]
@@ -236,7 +235,7 @@ class ZUPTaidedIns:
             # print (R.shape)
 
             self.K = self.P.dot(np.transpose(H)). \
-                dot(np.linalg.pinv(
+                dot(np.linalg.inv(
                 (H.dot(self.P).
                  dot(np.transpose(H))
                  + R))
@@ -256,7 +255,7 @@ class ZUPTaidedIns:
         y = np.zeros([18, 1])
 
         w_tb = u1[3:6]
-        v = math.sqrt(np.sum(w_tb ** 2)) * dt
+        v = np.linalg.norm(w_tb) * dt
 
         if abs(v) > 1e-10:
             P = w_tb[0] * dt * 0.5
@@ -291,7 +290,7 @@ class ZUPTaidedIns:
 
             q2 = (math.cos(v / 2.0) * np.diagflat([1.0, 1.0, 1.0, 1.0]) +
                   2.0 / v * math.sin(v / 2.0) * OMEGA).dot(quat2)
-            q2 = q / np.linalg.norm(q2)
+            q2 = q2 / np.linalg.norm(q2)
 
         g_t = np.array([0, 0, 9.8173])
         g_t = np.transpose(g_t)
@@ -332,7 +331,7 @@ class ZUPTaidedIns:
         Rb2t2 = self.q2dcm(q2)
 
         f_t = Rb2t.dot(u[0:3])
-        f_t2 = Rb2t.dot(u[0:3])
+        f_t2 = Rb2t.dot(u2[0:3])
 
         St = np.array([
             [0, -f_t[0], f_t[1]],
@@ -357,7 +356,7 @@ class ZUPTaidedIns:
         Gc = np.zeros([18, 12])
 
         Gc[3:6, 0:3] = Rb2t
-        Gc[6:9, 9:12] = -Rb2t
+        Gc[6:9, 3:6] = -Rb2t
 
         Gc[12:15, 6:9] = Rb2t2
         Gc[15:18, 9:12] = -Rb2t2

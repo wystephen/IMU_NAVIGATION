@@ -37,7 +37,10 @@ if __name__ == '__main__':
     ax = plt.subplot(111, projection='3d')
 
     for index in range(u1.shape[0]):
-        all_x[:, index] = ins_filter.GetPosition(u1[index, :], u2[index, :], zupt1[index], zupt2[index]).reshape([18])
+        all_x[:, index] = ins_filter.GetPosition(u1[index, :],
+                                                 u2[index, :],
+                                                 zupt1[index],
+                                                 zupt2[index]).reshape([18])
 
     plt.figure(1)
 
@@ -55,6 +58,8 @@ if __name__ == '__main__':
     plt.plot(u1[:, 1], 'g')
     plt.plot(u1[:, 2], 'b')
 
+    plt.plot(zupt1[:], 'y')
+
     plt.figure(4)
     plt.plot(all_x[12, :], 'r')
     plt.plot(all_x[13, :], 'g')
@@ -64,5 +69,7 @@ if __name__ == '__main__':
     plt.plot(u2[:, 0], 'r')
     plt.plot(u2[:, 1], 'g')
     plt.plot(u2[:, 2], 'b')
+
+    plt.plot(zupt2[:], 'y')
 
     plt.show()
