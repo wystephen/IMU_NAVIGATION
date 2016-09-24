@@ -19,11 +19,17 @@ import mpl_toolkits.mplot3d
 if __name__ == '__main__':
 
     # Load data
-    u1 = np.loadtxt("../Data/u1.csv", dtype=float, delimiter=",")
-    u2 = np.loadtxt("../Data/u2.csv", dtype=float, delimiter=",")
+    # u1 = np.loadtxt("../Data/u1.csv", dtype=float, delimiter=",")
+    # u2 = np.loadtxt("../Data/u2.csv", dtype=float, delimiter=",")
+    #
+    # zupt1 = np.loadtxt("../Data/zupt1.csv", dtype=int, delimiter=",")
+    # zupt2 = np.loadtxt("../Data/zupt2.csv", dtype=int, delimiter=",")
 
+    u2 = np.loadtxt("../Data/u1.csv", dtype=float, delimiter=",")
+    u1 = np.loadtxt("../Data/u1.csv", dtype=float, delimiter=",")
+
+    zupt2 = np.loadtxt("../Data/zupt1.csv", dtype=int, delimiter=",")
     zupt1 = np.loadtxt("../Data/zupt1.csv", dtype=int, delimiter=",")
-    zupt2 = np.loadtxt("../Data/zupt2.csv", dtype=int, delimiter=",")
 
     para = settings()
     ins_filter = INS(para)
@@ -50,6 +56,11 @@ if __name__ == '__main__':
                                                  zupt1[index],
                                                  zupt2[index]).reshape([18])
 
+    # Print RESULT
+
+    print(all_x[:, u1.shape[0] - 1])
+
+    # SHOW RESULT
     plt.figure(1)
     plt.grid()
 

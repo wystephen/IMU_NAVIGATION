@@ -343,6 +343,7 @@ class ZUPTaidedIns:
         :return:
         '''
         y = np.zeros([18, 1])
+        y = x_h
 
         w_tb = u1[3:6]
         v = np.linalg.norm(w_tb) * dt
