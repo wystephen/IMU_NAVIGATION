@@ -522,7 +522,7 @@ class ZUPTaidedIns:
         x_h[0:6] = x_in1[0:6]
         x_h[9:15] = x_in2[0:6]
 
-        W = np.linalg.inv(Pin);
+        W = np.linalg.inv(Pin)
         W = (W + np.transpose(W)) * 0.5
 
         lam, z = self.projection(x_h, W)
@@ -547,7 +547,7 @@ class ZUPTaidedIns:
 
         alpha = np.transpose(z).dot(A).dot(z)
 
-        Jp = (((np.diagflat(np.ones([18, 1])) - 1) / alpha).dot(A).dot(A).dot(z.dot(np.transpose(z)))).dot(A).dot(W)
+        Jp = (((np.diagflat(np.ones([18, 1])) - 1) / alpha).dot(A).dot(z.dot(np.transpose(z)))).dot(A).dot(W)
 
         Pout = Jp.dot(Pin).dot(np.transpose(Jp))
 
@@ -586,7 +586,8 @@ class ZUPTaidedIns:
 
             g = e[0] ** 2 * S[0] ** 2 / ((1 + lam * S[0] ** 2) ** 2) + \
                 e[1] ** 2.0 * S[1] ** 2.0 / ((1 + lam * S[1] ** 2) ** 2) + \
-                e[2] ** 2.0 * S[2] ** 2.0 / ((1 + lam * S[2] ** 2.0) * 2.0) - eta ** 2.0
+                e[2] ** 2.0 * S[2] ** 2.0 / ((1 + lam * S[2] ** 2.0) * 2.0) \
+                - eta ** 2.0
 
             # dg = -2.0 * (e[0] ** 2.0 * S[0, 0] ** 4.0 / ((1 + lam * S[0, 0] ** 2.0) ** 3.0) +
             #              e[1] ** 2 * S[1, 1] ** 4.0 / ((1 + lam * S[1, 1] ** 2.0) ** 3.0) +
@@ -604,6 +605,7 @@ class ZUPTaidedIns:
             lam = lam - delta
 
             ctr = ctr + 1
+
         z = np.linalg.inv(Pinv + lam * (np.transpose(L).dot(L))).dot(Pinv.dot(x_h))
 
         return lam, z

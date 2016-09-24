@@ -98,7 +98,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474689810703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
+    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474705250884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -126,8 +126,8 @@
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="318">
-                  <caret line="603" column="26" selection-start-line="603" selection-start-column="26" selection-end-line="603" selection-end-column="26" />
+                <state relative-caret-position="10">
+                  <caret line="551" column="48" selection-start-line="551" selection-start-column="48" selection-end-line="551" selection-end-column="48" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -162,8 +162,8 @@
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="282">
-                  <caret line="305" column="14" selection-start-line="305" selection-start-column="14" selection-end-line="305" selection-end-column="14" />
+                <state relative-caret-position="390">
+                  <caret line="311" column="0" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -844,13 +844,6 @@
       <workItem from="1474347355498" duration="23936000" />
       <workItem from="1474384736741" duration="13895000" />
     </task>
-    <task id="LOCAL-00035" summary="Pause.">
-      <created>1474096278190</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1474096278190</updated>
-    </task>
     <task id="LOCAL-00036" summary="Navigation Equation.">
       <created>1474098239920</created>
       <option name="number" value="00036" />
@@ -1187,7 +1180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474635620042</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="new constraint&#10;">
+      <created>1474696915493</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1474696915493</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1212,7 +1212,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71085596" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31002086" sideWeight="0.4886678" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31002086" sideWeight="0.4886678" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.094527364" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1280,7 +1280,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Unstable result of the algorithm." />
     <MESSAGE value="Unkonw error." />
     <MESSAGE value="Add R to x_h." />
     <MESSAGE value="Delete the update of the x_h according to the rotation get by dx_." />
@@ -1305,7 +1304,8 @@
     <MESSAGE value="better if multiply a number which is bigger than 10 will improve the accurancy." />
     <MESSAGE value="Not right." />
     <MESSAGE value="bad for add alpha parameter." />
-    <option name="LAST_COMMIT_MESSAGE" value="bad for add alpha parameter." />
+    <MESSAGE value="new constraint&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="new constraint&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1686,8 +1686,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="603" column="26" selection-start-line="603" selection-start-column="26" selection-end-line="603" selection-end-column="26" />
+        <state relative-caret-position="10">
+          <caret line="551" column="48" selection-start-line="551" selection-start-column="48" selection-end-line="551" selection-end-column="48" />
           <folding>
             <element signature="e#63#91#0" expanded="true" />
           </folding>
