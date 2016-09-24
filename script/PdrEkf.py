@@ -169,6 +169,7 @@ class ZUPTaidedIns:
             qx = (R[2, 1] - R[1, 2]) * S
             qy = (R[0, 2] - R[2, 0]) * S
             qz = (R[1, 0] - R[0, 1]) * S
+
         else:
             if (R[0, 0] > R[1, 1]) and (R[0, 0] > R[2, 2]):
                 S = math.sqrt(1 + R[0, 0] - R[1, 1] - R[2, 2]) * 2.0
@@ -290,7 +291,8 @@ class ZUPTaidedIns:
                 np.linalg.inv(
                     (H.dot(self.P).dot(np.transpose(H)) + R))
             )
-            dx = self.K.dot(z)
+
+            dx = self.K.dot(z)  # differante to the formula in paper
 
             self.P = (self.Id - self.K.dot(H)).dot(self.P)
 
@@ -299,30 +301,30 @@ class ZUPTaidedIns:
                                                                          self.quat1,
                                                                          self.quat2)
 
-        self.last_constraint += 1
-
-        if self.para.range_constraint_on and \
-                        self.last_constraint > self.para.min_rud_sep and \
-                        np.linalg.norm(
-                                    self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
-            self.last_constraint = 0
-
-            tmp_in1 = np.zeros([10, 1])
-            tmp_in2 = np.zeros([10, 1])
-
-            tmp_in1[0:6] = self.x_h[0:6]
-            tmp_in1[6:10] = self.quat1.reshape(4, 1)
-
-            tmp_in2[0:6] = self.x_h[9:15]
-            tmp_in2[6:10] = self.quat2.reshape(4, 1)
-
-            tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
-
-            self.x_h[0:6] = tmp1[0:6]
-            self.quat1 = tmp1[6:10]
-
-            self.x_h[9:15] = tmp2[0:6]
-            self.quat2 = tmp2[6:10]
+        # self.last_constraint += 1
+        #
+        # if self.para.range_constraint_on and \
+        #                 self.last_constraint > self.para.min_rud_sep and \
+        #                 np.linalg.norm(
+        #                             self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
+        #     self.last_constraint = 0
+        #
+        #     tmp_in1 = np.zeros([10, 1])
+        #     tmp_in2 = np.zeros([10, 1])
+        #
+        #     tmp_in1[0:6] = self.x_h[0:6]
+        #     tmp_in1[6:10] = self.quat1.reshape(4, 1)
+        #
+        #     tmp_in2[0:6] = self.x_h[9:15]
+        #     tmp_in2[6:10] = self.quat2.reshape(4, 1)
+        #
+        #     tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
+        #
+        #     self.x_h[0:6] = tmp1[0:6]
+        #     self.quat1 = tmp1[6:10]
+        #
+        #     self.x_h[9:15] = tmp2[0:6]
+        #     self.quat2 = tmp2[6:10]
 
         self.P = (self.P + np.transpose(self.P)) * 0.5
 

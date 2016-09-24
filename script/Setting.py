@@ -8,8 +8,8 @@ class settings:
     def __init__(self):
         self.dim_constraint = 2.0
         self.alpha_level = 0.95
-        self.range_constraint = 1.0;  # [m]
-        self.min_rud_sep = 820;
+        self.range_constraint = 1.0  # [m]
+        self.min_rud_sep = 2820
 
         self.init_heading1 = (-95.0 - 2.5) * np.pi / 180.0
         self.init_heading2 = (94.05 + 2.0) * np.pi / 180.0
