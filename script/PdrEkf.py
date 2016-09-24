@@ -7,8 +7,13 @@ import numpy as np
 
 import math
 
+
 class ZUPTaidedIns:
     def __init__(self, settings):
+        '''
+
+        :param settings:
+        '''
         self.para = settings
 
         self.init_filter()
@@ -17,7 +22,15 @@ class ZUPTaidedIns:
 
         self.x_h = np.zeros([18, 1])
 
+        self.last_constraint = 0
+
     def init_Nav_eq(self, u1, u2):
+        '''
+
+        :param u1:
+        :param u2:
+        :return:
+        '''
 
         f_u = np.mean(u1[0, :])
         f_v = np.mean(u1[1, :])
@@ -47,7 +60,6 @@ class ZUPTaidedIns:
         roll = math.atan2(-f_v, -f_w)  # ToDo:May be wrroy
         pitch = math.atan2(f_u, math.sqrt(f_v ** 2 + f_w ** 2))
 
-
         attitude = [roll, pitch, self.para.init_heading2]
         attitude = np.transpose(attitude)
 
@@ -66,9 +78,10 @@ class ZUPTaidedIns:
 
         return x, quat1, quat2
 
-
-
     def init_filter(self):
+        """
+
+        """
         self.P = (np.zeros([18, 18]))
         print(self.para.sigma_initial_pos ** 2)
 
@@ -113,9 +126,13 @@ class ZUPTaidedIns:
         # print(self.H12)
 
     def init_vec(self, P):
+        """
+
+        :param P:
+        :return:
+        """
         self.Id = np.diagflat(np.ones(self.P.shape[0]))
         return
-
 
     def Rt2b(self, ang):
         cr = math.cos(ang[0])
@@ -135,6 +152,11 @@ class ZUPTaidedIns:
         return R
 
     def dcm2q(self, R):
+        """
+
+        :param R:
+        :return:
+        """
         T = 1.0 + R[0, 0] + R[1, 1] + R[2, 2]
         # print (T)
 
@@ -174,9 +196,14 @@ class ZUPTaidedIns:
         return np.array(np.transpose([qx, qy, qz, qw]))
 
     def q2dcm(self, q):
+        """
+
+        :param q:
+        :return:
+        """
         p = np.zeros([6, 1])
 
-        p[0:4, 0] = q ** 2.0
+        p[0:4] = q.reshape(4, 1) ** 2.0
 
         p[4] = p[1] + p[2]
 
@@ -214,31 +241,42 @@ class ZUPTaidedIns:
         return R
 
     def GetPosition(self, u1, u2, zupt1, zupt2):
-        self.x_h, self.quat1, self.quat2 = self.Navigation_euqtions(self.x_h, u1, u2, self.quat1, self.quat2,
+
+        """
+
+        :param u1:
+        :param u2:
+        :param zupt1:
+        :param zupt2:
+        :return:
+        """
+        self.x_h, self.quat1, self.quat2 = self.Navigation_euqtions(self.x_h,
+                                                                    u1, u2,
+                                                                    self.quat1, self.quat2,
                                                                     self.para.Ts)
 
         self.F, self.G = self.state_matrix(self.quat1, self.quat2, u1, u2, self.para.Ts)
 
-        self.P = 1.01 ** 2 * (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
+        self.P = (self.F.dot(self.P)).dot(np.transpose(self.P)) + \
                  (self.G.dot(self.Q)).dot(np.transpose(self.G))
 
         # self.P = self.para.s_P
         # self.P = self.P * 50.0
 
         if zupt1 == 1 or zupt2 == 1:
-            #print (11)
+            # print (11)
             if (zupt1 == 1) and (not (zupt2 == 1)):
-                #print(1)
+                # print(1)
                 H = self.H1
                 R = self.R1
                 z = -self.x_h[3:6]
             elif (not (zupt1 == 1)) and (zupt2 == 1):
-                #print(2)
+                # print(2)
                 H = self.H2
                 R = self.R2
                 z = -self.x_h[12:15]
             else:
-                #print(3)
+                # print(3)
                 H = self.H12
                 R = self.R12
                 z = np.zeros([6, 1])
@@ -261,12 +299,47 @@ class ZUPTaidedIns:
                                                                          self.quat1,
                                                                          self.quat2)
 
-        #self.P = (self.P + np.transpose(self.P)) * 0.5
+        self.last_constraint += 1
+
+        if self.para.range_constraint_on and \
+                        self.last_constraint > self.para.min_rud_sep and \
+                        np.linalg.norm(
+                                    self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
+            self.last_constraint = 0
+
+            tmp_in1 = np.zeros([10, 1])
+            tmp_in2 = np.zeros([10, 1])
+
+            tmp_in1[0:6] = self.x_h[0:6]
+            tmp_in1[6:10] = self.quat1.reshape(4, 1)
+
+            tmp_in2[0:6] = self.x_h[9:15]
+            tmp_in2[6:10] = self.quat2.reshape(4, 1)
+
+            tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
+
+            self.x_h[0:6] = tmp1[0:6]
+            self.quat1 = tmp1[6:10]
+
+            self.x_h[9:15] = tmp2[0:6]
+            self.quat2 = tmp2[6:10]
+
+        self.P = (self.P + np.transpose(self.P)) * 0.5
 
         # print(self.x_h,self.quat1,self.quat2)
         return self.x_h
 
     def Navigation_euqtions(self, x_h, u1, u2, quat1, quat2, dt):
+        '''
+
+        :param x_h:
+        :param u1:
+        :param u2:
+        :param quat1:
+        :param quat2:
+        :param dt:
+        :return:
+        '''
         y = np.zeros([18, 1])
 
         w_tb = u1[3:6]
@@ -312,7 +385,7 @@ class ZUPTaidedIns:
         g_t = np.array([0, 0, 9.8173])
         g_t = np.transpose(g_t)
 
-        #use rotation transform form imu to word
+        # use rotation transform form imu to word
         Rb2t = self.q2dcm(q)
         f_t = Rb2t.dot(u1[0:3])
 
@@ -338,13 +411,22 @@ class ZUPTaidedIns:
         acc_t = acc_t.reshape(3, 1)
         acc_t2 = acc_t2.reshape(3, 1)
 
-        #accumulate acc and pose.
+        # accumulate acc and pose.
         y[0:6] = A.dot(x_h[0:6]) + B.dot(acc_t)
         y[9:15] = A.dot(x_h[9:15]) + B.dot(acc_t2)
 
         return y, q, q2
 
     def state_matrix(self, q, q2, u, u2, dt):
+        '''
+
+        :param q:
+        :param q2:
+        :param u:
+        :param u2:
+        :param dt:
+        :return:
+        '''
 
         Rb2t = self.q2dcm(q)
         Rb2t2 = self.q2dcm(q2)
@@ -386,6 +468,14 @@ class ZUPTaidedIns:
         return F, G
 
     def comp_internal_states(self, x_in, dx, q_in, q_in2):
+        '''
+
+        :param x_in:
+        :param dx:
+        :param q_in:
+        :param q_in2:
+        :return:
+        '''
 
         R = self.q2dcm(q_in)
         R2 = self.q2dcm(q_in2)
@@ -393,7 +483,7 @@ class ZUPTaidedIns:
         x_out = x_in + dx
 
         epsilon = dx[6:9]
-        #print (dx)
+        # print (dx)
 
         OMEGA = np.array([
             [0, -epsilon[2], epsilon[1]],
@@ -402,7 +492,7 @@ class ZUPTaidedIns:
         ])
 
         R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
-        #print(R)
+        # print(R)
 
         epsilon = dx[15:18]
         OMEGA = np.array([
@@ -412,9 +502,122 @@ class ZUPTaidedIns:
         ])
 
         R2 = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R2)
-        #print(R2)
+        # print(R2)
 
         q_out = self.dcm2q(R)
         q_out2 = self.dcm2q(R2)
 
-        return x_out, q_out,q_out2
+        return x_out, q_out, q_out2
+
+    def range_constraint(self, x_in1, x_in2, Pin):
+        '''
+
+        :param x_in1:
+        :param x_in2:
+        :param Pin:
+        :return:
+        '''
+        x_h = np.zeros([18, 1])
+
+        x_h[0:6] = x_in1[0:6]
+        x_h[9:15] = x_in2[0:6]
+
+        W = np.linalg.inv(Pin);
+        W = (W + np.transpose(W)) * 0.5
+
+        lam, z = self.projection(x_h, W)
+
+        x_out1 = np.zeros([18, 1])
+        x_out2 = np.zeros([18, 1])
+
+        x_out1[0:6] = z[0:6]
+        x_out1[6:10] = self.correct_orientations(x_in1[6:10], z[6:9]).reshape(4, 1)
+
+        x_out2[0:6] = z[9:15]
+        x_out2[6:10] = self.correct_orientations(x_in2[6:10], z[15:18]).reshape(4, 1)
+
+        L = np.zeros([3, 18])
+
+        L[0:3, 0:3] = np.diagflat([1.0, 1.0, 1.0])
+        L[0:3, 6:9] = np.diagflat([-1.0, -1.0, -1.0])
+
+        z = (np.transpose(L).dot(L)).dot(z)
+
+        A = np.linalg.inv(W + lam * np.transpose(L).dot(L))
+
+        alpha = np.transpose(z).dot(A).dot(z)
+
+        Jp = (((np.diagflat(np.ones([18, 1])) - 1) / alpha).dot(A).dot(A).dot(z.dot(np.transpose(z)))).dot(A).dot(W)
+
+        Pout = Jp.dot(Pin).dot(np.transpose(Jp))
+
+        return x_out1, x_out2, Pout
+
+    def projection(self, x_h, Pinv):
+        '''
+
+        :param x_h:
+        :param Pinv:
+        :return:
+        '''
+
+        L = np.zeros([3, 18])
+
+        L[0:3, 0:3] = np.diagflat([1.0, 1.0, 1.0])
+        L[0:3, 9:12] = np.diagflat([-1.0, -1.0, -1.0])
+
+        eta = self.para.range_constraint
+
+        G = np.linalg.cholesky(Pinv)
+
+        U, S, V = np.linalg.svd(L.dot(np.linalg.inv(G)))
+
+        e = np.transpose(V).dot(G).dot(x_h)
+
+        lam = 0.0
+        delta = 1000000000000.0
+        ctr = 0
+
+        while (math.fabs(delta) > 1e-4 and ctr < 25):
+            # g = e[0] ** 2 * S[0, 0] ** 2 / ((1 + lam * S[0, 0] ** 2) ** 2) + \
+            #     e[1] ** 2.0 * S[1, 1] ** 2.0 / ((1 + lam * S[1, 1] ** 2) ** 2) + \
+            #     e[2] ** 2.0 * S[2, 2] ** 2.0 / ((1 + lam * S[2, 2] ** 2.0) * 2.0) - eta ** 2.0
+
+
+            g = e[0] ** 2 * S[0] ** 2 / ((1 + lam * S[0] ** 2) ** 2) + \
+                e[1] ** 2.0 * S[1] ** 2.0 / ((1 + lam * S[1] ** 2) ** 2) + \
+                e[2] ** 2.0 * S[2] ** 2.0 / ((1 + lam * S[2] ** 2.0) * 2.0) - eta ** 2.0
+
+            # dg = -2.0 * (e[0] ** 2.0 * S[0, 0] ** 4.0 / ((1 + lam * S[0, 0] ** 2.0) ** 3.0) +
+            #              e[1] ** 2 * S[1, 1] ** 4.0 / ((1 + lam * S[1, 1] ** 2.0) ** 3.0) +
+            #              e[2] ** 2.0 * S[2, 2] ** 4.0 / ((1 + lam * S[2, 2] ** 2.0) ** 3.0)
+            #              )
+
+
+            dg = -2.0 * (e[0] ** 2.0 * S[0] ** 4.0 / ((1 + lam * S[0] ** 2.0) ** 3.0) +
+                         e[1] ** 2 * S[1] ** 4.0 / ((1 + lam * S[1] ** 2.0) ** 3.0) +
+                         e[2] ** 2.0 * S[2] ** 4.0 / ((1 + lam * S[2] ** 2.0) ** 3.0)
+                         )
+
+            delta = g / dg
+
+            lam = lam - delta
+
+            ctr = ctr + 1
+        z = np.linalg.inv(Pinv + lam * (np.transpose(L).dot(L))).dot(Pinv.dot(x_h))
+
+        return lam, z
+
+    def correct_orientations(self, q_in, epsilon):
+
+        R = self.q2dcm(q_in)
+
+        OMEGA = np.array([
+            [0, -epsilon[2], epsilon[1]],
+            [epsilon[2], 0.0, -epsilon[0]],
+            [-epsilon[1], epsilon[0], 0.0]
+        ])
+
+        R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
+
+        return self.dcm2q(R)
