@@ -162,8 +162,8 @@ class ZUPTaidedIns:
 
 
         # Really Big Change.
-        if math.fabs(T) > 1e-4:
-            S = 0.5 / math.sqrt(math.fabs(T))
+        if math.fabs(T) > 1e-8:
+            S = 0.5 / math.sqrt(T)
 
             qw = 0.25 / S
             qx = (R[2, 1] - R[1, 2]) * S
@@ -194,7 +194,11 @@ class ZUPTaidedIns:
                 qy = (R[1, 2] + R[2, 1]) / S
                 qz = 0.25 * S
 
-        return np.array(np.transpose([qx, qy, qz, qw]))
+        quat = np.array(np.transpose([qx, qy, qz, qw]))
+
+        quat = quat / np.linalg.norm(quat)
+
+        return quat
 
     def q2dcm(self, q):
         """

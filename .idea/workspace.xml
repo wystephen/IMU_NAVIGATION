@@ -98,7 +98,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474793969245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
+    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474795278852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -126,8 +126,8 @@
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="698">
-                  <caret line="445" column="28" selection-start-line="445" selection-start-column="28" selection-end-line="445" selection-end-column="28" />
+                <state relative-caret-position="168">
+                  <caret line="198" column="42" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -153,7 +153,7 @@
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="288">
-                  <caret line="265" column="0" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+                  <caret line="269" column="0" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -834,13 +834,6 @@
       <workItem from="1474347355498" duration="23936000" />
       <workItem from="1474384736741" duration="13895000" />
     </task>
-    <task id="LOCAL-00041" summary="Compute internal states.">
-      <created>1474166820895</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1474166820895</updated>
-    </task>
     <task id="LOCAL-00042" summary="Some butg.">
       <created>1474172765853</created>
       <option name="number" value="00042" />
@@ -1177,7 +1170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474790173470</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Fixed.">
+      <created>1474794529101</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1474794529101</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1270,7 +1270,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Multi test." />
     <MESSAGE value="Add test()." />
     <MESSAGE value="dcm2q and q2dcm may have some problem." />
     <MESSAGE value="chage setZero function." />
@@ -1295,7 +1294,8 @@
     <MESSAGE value="```" />
     <MESSAGE value="add print" />
     <MESSAGE value="ERROR INPUT&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="ERROR INPUT&#10;" />
+    <MESSAGE value="Fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1636,6 +1636,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
           <caret line="511" column="14" selection-start-line="511" selection-start-column="14" selection-end-line="511" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1674,8 +1675,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="445" column="28" selection-start-line="445" selection-start-column="28" selection-end-line="445" selection-end-column="28" />
+        <state relative-caret-position="168">
+          <caret line="198" column="42" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
           <folding>
             <element signature="e#63#91#0" expanded="true" />
           </folding>
