@@ -264,6 +264,9 @@ class ZUPTaidedIns:
         # self.P = self.para.s_P
         # self.P = self.P * 50.0
 
+        zupt1 = 0
+        zupt2 = 0
+
         if zupt1 == 1 or zupt2 == 1:
             # print (11)
             if (zupt1 == 1) and (not (zupt2 == 1)):
@@ -301,39 +304,39 @@ class ZUPTaidedIns:
                                                                          self.quat1,
                                                                          self.quat2)
 
-        '''
-        RANGE CONSTRAINT.
-
-        '''
-        self.last_constraint += 1
-
-        if self.para.range_constraint_on and \
-                        self.last_constraint > self.para.min_rud_sep and \
-                        np.linalg.norm(
-                                    self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
-            self.last_constraint = 0
-
-            tmp_in1 = np.zeros([10, 1])
-            tmp_in2 = np.zeros([10, 1])
-
-            tmp_in1[0:6] = self.x_h[0:6]
-            tmp_in1[6:10] = self.quat1.reshape(4, 1)
-
-            tmp_in2[0:6] = self.x_h[9:15]
-            tmp_in2[6:10] = self.quat2.reshape(4, 1)
-
-            tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
-
-            self.x_h[0:6] = tmp1[0:6]
-            self.quat1 = tmp1[6:10]
-
-            self.x_h[9:15] = tmp2[0:6]
-            self.quat2 = tmp2[6:10]
-
-        self.P = (self.P + np.transpose(self.P)) * 0.5
-        '''
-        END RANGE CONSTRAINT
-        '''
+        # '''
+        # RANGE CONSTRAINT.
+        #
+        # '''
+        # self.last_constraint += 1
+        #
+        # if self.para.range_constraint_on and \
+        #                 self.last_constraint > self.para.min_rud_sep and \
+        #                 np.linalg.norm(
+        #                             self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
+        #     self.last_constraint = 0
+        #
+        #     tmp_in1 = np.zeros([10, 1])
+        #     tmp_in2 = np.zeros([10, 1])
+        #
+        #     tmp_in1[0:6] = self.x_h[0:6]
+        #     tmp_in1[6:10] = self.quat1.reshape(4, 1)
+        #
+        #     tmp_in2[0:6] = self.x_h[9:15]
+        #     tmp_in2[6:10] = self.quat2.reshape(4, 1)
+        #
+        #     tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
+        #
+        #     self.x_h[0:6] = tmp1[0:6]
+        #     self.quat1 = tmp1[6:10]
+        #
+        #     self.x_h[9:15] = tmp2[0:6]
+        #     self.quat2 = tmp2[6:10]
+        #
+        # self.P = (self.P + np.transpose(self.P)) * 0.5
+        # '''
+        # END RANGE CONSTRAINT
+        # '''
 
         # print(self.x_h,self.quat1,self.quat2)
         return self.x_h
@@ -586,7 +589,7 @@ class ZUPTaidedIns:
         e = np.transpose(V).dot(G).dot(x_h)
 
         lam = 0.0
-        delta = 1000000000000.0
+        delta = 100000.0
         ctr = 0
 
         while (math.fabs(delta) > 1e-4 and ctr < 25):
