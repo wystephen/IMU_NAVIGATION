@@ -15,6 +15,15 @@ class ZUPTaidedIns:
         :param settings:
         '''
         self.para = settings
+        self.R12 = np.zeros([6, 6])
+        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
+        self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
+        self.P = (np.zeros([18, 18]))
+        self.Q = np.zeros([12, 12])
+        self.H12 = np.zeros([6, 18])
+        self.H2 = np.zeros([3, 18])
+        self.H1 = np.zeros([3, 18])
+
 
         self.init_filter()
 
@@ -79,10 +88,12 @@ class ZUPTaidedIns:
         return x, quat1, quat2
 
     def init_filter(self):
-        """
+        '''
+        initial filiter parameter.
 
-        """
-        self.P = (np.zeros([18, 18]))
+        :return:
+        '''
+
         print(self.para.sigma_initial_pos ** 2)
 
         self.P[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_initial_pos ** 2.0))
@@ -95,15 +106,10 @@ class ZUPTaidedIns:
 
         # print(self.P)
 
-        self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
-        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
-        self.R12 = np.zeros([6, 6])
         self.R12[0:3, 0:3] = self.R1
         self.R12[3:6, 3:6] = self.R2
 
         # print(self.R12)
-
-        self.Q = np.zeros([12, 12])
 
         self.Q[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_acc ** 2.0))
         self.Q[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_gyro ** 2.0))
@@ -113,13 +119,10 @@ class ZUPTaidedIns:
 
         # print (self.Q)
 
-        self.H1 = np.zeros([3, 18])
         self.H1[0:3, 3:6] = np.diagflat(np.transpose([1.0, 1.0, 1.0]))
 
-        self.H2 = np.zeros([3, 18])
         self.H2[0:3, 12:15] = np.diagflat(np.transpose([1.0, 1.0, 1.0]))
 
-        self.H12 = np.zeros([6, 18])
         self.H12[0:3, :] = self.H1
         self.H12[3:6, :] = self.H2
 
@@ -194,11 +197,11 @@ class ZUPTaidedIns:
                 qy = (R[1, 2] + R[2, 1]) / S
                 qz = 0.25 * S
 
-        quat = np.array(np.transpose([qx, qy, qz, qw]))
+        quart = np.array(np.transpose([qx, qy, qz, qw]))
 
-        quat = quat / np.linalg.norm(quat)
+        quart /= np.linalg.norm(quart)
 
-        return quat
+        return quart
 
     def q2dcm(self, q):
         """
@@ -225,7 +228,7 @@ class ZUPTaidedIns:
 
         p[0] = p[5] * q[0]
         p[1] = p[5] * q[1]
-        p[2] = p[5] * q[2] * q[3]
+        p[4] = p[5] * q[2] * q[3]
         p[5] = p[0] * q[1]
 
         R[0, 1] = p[5] - p[4]
