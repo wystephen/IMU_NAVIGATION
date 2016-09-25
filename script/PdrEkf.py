@@ -264,11 +264,12 @@ class ZUPTaidedIns:
         # self.P = self.para.s_P
         # self.P = self.P * 50.0
 
-        zupt1 = 0
-        zupt2 = 0
+        # zupt1 = 0
+        # zupt2 = 0
 
         if zupt1 == 1 or zupt2 == 1:
             # print (11)
+            # self.P = self.P * 50.0
             if (zupt1 == 1) and (not (zupt2 == 1)):
                 # print(1)
                 H = self.H1
@@ -446,7 +447,7 @@ class ZUPTaidedIns:
         Rb2t2 = self.q2dcm(q2)
 
         f_t = Rb2t.dot(u[0:3])
-        f_t2 = Rb2t.dot(u2[0:3])
+        f_t2 = Rb2t2.dot(u2[0:3])
 
         St = np.array([
             [0, -f_t[0], f_t[1]],

@@ -85,11 +85,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b867f0f1-8930-4b99-a4c5-b1db177c5e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/u1.csv" afterPath="$PROJECT_DIR$/Data/u1.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/u2.csv" afterPath="$PROJECT_DIR$/Data/u2.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/zupt1.csv" afterPath="$PROJECT_DIR$/Data/zupt1.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/zupt2.csv" afterPath="$PROJECT_DIR$/Data/zupt2.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/Data_Test.py" afterPath="$PROJECT_DIR$/script/Data_Test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/PdrEkf.py" afterPath="$PROJECT_DIR$/script/PdrEkf.py" />
     </list>
     <ignored path="IMU_NAVIGATION.iws" />
@@ -103,7 +98,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474790031734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
+    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474793969245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -131,8 +126,8 @@
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="267" column="17" selection-start-line="267" selection-start-column="17" selection-end-line="267" selection-end-column="17" />
+                <state relative-caret-position="698">
+                  <caret line="445" column="28" selection-start-line="445" selection-start-column="28" selection-end-line="445" selection-end-column="28" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -157,8 +152,8 @@
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="499" column="20" selection-start-line="499" selection-start-column="20" selection-end-line="499" selection-end-column="20" />
+                <state relative-caret-position="288">
+                  <caret line="265" column="0" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
                   <folding>
                     <element signature="e#63#91#0" expanded="true" />
                   </folding>
@@ -839,13 +834,6 @@
       <workItem from="1474347355498" duration="23936000" />
       <workItem from="1474384736741" duration="13895000" />
     </task>
-    <task id="LOCAL-00040" summary="The inverse .">
-      <created>1474166142419</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1474166142419</updated>
-    </task>
     <task id="LOCAL-00041" summary="Compute internal states.">
       <created>1474166820895</created>
       <option name="number" value="00041" />
@@ -1182,7 +1170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474788986077</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="ERROR INPUT&#10;">
+      <created>1474790173470</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1474790173470</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1207,7 +1202,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71085596" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31002086" sideWeight="0.4886678" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31002086" sideWeight="0.4886678" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09563295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1275,7 +1270,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Some algorithm reduce code." />
     <MESSAGE value="Multi test." />
     <MESSAGE value="Add test()." />
     <MESSAGE value="dcm2q and q2dcm may have some problem." />
@@ -1300,7 +1294,8 @@
     <MESSAGE value="fixed some bug." />
     <MESSAGE value="```" />
     <MESSAGE value="add print" />
-    <option name="LAST_COMMIT_MESSAGE" value="add print" />
+    <MESSAGE value="ERROR INPUT&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="ERROR INPUT&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1679,8 +1674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="267" column="17" selection-start-line="267" selection-start-column="17" selection-end-line="267" selection-end-column="17" />
+        <state relative-caret-position="698">
+          <caret line="445" column="28" selection-start-line="445" selection-start-column="28" selection-end-line="445" selection-end-column="28" />
           <folding>
             <element signature="e#63#91#0" expanded="true" />
           </folding>
