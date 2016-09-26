@@ -98,7 +98,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474888262138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
+    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1474888589174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -125,8 +125,8 @@
       <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="288" column="27" selection-start-line="288" selection-start-column="27" selection-end-line="288" selection-end-column="27" />
+            <state relative-caret-position="-162">
+              <caret line="421" column="31" selection-start-line="421" selection-start-column="31" selection-end-line="421" selection-end-column="31" />
               <folding>
                 <element signature="e#63#91#0" expanded="true" />
               </folding>
@@ -811,13 +811,6 @@
       <workItem from="1474347355498" duration="23936000" />
       <workItem from="1474384736741" duration="13895000" />
     </task>
-    <task id="LOCAL-00047" summary="//    Eigen::Vector3d g_t(0,0,para_ptr_-&gt;gravity_);//Gravity vector&#10;    Eigen::Vector3d g_t(0,0,9.8173);//Gravity vector">
-      <created>1474190238576</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1474190238576</updated>
-    </task>
     <task id="LOCAL-00048" summary="Checked the states matrix.">
       <created>1474190729549</created>
       <option name="number" value="00048" />
@@ -1154,7 +1147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474888168708</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Hard to fouse on improve accuracy.">
+      <created>1474888372904</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1474888372905</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1247,7 +1247,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Output distance." />
     <MESSAGE value="A problem in Signal2Bool." />
     <MESSAGE value="1111111" />
     <MESSAGE value="fixed some problem." />
@@ -1272,7 +1271,8 @@
     <MESSAGE value="Different file director in different operator." />
     <MESSAGE value="Add a short interval in zero-constraint," />
     <MESSAGE value="Change P will imporve the accuracy of estimation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Change P will imporve the accuracy of estimation." />
+    <MESSAGE value="Hard to fouse on improve accuracy." />
+    <option name="LAST_COMMIT_MESSAGE" value="Hard to fouse on improve accuracy." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1507,8 +1507,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="288" column="27" selection-start-line="288" selection-start-column="27" selection-end-line="288" selection-end-column="27" />
+        <state relative-caret-position="-162">
+          <caret line="421" column="31" selection-start-line="421" selection-start-column="31" selection-end-line="421" selection-end-column="31" />
           <folding>
             <element signature="e#63#91#0" expanded="true" />
           </folding>

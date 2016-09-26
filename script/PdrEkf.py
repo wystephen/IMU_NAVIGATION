@@ -373,7 +373,7 @@ class ZUPTaidedIns:
         w_tb = u1[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if math.fabs(v) > 1e-10:
+        if math.fabs(v) > 1e-8:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
@@ -388,13 +388,15 @@ class ZUPTaidedIns:
             q = (math.cos(v / 2.0) * np.diagflat([1.0, 1.0, 1.0, 1.0]) +
                  2.0 / v * math.sin(v / 2.0) * OMEGA).dot(quat1)
             q = q / np.linalg.norm(q)
+        else:
+            q = quat1
 
         ####################
 
         w_tb = u2[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if math.fabs(v) > 1e-10:
+        if math.fabs(v) > 1e-8:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
@@ -409,6 +411,8 @@ class ZUPTaidedIns:
             q2 = (math.cos(v / 2.0) * np.diagflat([1.0, 1.0, 1.0, 1.0]) +
                   2.0 / v * math.sin(v / 2.0) * OMEGA).dot(quat2)
             q2 = q2 / np.linalg.norm(q2)
+        else:
+            q2 = quat2
 
         g_t = np.array([0, 0, 9.8173])
         g_t = np.transpose(g_t)
