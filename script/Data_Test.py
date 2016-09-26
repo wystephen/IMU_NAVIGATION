@@ -48,7 +48,7 @@ if __name__ == '__main__':
     # u1[:,3:6] = u1[:,3:6] * np.pi / 180.0
     # u2[:,3:6] = u2[:,3:6] * np.pi / 180.0
 
-    ins_filter.init_Nav_eq(u1[1:200, :], u2[1:200, :])
+    ins_filter.init_Nav_eq(u1[1:20, :], u2[1:20, :])
 
     # print(ins_filter.x_h,ins_filter.quat1,ins_filter.quat2)
 

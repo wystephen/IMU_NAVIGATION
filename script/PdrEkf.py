@@ -277,12 +277,12 @@ class ZUPTaidedIns:
 
         # zupt1 = 0
         # zupt2 = 0
-        self.last_zv += 1
-
-        if (zupt1 == 1 or zupt2 == 1) and (self.last_zv > 5):
+        # self.last_zv += 1
+        # and (self.last_zv > 2)
+        if (zupt1 == 1 or zupt2 == 1):
             self.last_zv = 0
             # print (11)
-            # self.P = self.P * 50.0
+            self.P = self.P * 30.0
             if (zupt1 == 1) and (not (zupt2 == 1)):
                 # print(1)
                 H = self.H1
@@ -347,11 +347,11 @@ class ZUPTaidedIns:
         #     self.x_h[9:15] = tmp2[0:6]
         #     self.quat2 = tmp2[6:10]
         #
-        # self.P = (self.P + np.transpose(self.P)) * 0.5
+
         # '''
         # END RANGE CONSTRAINT
         # '''
-
+        self.P = (self.P + np.transpose(self.P)) * 0.5
         # print(self.x_h,self.quat1,self.quat2)
         return self.x_h
 
