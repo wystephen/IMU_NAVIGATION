@@ -16,8 +16,7 @@ class ZUPTaidedIns:
         '''
         self.para = settings
         self.R12 = np.zeros([6, 6])
-        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
-        self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
+
         self.P = (np.zeros([18, 18]))
         self.Q = np.zeros([12, 12])
         self.H12 = np.zeros([6, 18])
@@ -32,6 +31,7 @@ class ZUPTaidedIns:
         self.x_h = np.zeros([18, 1])
 
         self.last_constraint = 0
+        self.last_zv = 0
 
     def init_Nav_eq(self, u1, u2):
         '''
@@ -106,10 +106,14 @@ class ZUPTaidedIns:
 
         # print(self.P)
 
+        self.R2 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
+        self.R1 = np.diagflat(np.transpose(self.para.sigma_vel ** 2.0))
+
         self.R12[0:3, 0:3] = self.R1
         self.R12[3:6, 3:6] = self.R2
 
         # print(self.R12)
+
 
         self.Q[0:3, 0:3] = np.diagflat(np.transpose(self.para.sigma_acc ** 2.0))
         self.Q[3:6, 3:6] = np.diagflat(np.transpose(self.para.sigma_gyro ** 2.0))
@@ -273,8 +277,10 @@ class ZUPTaidedIns:
 
         # zupt1 = 0
         # zupt2 = 0
+        self.last_zv += 1
 
-        if zupt1 == 1 or zupt2 == 1:
+        if (zupt1 == 1 or zupt2 == 1) and (self.last_zv > 5):
+            self.last_zv = 0
             # print (11)
             # self.P = self.P * 50.0
             if (zupt1 == 1) and (not (zupt2 == 1)):
