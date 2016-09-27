@@ -8,7 +8,11 @@ import numpy as np
 import math
 
 
-class ZUPTaidedIns:
+class ZUPTaidedIns(object):
+    """
+
+    """
+
     def __init__(self, settings):
         '''
 
@@ -22,7 +26,6 @@ class ZUPTaidedIns:
         self.H12 = np.zeros([6, 18])
         self.H2 = np.zeros([3, 18])
         self.H1 = np.zeros([3, 18])
-
 
         self.init_filter()
 
@@ -523,7 +526,9 @@ class ZUPTaidedIns:
             [-epsilon[1], epsilon[0], 0.0]
         ])
 
-        R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
+        # R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
+
+        R = R.dot(OMEGA)
         # print(R)
 
         epsilon = dx[15:18]
@@ -533,7 +538,8 @@ class ZUPTaidedIns:
             [-epsilon[1], epsilon[0], 0.0]
         ])
 
-        R2 = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R2)
+        # R2 = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R2)
+        R2 = R2.dot(OMEGA)
         # print(R2)
 
         q_out = self.dcm2q(R)
