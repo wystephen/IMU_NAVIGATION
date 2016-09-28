@@ -49,7 +49,7 @@ class ZUPTaidedIns(object):
         f_w = np.mean(u1[2, :])
 
         # print(f_u,f_v,f_w)
-        roll = math.atan2(-f_v, -f_w)  # ToDo:May be wrroy
+        roll = math.atan2(-f_v, -f_w)
         pitch = math.atan2(f_u, math.sqrt(f_v ** 2 + f_w ** 2))
 
         attitude = [roll, pitch, self.para.init_heading1]
@@ -69,7 +69,7 @@ class ZUPTaidedIns(object):
         f_w = np.mean(u2[2, :])
 
         # print(f_u,f_v,f_w)
-        roll = math.atan2(-f_v, -f_w)  # ToDo:May be wrroy
+        roll = math.atan2(-f_v, -f_w)
         pitch = math.atan2(f_u, math.sqrt(f_v ** 2 + f_w ** 2))
 
         attitude = [roll, pitch, self.para.init_heading2]
@@ -376,7 +376,7 @@ class ZUPTaidedIns(object):
         w_tb = u1[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if math.fabs(v) > 1e-8:
+        if math.fabs(v) > 1e-22:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
@@ -399,7 +399,7 @@ class ZUPTaidedIns(object):
         w_tb = u2[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if math.fabs(v) > 1e-8:
+        if math.fabs(v) > 1e-22:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
@@ -526,9 +526,9 @@ class ZUPTaidedIns(object):
             [-epsilon[1], epsilon[0], 0.0]
         ])
 
-        # R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
+        R = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R)
 
-        R = R.dot(OMEGA)
+        # R = R.dot(OMEGA)
         # print(R)
 
         epsilon = dx[15:18]
@@ -538,8 +538,8 @@ class ZUPTaidedIns(object):
             [-epsilon[1], epsilon[0], 0.0]
         ])
 
-        # R2 = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R2)
-        R2 = R2.dot(OMEGA)
+        R2 = (np.diagflat([1.0, 1.0, 1.0]) - OMEGA).dot(R2)
+        # R2 = R2.dot(OMEGA)
         # print(R2)
 
         q_out = self.dcm2q(R)
