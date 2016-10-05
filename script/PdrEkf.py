@@ -334,29 +334,28 @@ class ZUPTaidedIns(object):
         # '''
         self.last_constraint += 1
 
-        # if self.para.range_constraint_on and \
-        #                 self.last_constraint > self.para.min_rud_sep and \
-        #                 np.linalg.norm(
-        #                             self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
-        #     self.last_constraint = 0
-        #
-        #     tmp_in1 = np.zeros([10, 1])
-        #     tmp_in2 = np.zeros([10, 1])
-        #
-        #     tmp_in1[0:6] = self.x_h[0:6]
-        #     tmp_in1[6:10] = self.quat1.reshape(4, 1)
-        #
-        #     tmp_in2[0:6] = self.x_h[9:15]
-        #     tmp_in2[6:10] = self.quat2.reshape(4, 1)
-        #
-        #     tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
-        #
-        #     self.x_h[0:6] = tmp1[0:6]
-        #     self.quat1 = tmp1[6:10]
-        #
-        #     self.x_h[9:15] = tmp2[0:6]
-        #     self.quat2 = tmp2[6:10]
+        if self.para.range_constraint_on and \
+                        self.last_constraint > self.para.min_rud_sep and \
+                        np.linalg.norm(
+                                    self.x_h[0:3] - self.x_h[9:12]) > self.para.range_constraint:
+            self.last_constraint = 0
 
+            tmp_in1 = np.zeros([10, 1])
+            tmp_in2 = np.zeros([10, 1])
+
+            tmp_in1[0:6] = self.x_h[0:6]
+            tmp_in1[6:10] = self.quat1.reshape(4, 1)
+
+            tmp_in2[0:6] = self.x_h[9:15]
+            tmp_in2[6:10] = self.quat2.reshape(4, 1)
+
+            tmp1, tmp2, self.P = self.range_constraint(tmp_in1, tmp_in2, self.P)
+
+            self.x_h[0:6] = tmp1[0:6]
+            self.quat1 = tmp1[6:10]
+
+            self.x_h[9:15] = tmp2[0:6]
+            self.quat2 = tmp2[6:10]
 
         # '''
         # END RANGE CONSTRAINT
@@ -630,10 +629,10 @@ class ZUPTaidedIns(object):
             #     e[2] ** 2.0 * S[2, 2] ** 2.0 / ((1 + lam * S[2, 2] ** 2.0) * 2.0) - eta ** 2.0
 
 
-            g = e[0] ** 2 * S[0] ** 2 / ((1 + lam * S[0] ** 2) ** 2) + \
-                e[1] ** 2.0 * S[1] ** 2.0 / ((1 + lam * S[1] ** 2) ** 2) + \
-                e[2] ** 2.0 * S[2] ** 2.0 / ((1 + lam * S[2] ** 2.0) * 2.0) \
-                - eta ** 2.0
+            g = e[0] * e[0] * S[0] * S[0] / ((1 + lam * S[0] * S[0]) ** 2) + \
+                e[1] * e[0] * S[1] * S[1] / ((1 + lam * S[1] * S[1]) ** 2) + \
+                e[2] * e[2] * S[2] * S[2] / ((1 + lam * S[2] * S[2]) ** 2) - \
+                eta * eta
 
             # dg = -2.0 * (e[0] ** 2.0 * S[0, 0] ** 4.0 / ((1 + lam * S[0, 0] ** 2.0) ** 3.0) +
             #              e[1] ** 2 * S[1, 1] ** 4.0 / ((1 + lam * S[1, 1] ** 2.0) ** 3.0) +
@@ -641,9 +640,9 @@ class ZUPTaidedIns(object):
             #              )
 
 
-            dg = -2.0 * (e[0] ** 2.0 * S[0] ** 4.0 / ((1 + lam * S[0] ** 2.0) ** 3.0) +
-                         e[1] ** 2 * S[1] ** 4.0 / ((1 + lam * S[1] ** 2.0) ** 3.0) +
-                         e[2] ** 2.0 * S[2] ** 4.0 / ((1 + lam * S[2] ** 2.0) ** 3.0)
+            dg = -2.0 * (e[0] * e[0] * S[0] ** 4.0 / ((1 + lam * S[0] * S[0]) ** 3.0) +
+                         e[1] * e[1] * S[1] ** 4.0 / ((1 + lam * S[1] * S[1]) ** 3.0) +
+                         e[2] * e[2] * S[2] ** 4.0 / ((1 + lam * S[2] * S[2]) ** 3.0)
                          )
 
             delta = g / dg
@@ -652,7 +651,11 @@ class ZUPTaidedIns(object):
 
             ctr = ctr + 1
 
-        z = np.linalg.inv(Pinv + lam * (np.transpose(L).dot(L))).dot(Pinv.dot(x_h))
+        if (lam < 0):
+            print("ERROR : lam must bigger than zero.")
+            z = x_h
+        else:
+            z = np.linalg.inv(Pinv + lam * (np.transpose(L).dot(L))).dot(Pinv.dot(x_h))
 
         return lam, z
 
