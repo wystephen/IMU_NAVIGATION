@@ -350,7 +350,7 @@ class ZUPTaidedIns(object):
         #
         #     self.x_h[9:15] = tmp2[0:6]
         #     self.quat2 = tmp2[6:10]
-
+        #
 
         # '''
         # END RANGE CONSTRAINT
@@ -377,7 +377,7 @@ class ZUPTaidedIns(object):
         w_tb = u1[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if math.fabs(v) > 1e-22:
+        if math.fabs(v) > 1e-8:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
@@ -400,7 +400,7 @@ class ZUPTaidedIns(object):
         w_tb = u2[3:6]
         v = np.linalg.norm(w_tb) * dt
 
-        if math.fabs(v) > 1e-22:
+        if math.fabs(v) > 1e-8:
             P = w_tb[0] * dt * 0.5
             Q = w_tb[1] * dt * 0.5
             R = w_tb[2] * dt * 0.5
@@ -470,8 +470,9 @@ class ZUPTaidedIns(object):
         f_t = Rb2t.dot(u[0:3])
         f_t2 = Rb2t2.dot(u2[0:3])
 
+        # Fixed here.
         St = np.array([
-            [0, -f_t[0], f_t[1]],
+            [0, -f_t[2], f_t[1]],
             [f_t[2], 0.0, -f_t[0]],
             [-f_t[1], f_t[0], 0.0]
         ])
