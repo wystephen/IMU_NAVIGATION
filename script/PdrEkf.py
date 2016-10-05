@@ -145,6 +145,11 @@ class ZUPTaidedIns(object):
         return
 
     def Rt2b(self, ang):
+        '''
+        :
+        :param ang:
+        :return:
+        '''
         cr = math.cos(ang[0])
         sr = math.sin(ang[0])
 
@@ -163,17 +168,18 @@ class ZUPTaidedIns(object):
 
     def dcm2q(self, R):
         """
-
-        :param R:
-        :return:
+        Transform from rotation matrix to quanternions.
+        :param R:old rotation matrix
+        :return:quanternion
         """
         T = 1.0 + R[0, 0] + R[1, 1] + R[2, 2]
         # print (T)
 
 
         # Really Big Change.
-        if math.fabs(T) > 1e-5:
-            S = 0.5 / math.sqrt(T)
+        # ToDo:Why there are some value is smallter than zero.
+        if math.fabs(T) > 1e-3:
+            S = 0.5 / math.sqrt(math.fabs(T))
 
             qw = 0.25 / S
             qx = (R[2, 1] - R[1, 2]) * S
@@ -350,7 +356,7 @@ class ZUPTaidedIns(object):
         #
         #     self.x_h[9:15] = tmp2[0:6]
         #     self.quat2 = tmp2[6:10]
-        #
+
 
         # '''
         # END RANGE CONSTRAINT
