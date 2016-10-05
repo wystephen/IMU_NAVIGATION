@@ -7,74 +7,74 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
-      <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="pcl_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_cpp" />
       <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="run_tests" />
-      <config projectName="IMU_NAVIGATION" targetName="download_extra_data" />
-      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_eus" />
       <config projectName="IMU_NAVIGATION" targetName="doxygen" />
+      <config projectName="IMU_NAVIGATION" targetName="actionlib_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="pcl_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="pcl_ros_gencfg" />
+      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_gencfg" />
+      <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_cpp" />
       <config projectName="IMU_NAVIGATION" targetName="actionlib_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="pcl_msgs_generate_messages_lisp" />
       <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="imu_preprocess_test" />
+      <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="twofoot" />
+      <config projectName="IMU_NAVIGATION" targetName="sensor_msgs_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="tf_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="data_sync" />
+      <config projectName="IMU_NAVIGATION" targetName="run_tests" />
+      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_eus" />
       <config projectName="IMU_NAVIGATION" targetName="pcl_msgs_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="gtest" />
+      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_py" />
       <config projectName="IMU_NAVIGATION" targetName="sensor_msgs_generate_messages_eus" />
       <config projectName="IMU_NAVIGATION" targetName="tf_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="actionlib_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_lisp" />
       <config projectName="IMU_NAVIGATION" targetName="pcl_msgs_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="tests" />
-      <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_lisp" />
       <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="tf_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_gencfg" />
-      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="pcl_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="sensor_msgs_generate_messages_lisp" />
       <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_cpp" />
       <config projectName="IMU_NAVIGATION" targetName="actionlib_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="sensor_msgs_generate_messages_cpp" />
       <config projectName="IMU_NAVIGATION" targetName="sensor_msgs_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="imu_preprocess_test" />
-      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="tf_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="download_extra_data" />
       <config projectName="IMU_NAVIGATION" targetName="actionlib_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="pcl_ros_gencfg" />
-      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="actionlib_msgs_generate_messages_eus" />
       <config projectName="IMU_NAVIGATION" targetName="gtest_main" />
-      <config projectName="IMU_NAVIGATION" targetName="std_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="tests" />
       <config projectName="IMU_NAVIGATION" targetName="tf_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="twofoot" />
-      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="sensor_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="geometry_msgs_generate_messages_cpp" />
-      <config projectName="IMU_NAVIGATION" targetName="gtest" />
-      <config projectName="IMU_NAVIGATION" targetName="data_sync" />
-      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_lisp" />
-      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_py" />
-      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_eus" />
-      <config projectName="IMU_NAVIGATION" targetName="clean_test_results" />
-      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="roscpp_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="bond_generate_messages_cpp" />
       <config projectName="IMU_NAVIGATION" targetName="rosgraph_msgs_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_cpp" />
+      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="tf_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="tf2_msgs_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_eus" />
+      <config projectName="IMU_NAVIGATION" targetName="clean_test_results" />
+      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="topic_tools_generate_messages_lisp" />
+      <config projectName="IMU_NAVIGATION" targetName="nodelet_generate_messages_py" />
+      <config projectName="IMU_NAVIGATION" targetName="dynamic_reconfigure_generate_messages_lisp" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="false" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
@@ -98,7 +98,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1475132945070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
+    <SUITE FILE_PATH="coverage/IMU_NAVIGATION$Data_Test.coverage" NAME="Data_Test Coverage Results" MODIFIED="1475653889348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/script" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -116,14 +116,14 @@
     <favorites_list name="IMU_NAVIGATION" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.65770173">
+    <splitter split-orientation="horizontal" split-proportion="0.53190184">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Data_Test.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/script/Data_Test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
+                <state relative-caret-position="252">
+                  <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -132,11 +132,9 @@
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="323" column="13" selection-start-line="323" selection-start-column="13" selection-end-line="323" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#63#91#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="114">
+                  <caret line="170" column="9" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="9" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -145,24 +143,12 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Setting.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/script/Setting.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="PdrEkf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="162">
-                  <caret line="268" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#63#91#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="829">
+                  <caret line="665" column="0" selection-start-line="665" selection-start-column="0" selection-end-line="665" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -220,9 +206,9 @@
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -270,7 +256,7 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/satellite_data_process" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -308,55 +294,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="IMU_NAVIGATION" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="IMU_NAVIGATION" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="IMU_NAVIGATION" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -839,13 +777,7 @@
       <workItem from="1474256648594" duration="18593000" />
       <workItem from="1474347355498" duration="23936000" />
       <workItem from="1474384736741" duration="13895000" />
-    </task>
-    <task id="LOCAL-00047" summary="//    Eigen::Vector3d g_t(0,0,para_ptr_-&gt;gravity_);//Gravity vector&#10;    Eigen::Vector3d g_t(0,0,9.8173);//Gravity vector">
-      <created>1474190238576</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1474190238576</updated>
+      <workItem from="1475638165408" duration="21000" />
     </task>
     <task id="LOCAL-00048" summary="Checked the states matrix.">
       <created>1474190729549</created>
@@ -1183,11 +1115,18 @@
       <option name="project" value="LOCAL" />
       <updated>1475041947254</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="bad use.">
+      <created>1475132962012</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1475132962013</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182618000" />
+    <option name="totallyTimeSpent" value="182639000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1199,7 +1138,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1310116" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1208,8 +1147,8 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946378" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71085596" sideWeight="0.4976011" order="7" side_tool="false" content_ui="tabs" x="258" y="397" width="1469" height="318" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32985386" sideWeight="0.4886678" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09563295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32985386" sideWeight="0.4886678" order="2" side_tool="false" content_ui="tabs" x="2226" y="284" width="678" height="407" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09894969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39561588" sideWeight="0.49604744" order="3" side_tool="false" content_ui="tabs" />
@@ -1276,7 +1215,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="have change the initial heading." />
     <MESSAGE value="Output distance." />
     <MESSAGE value="A problem in Signal2Bool." />
     <MESSAGE value="1111111" />
@@ -1301,7 +1239,8 @@
     <MESSAGE value="```" />
     <MESSAGE value="``````" />
     <MESSAGE value="`````" />
-    <option name="LAST_COMMIT_MESSAGE" value="`````" />
+    <MESSAGE value="bad use." />
+    <option name="LAST_COMMIT_MESSAGE" value="bad use." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1631,13 +1570,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="963" column="0" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py" />
     <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
@@ -1649,7 +1582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1660,29 +1592,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/Setting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/script/Setting.py" />
     <entry file="file://$PROJECT_DIR$/script/Data_Test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
+        <state relative-caret-position="252">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/PdrEkf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="323" column="13" selection-start-line="323" selection-start-column="13" selection-end-line="323" selection-end-column="13" />
-          <folding>
-            <element signature="e#63#91#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="114">
+          <caret line="170" column="9" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
