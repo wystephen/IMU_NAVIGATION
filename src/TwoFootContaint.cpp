@@ -27,10 +27,10 @@ int main(int argc, char **argv) {
     ros::Publisher pub = n_handle.advertise<nav_msgs::Odometry>("imu1", 1);
     ros::Publisher pub2 = n_handle.advertise<nav_msgs::Odometry>("imu2", 1);
 
-//    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-//    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
-//    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
-//    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
+    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
+    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt2.csv");
 
 //    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u2.csv");
 //    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
@@ -39,10 +39,10 @@ int main(int argc, char **argv) {
 
 
 //
-    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
-    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
-    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+//    CSVReader r_u1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+//    CSVReader r_u2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/u1.csv");
+//    CSVReader r_zupt1("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
+//    CSVReader r_zupt2("/home/steve/catkin_ws/src/IMU_NAVIGATION/Data/zupt1.csv");
     double time = 0.0;
 
 //    std::cout << " double size '" << sizeof(double) << std::endl;

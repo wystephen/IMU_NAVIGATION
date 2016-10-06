@@ -280,8 +280,10 @@ bool TwoFootEkf::StateMatrix() {
     G_.block(15, 9, 3, 3) = -Quaternion2Rotation(quat2_);
 
     F_ = dt_ * F_;
-    for (int i(0); i < F_.cols(); ++i) {
-        F_(i, i) += 1.0;
+    int t(0);
+    for (; t < F_.rows();) {
+        F_(t, t) += 1.0;
+        ++t;
     }
 
     G_ = dt_ * G_;
@@ -317,7 +319,7 @@ bool TwoFootEkf::NavigationEq() {
 
     Eigen::Matrix4d OMEGA;
 
-    if (std::abs(v) > 1e-12) {
+    if (std::fabs(v) > 1e-8) {
 
         P = w_tb(0) * dt_ * 0.5;
         Q = w_tb(1) * dt_ * 0.5;
@@ -349,13 +351,15 @@ bool TwoFootEkf::NavigationEq() {
 
         quat1_ = quat1_ / quat1_.norm();
 
+    } else {
+        quat1_ = quat1_;
     }
 
     //For quat2_
     w_tb = u2.block(3, 0, 3, 1);
     v = w_tb.norm() * dt_;
 
-    if (std::abs(v) > 1e-12) {
+    if (std::abs(v) > 1e-8) {
         P = w_tb(0) * dt_ * 0.5;
         Q = w_tb(1) * dt_ * 0.5;
         R = w_tb(2) * dt_ * 0.5;
@@ -385,6 +389,8 @@ bool TwoFootEkf::NavigationEq() {
 
         quat2_ = quat2_ / quat2_.norm();
 //        std::cout << "quat2_ :" << quat2_ << std::endl;
+    } else {
+        quat2_ = quat2_;
     }
 
 
@@ -534,7 +540,7 @@ Eigen::MatrixXd TwoFootEkf::GetPosition(Eigen::MatrixXd u,
     last_time_ = the_time_;
     the_time_ = time;
 
-    dt_ = para_ptr_->Ts_;
+    dt_ = para_ptr_->Ts_;//use dataset ,so set dt_ same to the matlab source code.
 
     Signal2Bool(detector_signal);
 

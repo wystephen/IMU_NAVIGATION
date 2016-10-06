@@ -195,7 +195,7 @@ class ZUPTaidedIns(object):
                 qy = (R[0, 1] + R[1, 0]) / S
                 qz = (R[0, 2] + R[2, 0]) / S
 
-            elif (R[1, 1] > R[2, 2]):
+            elif R[1, 1] > R[2, 2]:
                 S = math.sqrt(1 + R[1, 1] - R[0, 0] - R[2, 2]) * 2.0
 
                 qw = (R[0, 2] - R[2, 0]) / S
@@ -630,7 +630,7 @@ class ZUPTaidedIns(object):
 
 
             g = e[0] * e[0] * S[0] * S[0] / ((1 + lam * S[0] * S[0]) ** 2) + \
-                e[1] * e[0] * S[1] * S[1] / ((1 + lam * S[1] * S[1]) ** 2) + \
+                e[1] * e[1] * S[1] * S[1] / ((1 + lam * S[1] * S[1]) ** 2) + \
                 e[2] * e[2] * S[2] * S[2] / ((1 + lam * S[2] * S[2]) ** 2) - \
                 eta * eta
 
@@ -655,7 +655,7 @@ class ZUPTaidedIns(object):
             print("ERROR : lam must bigger than zero.")
             z = x_h
         else:
-            z = np.linalg.inv(Pinv + lam * (np.transpose(L).dot(L))).dot(Pinv.dot(x_h))
+            z = np.linalg.inv(Pinv + (np.transpose(lam * L).dot(L))).dot(Pinv.dot(x_h))
 
         return lam, z
 
