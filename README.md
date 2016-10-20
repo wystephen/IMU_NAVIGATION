@@ -11,7 +11,8 @@ This module is use to recongnize the status of the imu(whether the velocity is z
 I have achieved the GLRT method(but without any extract test).
 
 
-
+## OpenShoe(With two-foot Constraint)
+This code is achived by python ,to use this code you need install numpy,scipy.I have tested this code by the data offer by Openshoe Matlab code package,and the accuracy is similar to the official version which achived by Matlab.
 
 
  @article{Skog2012,
