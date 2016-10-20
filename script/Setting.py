@@ -48,3 +48,6 @@ class settings:
         self.sigma_initial_att2 = (np.pi / 180.0 * np.array([0.1, 0.1, 0.001]).reshape(3, 1))
 
         # self.s_P = np.loadtxt("../Data/P.csv", dtype=float, delimiter=",")
+        self.gravity = 9.8
+
+        self.time_Window_size = 10
