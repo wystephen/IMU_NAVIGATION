@@ -17,7 +17,7 @@ class settings:
         self.init_pos1 = np.zeros([1, 3])
         self.init_pos2 = np.zeros([1, 3])
 
-        self.range_constraint_on = True
+        self.range_constraint_on = False
 
         self.altitude = 100
         self.latitude = 50
