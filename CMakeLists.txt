@@ -14,18 +14,18 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11  -O3")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /usr/share/cmake-2.8/Modules/)#Add Eigen3 Find cmake file here.
 
-find_package(OpenCV REQUIRED)
+#find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(PCL REQUIRED)
+#find_package(PCL REQUIRED)
 
 #find_package(Eigen REQUIRED)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  cv_bridge
-  image_transport
-  pcl_ros
+  #cv_bridge
+  #image_transport
+  #pcl_ros
   roscpp
   rospy
   sensor_msgs
@@ -138,8 +138,8 @@ catkin_package(
 # include_directories(include)
 include_directories(
         ${catkin_INCLUDE_DIRS}
-        ${OpenCV_INCLUDE_DIRS}
-        ${PCL_INCLUDE_DIRS}
+        #${OpenCV_INCLUDE_DIRS}
+        #${PCL_INCLUDE_DIRS}
         ${EIGEN3_INCLUDE_DIRS}
         /usr/local/include # Location when using 'make system_install'
         /usr/include       # More usual location (e.g. when installing using a package)
@@ -168,15 +168,15 @@ link_directories(
 # add_executable(IMU_NAVIGATION_node src/IMU_NAVIGATION_node.cpp)
 
 add_executable(imu_preprocess_test src/ImuDataPreprocess.cpp)
-add_dependencies(imu_preprocess_test ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} )
+add_dependencies(imu_preprocess_test ${catkin_LIBRARIES} )#${PCL_LIBRARIES} ${OpenCV_LIBRARIES} )
 target_link_libraries(imu_preprocess_test ${catkin_LIBRARIES})
 
 add_executable(data_sync src/DataSync.cpp)
-add_dependencies(data_sync ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} )
+add_dependencies(data_sync ${catkin_LIBRARIES})# ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} )
 target_link_libraries(data_sync ${catkin_LIBRARIES})
 
 add_executable(twofoot src/TwoFootContaint.cpp)
-add_dependencies(twofoot ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(twofoot ${catkin_LIBRARIES})# ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
 target_link_libraries(twofoot ${catkin_LIBRARIES})
 ## Add cmake target dependencies of the executable
 ## same as for the library above
